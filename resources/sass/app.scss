@@ -1,0 +1,134 @@
+// The following two lines import the default Sencha Touch theme. If you are building
+// a new theme, remove them and the add your own CSS on top of the base CSS (which
+// is already included in your app.json file).
+
+$base-color: #f64e8f;
+$include-default-icons: false;
+$include-highlights: false;
+$base-gradient: none;
+$basic-slider: true;
+$body-bg-color: #000;
+$list-active-color: #54c2c2;
+$list-pressed-color: #54c2c2;
+$loading-spinner-color: #f64e8f;
+
+@import 'sencha-touch/default';
+@import 'sencha-touch/default/all';
+
+//@include sencha-panel;
+//@include sencha-buttons;
+//@include sencha-sheet;
+//@include sencha-picker;
+//@include sencha-tabs;
+//@include sencha-toolbar;
+//@include sencha-toolbar-forms;
+//@include sencha-indexbar;
+//@include sencha-list;
+//@include sencha-list-paging;
+//@include sencha-list-pullrefresh;
+//@include sencha-layout;
+//@include sencha-carousel;
+//@include sencha-form;
+//@include sencha-msgbox;
+//@include sencha-loading-spinner;
+//@include sencha-draw;
+//@include sencha-charts;
+
+
+// Custom code goes here..
+
+ html, body {
+      height: 100%;
+      background-color: #fff;
+//      background: url('../icons/768x1024.png');
+//      background-size: 100%;
+//      background-repeat:no-repeat;
+      }   
+
+h3 {color: #8dd2d1 !important;} 
+h4 {color: #ccc !important; width: 80%;} 
+
+#gebarencarousel, .gebarendetail {
+      background: url('../images/achtergrond.png')!important;
+      background-size: 100% !important;
+      background-repeat:no-repeat !important;
+      background-color: #7bcdca !important; // important moet erbij
+    }
+    
+.gebarenlijst {background-color: #8fd3d1 !important;
+    color: #fff !important;
+    }
+    
+.x-list .x-list-item-tpl .x-list-disclosure {
+    right: 70px !important;
+    top: 40px !important;
+}  
+
+.x-list .x-list-item {
+color: #FFF !important;
+text-transform:uppercase !important;
+}
+    
+.tekstscreen {
+      background-color: #ffffff !important;
+      padding: 20px !important;  
+    }
+
+video {
+    background-color: #7bcdca !important; // important moet erbij
+
+}
+
+.videoplayknop {
+      background-color: #7bcdca !important; // important moet erbij
+//      width: 768px !important;
+//     height: 432px !important;
+    }
+    
+.fade-in {-webkit-animation: fadein 2s; /* Safari and Chrome */}
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+.sun-animation {-webkit-animation: sunanimation 2s; bottom:50px;}
+@-webkit-keyframes sunanimation {
+    from {margin-top:600px; margin-bottom:600px }
+    to   {margin-top:0px; margin-bottom:0px}
+}
+
+
+.swipe-animation {-webkit-animation: swipeanimation 2s infinite;}
+@-webkit-keyframes swipeanimation {
+  -webkit-animation-timing-function: linear;
+   0% {margin-left:0px;}
+   50% {margin-left:30px;}
+   100% {margin-left:0px;}
+}
+
+    
+#hometekst {position: fixed; bottom: 200px; left: 120px;}   
+    
+.thumbpie {height: 100px}
+
+.x-tabbar-dark {
+    border-top-color: #f64e8f !important;
+    border-bottom-color: #f64e8f !important;
+    background-image: none !important;
+    background-color: #f64e8f !important;
+}
+
+.x-video {background-color: #7bcdca !important}
+
+
+
+
+// Examples of using the icon mixin:
+// @include icon('user');
+
+
+@include icon('home');
+@include icon('star');
+@include icon('search');
+@include icon('info');
