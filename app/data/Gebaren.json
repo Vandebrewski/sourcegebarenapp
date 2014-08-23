@@ -2,93 +2,101 @@
     "Gebaartje": [
         {
             "Id": 1,
-            "Name": "Beer",
-            "plaatje": "beer.png",
-            "video": "test.mp4"
+            "Name": "Hond",
+            "plaatje": "hond.png",
+            "audio": "hond.mp3",
+            "video": "hond.mp4"
         },
         {
             "Id": 2,
-            "Name": "Aap",
-            "plaatje": "aap.png",
-            "video": "test.mp4"
+            "Name": "Beer",
+            "plaatje": "beer.png",
+            "audio": "beer.mp3",
+            "video": "beer.mp4"
         },        
         {
             "Id": 3,
-            "Name": "Paard",
-            "plaatje": "paard.png",
-            "video": "test.mp4"
+            "Name": "Koe",
+            "plaatje": "koe.png",
+            "audio": "koe.mp3",
+            "video": "koe.mp4"
         },
         {
             "Id": 4,
             "Name": "Konijn",
             "plaatje": "konijn.png",
-            "video": "test.mp4"
+            "audio": "konijn.mp3",
+            "video": "konijn.mp4"
         },
         {
             "Id": 5,
-            "Name": "Eend",
-            "plaatje": "eend.png",
-            "video": "test.mp4"
+            "Name": "Leeuw",
+            "plaatje": "leeuw.png",
+            "audio": "leeuw.mp3",
+            "video": "leeuw.mp4"
         },
         {
             "Id": 6,
-            "Name": "Hond",
-            "plaatje": "hond.png",
-            "video": "test.mp4"
+            "Name": "Vogel",
+            "plaatje": "vogel.png",
+            "audio": "vogel.mp3",
+            "video": "vogel.mp4"
         },
         {
             "Id": 7,
-            "Name": "Poes",
-            "plaatje": "poes.png",
-            "video": "test.mp4"
+            "Name": "Paard",
+            "plaatje": "paard.png",
+            "audio": "paard.mp3",
+            "video": "paard.mp4"
         },
          {
             "Id": 8,
-            "Name": "Olifant",
-            "plaatje": "olifant.png",
-            "video": "test.mp4"
+            "Name": "Schaap",
+            "plaatje": "schaap.png",
+            "audio": "schaap.mp3",
+            "video": "schaap.mp4"
         },
          {
             "Id": 9,
-            "Name": "Tijger",
-            "plaatje": "tijger.png",
-            "video": "test.mp4"
+            "Name": "Poes",
+            "plaatje": "poes.png",
+            "audio": "poes.mp3",
+            "video": "poes.mp4"
         },
          {
             "Id": 10,
-            "Name": "Koe",
-            "plaatje": "koe.png",
-            "video": "test.mp4"
+            "Name": "Tijger",
+            "plaatje": "tijger.png",
+            "audio": "tijger.mp3",
+            "video": "tijger.mp4"
         },
          {
             "Id": 11,
-            "Name": "Leeuw",
-            "plaatje": "leeuw.png",
-            "video": "test.mp4"
+            "Name": "Aap",
+            "plaatje": "aap.png",
+            "audio": "aap.mp3",
+            "video": "aap.mp4"
         },
          {
             "Id": 12,
-            "Name": "Vogel",
-            "plaatje": "vogel.png",
-            "video": "test.mp4"
+            "Name": "Geit",
+            "plaatje": "geit.png",
+            "audio": "geit.mp3",
+            "video": "geit.mp4"
         },
          {
             "Id": 13,
-            "Name": "Geit",
-            "plaatje": "geit.png",
-            "video": "test.mp4"
+            "Name": "Kip",
+            "plaatje": "kip.png",
+            "audio": "kip.mp3",
+            "video": "kip.mp4"
         },
          {
             "Id": 14,
-            "Name": "Schaap",
-            "plaatje": "schaap.png",
-            "video": "test.mp4"
-        },
-         {
-            "Id": 15,
-            "Name": "Kip",
-            "plaatje": "kip.png",
-            "video": "test.mp4"
+            "Name": "Olifant",
+            "plaatje": "olifant.png",
+            "audio": "olifant.mp3",
+            "video": "olifant.mp4"
         }
     ]
 }

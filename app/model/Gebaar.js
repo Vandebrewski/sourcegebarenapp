@@ -12,10 +12,9 @@ Ext.define('Test.model.Gebaar',{
     fullName: function () {
     	var d = this.data,
     	names = [
-    	d.Name
+    	    d.Name
     	];
     	return names.join(" ");
-    	
     }
 });
 

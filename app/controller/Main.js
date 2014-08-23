@@ -10,16 +10,15 @@ Ext.define('Test.controller.Main',{
         },
         control: {
             'gebarenlijst': {
-             disclose: 'showDetail'
+                itemtap: 'showDetail'
             }
         }
     },
 
-    showDetail: function(list, record) {
+    showDetail: function( obj, index, target, record) {
         this.getMain().push({
             xtype: 'gebarendetail',
             title: record.fullName(),
-
             data: record.getData()
         })
         
