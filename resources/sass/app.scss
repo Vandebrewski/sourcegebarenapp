@@ -1,8 +1,5 @@
-// The following two lines import the default Sencha Touch theme. If you are building
-// a new theme, remove them and the add your own CSS on top of the base CSS (which
-// is already included in your app.json file).
-
 $base-color: #f64e8f;
+$include-pictos-font: false;
 $include-default-icons: false;
 $include-highlights: false;
 $base-gradient: none;
@@ -12,30 +9,49 @@ $list-active-color: #54c2c2;
 $list-pressed-color: #54c2c2;
 $loading-spinner-color: #f64e8f;
 
-@import 'sencha-touch/default';
-@import 'sencha-touch/default/all';
 
-//@include sencha-panel;
-//@include sencha-buttons;
-//@include sencha-sheet;
-//@include sencha-picker;
-//@include sencha-tabs;
-//@include sencha-toolbar;
-//@include sencha-toolbar-forms;
-//@include sencha-indexbar;
-//@include sencha-list;
-//@include sencha-list-paging;
-//@include sencha-list-pullrefresh;
-//@include sencha-layout;
-//@include sencha-carousel;
-//@include sencha-form;
-//@include sencha-msgbox;
-//@include sencha-loading-spinner;
-//@include sencha-draw;
-//@include sencha-charts;
+// exclude components that app is not using
+@import 'sencha-touch/default';
+//@import 'sencha-touch/default/src/Class';
+@import 'sencha-touch/default/src/Button';
+//@import 'sencha-touch/default/src/Panel';
+//@import 'sencha-touch/default/src/Sheet';
+@import 'sencha-touch/default/src/MessageBox';
+@import 'sencha-touch/default/src/Toolbar';
+@import 'sencha-touch/default/src/carousel/Carousel';
+//@import 'sencha-touch/default/src/form/Panel';
+//@import 'sencha-touch/default/src/form/FieldSet';
+//@import 'sencha-touch/default/src/field/Field';
+//@import 'sencha-touch/default/src/field/Checkbox';
+// @import 'sencha-touch/default/src/field/Radio';
+// @import 'sencha-touch/default/src/field/Search';
+//@import 'sencha-touch/default/src/field/Select';
+//@import 'sencha-touch/default/src/field/Slider';
+@import 'sencha-touch/default/src/field/Spinner';
+// @import 'sencha-touch/default/src/field/TextArea';
+// @import 'sencha-touch/default/src/dataview/IndexBar';
+@import 'sencha-touch/default/src/dataview/List';
+//@import 'sencha-touch/default/src/picker/Picker';
+//@import 'sencha-touch/default/src/plugin/ListPaging';
+//@import 'sencha-touch/default/src/plugin/PullRefresh';
+//@import 'sencha-touch/default/src/slider/Slider';
+//@import 'sencha-touch/default/src/slider/Toggle';
+@import 'sencha-touch/default/src/tab/Panel';
 
 
 // Custom code goes here..
+
+//@font-face {
+//    font-family: 'icomoon';
+//    src:url('icomoon/icomoon.eot');
+//    src:url('icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
+//        url('icomoon/icomoon.ttf') format('truetype'),
+//        url('icomoon/icomoon.woff') format('woff'),
+//        url('icomoon/icomoon.svg#Dinmu') format('svg');
+//    font-weight: normal;
+//    font-style: normal;
+//}
+
 
  html, body {
       height: 100%;
@@ -127,8 +143,15 @@ video {
 // Examples of using the icon mixin:
 // @include icon('user');
 
-
-@include icon('home');
-@include icon('star');
-@include icon('search');
-@include icon('info');
+@include icon-font('icomoon', inline-font-files(
+  'icomoon/icomoon.eot', eot,
+  'icomoon/icomoon.woff', woff,
+  'icomoon/icomoon.ttf', truetype,
+  'icomoon/icomoon.svg', svg
+));
+ 
+@include icon("home"  , "\e600", "icomoon");
+@include icon("star"  , "\e601", "icomoon");
+@include icon("search", "\e604", "icomoon");
+@include icon("info"  , "\e602", "icomoon");
+@include icon("sound"  , "\e605", "icomoon");
