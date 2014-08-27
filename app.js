@@ -92,7 +92,7 @@ Ext.application({
                         {
                         	xtype: 'audio',
                         	url: 'resources/images/' + objData[i].plaatje + '.mp3',
-                        	hidden: true,
+                        	hidden: true
                         },                       
                         {
                             flex: 432,

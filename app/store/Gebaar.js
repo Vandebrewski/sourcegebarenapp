@@ -2,23 +2,23 @@ Ext.define('Test.store.Gebaar',{
     extend: 'Ext.data.Store',
     config:{
         model: 'Test.model.Gebaar',
-//        sorters: 'Name',
+        sorters: 'Name',
 //        grouper : function(record) {
 //          return record.get('Id')[0];
 //     },
        autoLoad: true,
 
-//        proxy:{
-//            type:'ajax',
-//            url:'/Gebaren.json',
-//            reader:{
-//                type: 'json',
-//                rootProperty: 'Gebaartje'
-//            }
-//        }
+        proxy:{
+            type:'ajax',
+            url:'resources/images/Gebaren.json',
+            reader:{
+                type: 'json',
+                rootProperty: 'Gebaartje'
+            }
+        }
 
 
-data: [
+/*data: [
 		{ Id: '1', Name: 'Aap', plaatje: 'aap'},
        	{ Id: '2', Name: 'Beer', plaatje: 'beer'},
         { Id: '3', Name: 'Paard', plaatje: 'paard'},
@@ -34,7 +34,7 @@ data: [
         { Id: '13', Name: 'Tijger', plaatje: 'tijger'},
 		{ Id: '14', Name: 'Vogel', plaatje: 'vogel'}
 
-    ]
+    ]*/
 
 
 

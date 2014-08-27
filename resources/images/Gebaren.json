@@ -2,58 +2,72 @@
     "Gebaartje": [
         {
             "Id": 1,
+            "Name": "Hond",
             "plaatje": "hond"
         },
         {
             "Id": 2,
+            "Name": "Beer",
             "plaatje": "beer"
         },        
         {
             "Id": 3,
+            "Name": "Koe",
             "plaatje": "koe"
         },
         {
             "Id": 4,
+            "Name": "Konijn",
             "plaatje": "konijn"
         },
         {
             "Id": 5,
+            "Name": "Leeuw",
             "plaatje": "leeuw"
         },
         {
             "Id": 6,
+            "Name": "Vogel",
             "plaatje": "vogel"
         },
         {
             "Id": 7,
+            "Name": "Paard",
             "plaatje": "paard"
         },
          {
             "Id": 8,
+            "Name": "Schaap",
             "plaatje": "schaap"
         },
          {
             "Id": 9,
+            "Name": "Poes",
             "plaatje": "poes"
         },
          {
             "Id": 10,
+            "Name": "Tijger",
             "plaatje": "tijger"
         },
          {
             "Id": 11,
+            "Name": "Aap",
             "plaatje": "aap"
         },
          {
             "Id": 12,
+            "Name": "Geit",
             "plaatje": "geit"
         },
          {
             "Id": 13,
+            "Name": "Kip",
             "plaatje": "kip"
         },
          {
             "Id": 14,
+            "Name": "Olifant",
             "plaatje": "olifant"
         }
     ]
