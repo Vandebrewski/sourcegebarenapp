@@ -10,7 +10,9 @@ Ext.application({
         'Ext.Video',
         'Ext.Audio'
     ],
-    views: ['Card'],
+    views: ['Home', 'Card', 'NavList', 'Extra'],
+    models: ['Gebaar'],
+    stores: ['Gebaar'],
     controllers: ['Main'],
     icon: {
         '60': 'resources/icons/icons-60.png',

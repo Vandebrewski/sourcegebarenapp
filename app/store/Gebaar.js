@@ -17,7 +17,6 @@ Ext.define('Test.store.Gebaar',{
             }
         }
 
-
 /*data: [
 		{ Id: '1', Name: 'Aap', plaatje: 'aap'},
        	{ Id: '2', Name: 'Beer', plaatje: 'beer'},
@@ -35,10 +34,5 @@ Ext.define('Test.store.Gebaar',{
 		{ Id: '14', Name: 'Vogel', plaatje: 'vogel'}
 
     ]*/
-
-
-
-
-
     }
 });
