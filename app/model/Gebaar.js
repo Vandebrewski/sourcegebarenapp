@@ -4,18 +4,10 @@ Ext.define('Test.model.Gebaar',{
         idProperty: 'Name',
         fields:[
             { name: 'Id', type: 'int'},
-            { name: 'Name', type: 'string'},
             { name: 'plaatje', type: 'string'}
         ]
     },
     
-    fullName: function () {
-    	var d = this.data,
-    	names = [
-    	    d.Name
-    	];
-    	return names.join(" ");
-    }
 });
 
 

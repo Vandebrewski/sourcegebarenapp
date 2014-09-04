@@ -52,77 +52,67 @@ Ext.application({
                 var itemObjs = [];
                 itemObjs.push({
                     layout: {
-                        type: 'vbox'
+                        type: 'vbox',
+                        pack: 'end',
+            			align: 'stretch',
                     },
                     items: [{
-                        flex: 521,
-                        html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png"></div>'
+                        flex: 1,
+                        html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png" width="100%"></div>'
                     }, {
-                        flex: 432,
-                        html: '<div class="sun-animation"><img src="resources/images/home-logo-kleiner.png"></div>'
+                        flex: 1,                        
+                        html: '<div class="sun-animation"><img src="resources/images/home-logo-kleiner.png" width="100%"></div>'
                     }]
                 });
                 for (var i = 0; i < objData.length; i++) {
                     var itemTmpObj = {
                         xtype: 'panel',
-//                        html: '<audio id="' + objData[i].Id + '" class="audioCrsl" controls><source src="resources/images/' + objData[i].plaatje + '.mp3' + '"></audio>',
-                      
                         layout: {
-                            type: 'vbox'
+                            type: 'vbox',
+                         	pack: 'end',
+            				align: 'stretch',
                         },
                         items: [{
-                            flex: 521,
                             xtype: 'image',
-                            src: 'resources/images/' + objData[i].plaatje + '.png'
+                            src: 'resources/images/' + objData[i].plaatje + '.png',
+                            width: 768,
+                            height: 436,
+                        	flex: 1
                         }, 
                         {
-                				xtype: 'button',
-                				iconCls: 'sound',
-                				ui: 'action',
-                				margin: 150,
-                				text: objData[i].plaatje,
-                				
-                				handler: function() {
-                    			var container = this.getParent().getParent(),
-                        		// use ComponentQuery to get the audio component (using its xtype)
-                        		audio = container.down('audio');
-
-                    			audio.toggle();
-//                    			this.setText(audio.isPlaying() ? 'Pause' : 'Play');
-            			}
-        				},
+                			xtype: 'button',
+ 	             			cls: 'audioButton',
+ 	             			iconCls: 'sound',
+                			text: objData[i].plaatje,
+					            handler: function () {
+					                var container = this.getParent(),
+					                audio = container.down('audio');
+					                audio.play();
+						            }      
+	        				},
                         {
                         	xtype: 'audio',
                         	url: 'resources/images/' + objData[i].plaatje + '.mp3',
-                        	hidden: true
-                        },                       
+                        	hidden: true,
+                        	
+						},                       
                         {
-                            flex: 432,
-                            pack:'start',
                             xtype: 'video',
                             url: 'resources/images/' + objData[i].plaatje + '.mp4',
-                           	//width: '768',
-                            //height: '432',
                             autoresume: true,
                             enableControls: false,
+                            flex: 1,
+                            width: 768,
+                            height: 432,
                             posterUrl: 'resources/images/bekijkgebaar.png',
                             //html: '<video id="video' + objData[i].Id + '" src="resources/images/' + objData[i].video + '" width="768" height="432" poster="resources/images/bekijkgebaar.png"></video>',
                             listeners: {
                                 tap: {
                                     fn: function () {
-                                         
-//                                         var myVideo = document.getElementById('videox');
-						                    if (this.isPlaying())
-						                    
-						                        this.pause();
-						                    //    console.log("we gaan spelen");
-						                        
+						                    if (this.isPlaying())						                    
+						                        this.pause();						                        
 						                    else
-						                        //console.log("je wil pauseren he");
 						                        this.play();
-//                                        this.play();
-                                      //  this.currentTime=0;
-                                     //   this.load();
                                     },
                                 element: 'element'
                                 }

@@ -6,7 +6,7 @@ Ext.define('Test.view.Gebarenlijst', {
         cls: 'gebarenlijst',
         title: 'Dieren',
         store: Ext.create('Test.store.Gebaar'),
-        itemTpl: '<img src="resources/images/{plaatje}-klein.png" class="thumbpie"></img><span>{Name}</span>',
+        itemTpl: '<img src="resources/images/{plaatje}-klein.png" class="thumbpie"></img><span><br /><br />{plaatje}</span>',
         onItemDisclosure: true
     }
 });

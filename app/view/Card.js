@@ -4,20 +4,24 @@ Ext.define('Test.view.Card', {
     xtype: 'cardpanel',
     fullscreen: true,
 
+
     config: {
         title: 'Speel',
         iconCls: 'star',
+        indicator: false,
         listeners: {
             activeitemchange: function (obj, value, oldValue) {
                 var activeIndex = this.getActiveIndex();
-                var currentaudio = document.getElementById(activeIndex);
-                var audioObjs = document.getElementsByClassName('audioCrsl');
+//                var currentaudio = document.getElementById(activeIndex);
+//                var audioObjs = document.getElementsByClassName('audioCrsl');
+//                var audioObjs = document.getElementsByTagName('audio');
                 var videoObjs = document.getElementsByTagName('video');
-                for (var i = 0; i < audioObjs.length; i++) {
-                    if (audioObjs[i].paused == false) {
-                        audioObjs[i].pause();
-                    }
-                }
+
+//                for (var i = 0; i < audioObjs.length; i++) {
+//                    if (audioObjs[i].paused == false && activeIndex != i) {
+//                        audioObjs[i].pause();
+//                    }
+//                }
 // For autoplay of audio samples
 //                if (activeIndex != 0) {
 //                    currentaudio.play();
