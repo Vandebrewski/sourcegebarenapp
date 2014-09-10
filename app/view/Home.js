@@ -1,12 +1,15 @@
 Ext.define('Test.view.Home', {
     extend: 'Ext.Panel',
     xtype: 'homepanel',
+    fullscreen: true,
 
     config: {
         title: 'Welkom',
         iconCls: 'home',
         cls: 'tekstscreen',
-        scrollable: true,
+
+        scrollable: false,
+        height: 1024,
         
         layout: {
             type: 'vbox',

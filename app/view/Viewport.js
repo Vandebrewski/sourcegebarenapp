@@ -4,21 +4,18 @@ Ext.define('Test.view.Viewport', {
     config: {
         tabBarPosition: 'bottom',
         layout: {
-            type: 'card',
+//            type: 'card', does not have to be here
             animation: {
                 type: 'slide',
-                duration: 250
+                duration: 300
             }
         },
         fullscreen: true,
-        items: [{
-            xtype: 'homepanel'
-        }, {
-            xtype: 'cardpanel'
-        }, {
-            xtype: 'navlist'
-        }, {
-            xtype: 'extrapanel'
-        }]
+        items: [
+        {xtype: 'homepanel'}, 
+        {xtype: 'cardpanel'}, 
+        {xtype: 'navlist'}, 
+        {xtype: 'extrapanel'}
+        ]
     }
 });

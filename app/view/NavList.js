@@ -9,10 +9,10 @@ Ext.define('Test.view.NavList', {
 
     config: {
         title: 'Gebaren',
+        
         iconCls: 'search',
         id: 'navlistCardView',
-        useTitleForBackButtonText: 'true', // true zorgt ervoor dat de back tekst wordt aangepast
-        //		backText: '< terug',
+        useTitleForBackButtonText: 'true', // true causes the back tekst to be something else than "back"
         items: [{
             xtype: 'gebarenlijst'
         }]

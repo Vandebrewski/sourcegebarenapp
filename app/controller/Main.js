@@ -16,7 +16,7 @@ Ext.define('Test.controller.Main', {
     showDetail: function (obj, index, target, record) {
         this.getMain().push({
         xtype: 'gebarendetail'
- //           title: record.data.plaatje
+ //           I read somewhere that Ext.getCMP is not best practise, is this causing trouble
         })
         Ext.getCmp('listDetailButton').setText(record.data.plaatje);
         Ext.getCmp('listDetailImage').setSrc("resources/images/" + record.data.plaatje + ".png");

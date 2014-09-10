@@ -26,18 +26,8 @@ Ext.application({
         '768x1024': 'resources/icons/768x1024.png',
         '1536x2048': 'resources/icons/768x1024.png'
     },
-    /* 
-    load custom classes 
-    Best practice: only load controllers. Let the 
-    controllers load all other classes.
-    stores: ['Users'],
-    controllers: ['Users'],
-    views: ['Main'],
-    */
+
     launch: function () {
-        // Destroy the #appLoadingIndicator element
-        // Ext.fly('appLoadingIndicator').destroy();
-        // Initialize the main view
 
         //Ext.data.JsonP.request({
         Ext.create('Test.view.Viewport');
@@ -65,8 +55,11 @@ Ext.application({
                     }]
                 });
                 for (var i = 0; i < objData.length; i++) {
+                
+//             EXPERIMENT    if (i == objData.length-1){i = 0} try to start from the beginning when end of list is reached
+                
                     var itemTmpObj = {
-                        xtype: 'panel',
+ //                       xtype: 'panel',   not needed
                         layout: {
                             type: 'vbox',
                          	pack: 'end',
@@ -82,7 +75,6 @@ Ext.application({
                         {
                 			xtype: 'button',
  	             			cls: 'audioButton',
- 	             			iconCls: 'sound',
                 			text: objData[i].plaatje,
 					            handler: function () {
 					                var container = this.getParent(),
@@ -93,19 +85,18 @@ Ext.application({
                         {
                         	xtype: 'audio',
                         	url: 'resources/images/' + objData[i].plaatje + '.mp3',
-                        	hidden: true,
-                        	
+                        	hidden: true,                     	
 						},                       
                         {
                             xtype: 'video',
                             url: 'resources/images/' + objData[i].plaatje + '.mp4',
                             autoresume: true,
+                            docked:'bottom',
                             enableControls: false,
                             flex: 1,
                             width: 768,
                             height: 432,
                             posterUrl: 'resources/images/bekijkgebaar.png',
-                            //html: '<video id="video' + objData[i].Id + '" src="resources/images/' + objData[i].video + '" width="768" height="432" poster="resources/images/bekijkgebaar.png"></video>',
                             listeners: {
                                 tap: {
                                     fn: function () {
@@ -117,18 +108,20 @@ Ext.application({
                                 element: 'element'
                                 }
                             }
-                        }]
+                        }]                                           
                     }
-                    itemObjs.push(itemTmpObj);
+                
+                 
+                    itemObjs.push(itemTmpObj);                
+                    
                 }
                 Ext.getCmp('gebarencarousel').setItems(itemObjs);
                 // Adjust toolbar height when running in iOS to fit with new iOS 7 style
                 if (Ext.os.is.iOS && Ext.os.version.major >= 7) {
-                    Ext.select(".x-toolbar").applyStyles("height: 62px; padding-top: 15px;");
+                    Ext.select(".x-toolbar").applyStyles("height: 53px; padding-top: 15px;");
                 }
             }
         });
-
 
 
     },

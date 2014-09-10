@@ -4,11 +4,10 @@ $include-default-icons: false;
 $include-highlights: false;
 $base-gradient: none;
 $basic-slider: true;
-$body-bg-color: #000;
+$body-bg-color: #fff;
 $list-active-color: #54c2c2;
-$list-pressed-color: #54c2c2;
+$list-pressed-color: #42c2c1;
 $loading-spinner-color: #f64e8f;
-
 
 // exclude components that app is not using
 @import 'sencha-touch/default';
@@ -42,16 +41,10 @@ $loading-spinner-color: #f64e8f;
 // Custom code goes here..
 
 //@font-face {
-//    font-family: 'icomoon';
-//    src:url('icomoon/icomoon.eot');
-//    src:url('icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
-//        url('icomoon/icomoon.ttf') format('truetype'),
-//        url('icomoon/icomoon.woff') format('woff'),
-//        url('icomoon/icomoon.svg#Dinmu') format('svg');
-//    font-weight: normal;
-//    font-style: normal;
-//}
-
+//  font-family: 'Kranky', cursive;
+//  src: url('../css/Kranky.ttf') format('truetype');}
+ 
+//$font-family: 'Kranky', sans-serif !default;
 
 h3 {color: #8dd2d1 !important;} 
 h4 {color: #ccc !important;} 
@@ -74,29 +67,27 @@ color: #fff;
   color: #fff !important;
     }
     
-.x-list-disclosure:before {
-  content: '\e607' !important;
-  font-family: 'icomoon' !important;
- } 
-    
-.x-list-disclosure {
-    right: 1em !important;
-    top: 30px !important;
-}  
 
 .x-list .x-list-disclosure {
-visibility: hidden !important;
+display: none !important;
 }
 
 .x-list .x-list-item.x-item-selected.x-list-item-tpl {
-background-color: #f64e8f !important;
+background-color: #43c2c2 !important;
 }
+
+.x-list .x-list-item.x-item-selected .x-dock-horizontal, .x-list .x-list-item.x-item-selected.x-list-item-tpl {
+background-color: #43c2c2 !important;
+}
+
+.x-list .x-list-item.x-item-pressed {
+background-color: #43c2c2 !important;
+}
+
 
 .x-tab .x-button-icon.sound:before, .x-button .x-button-icon.sound:before {
 position: relative !important;
 }
-
-
 
 .x-list .x-list-item {
 color: #FFF !important;
@@ -113,7 +104,7 @@ width: 192px;
 }
 
 .x-list-normal .x-list-item.x-list-item-tpl {
-border-top: 0px solid #FFFFFF;
+border: none;
 }
     
 .tekstscreen {
@@ -123,33 +114,42 @@ border-top: 0px solid #FFFFFF;
 
 .audioButton, #listDetailButton 
 {
- padding: 3px 0 3px 12px!important;
+ background-image: url('../images/sound-button-back.png')!important;
+ background-repeat: no-repeat;
+ padding: 3px 0 3px 60px!important;
  margin: 10px auto 0 auto !important;
- width: 180px;
- height: 40px;
- border-color: #fff !important;
+ width: 200px;
+ height: 59px;
+// border-color: #fff !important;
  color: #fff !important;
- background-color: #54c2c2 !important;
+ background-color: transparent !important;
  text-transform:uppercase !important; 
+ border: 0 !important;
+ webkit-box-align: center;
 }
 
-.x-button-label {font-weight: normal !important;}
+.x-button {
+  display: none !important;
+  }
 
-.x-button  {
+//.x-button-label {
+//  font-family: 'Kranky' !important;
+//  font-weight: 400;}  
+
+.x-button-back  {
    background-image: url('../images/arrow-left-small.png')!important;
    background-repeat: no-repeat;
    background-color: #f64e8f !important;
-   margin: 0 0 0 20px !important;
-   padding: 0 20px 0 70px !important;
-   border: 0 !important
-}
-
-.x-button-pressing  {
-   background-color: #f64e8f !important;
+   padding: 0 20px 0 100px !important;
+   border: 0 !important;
+   margin-left: 70px !important;
 }
 
 video {
     background-color: #7bcdca !important; // important moet erbij
+    width: 768px;
+    height: 432px !important;
+    overflow: hidden !important;
 }
 
 .x-video-ghost {
@@ -157,12 +157,11 @@ background: #7bcdca url() center center no-repeat;
 }
 
 
-.fade-in {-webkit-animation: fadein 2s; /* Safari and Chrome */}
+.fade-in {-webkit-animation: fadein 2s; margin-top:20px;}
 @-webkit-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
 }
-
 
 .sun-animation {-webkit-animation: sunanimation 2s;}
 @-webkit-keyframes sunanimation {
@@ -170,15 +169,13 @@ background: #7bcdca url() center center no-repeat;
     to   {margin-top:0px; margin-bottom:0px}
 }
 
-
-.swipe-animation {-webkit-animation: swipeanimation 1s steps(20) 5 alternate;}
+.swipe-animation {-webkit-animation: swipeanimation 1s steps(30) 5 alternate;}
 @-webkit-keyframes swipeanimation {
   -webkit-animation-timing-function: linear;
    0% {margin-left:0px;}
    100% {margin-left:70px;}
 }
-
-    
+   
 #hometekst {position: fixed; bottom: 200px; left: 120px;}   
     
 .thumbpie {
@@ -192,13 +189,6 @@ background: #7bcdca url() center center no-repeat;
     background-image: none !important;
     background-color: #f64e8f !important;
 }
-
-.x-img.x-img-background {
-// background-size: !important;
-}
-
-
-
 
 // Examples of using the icon mixin:
 // @include icon('user');
@@ -214,4 +204,3 @@ background: #7bcdca url() center center no-repeat;
 @include icon("star"  , "\e605", "icomoon");
 @include icon("search", "\e602", "icomoon");
 @include icon("info"  , "\e606", "icomoon");
-@include icon("sound"  , "\e604", "icomoon");

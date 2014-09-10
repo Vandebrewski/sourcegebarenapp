@@ -1,10 +1,11 @@
 Ext.define('Test.view.GebarenDetail', {
     extend: 'Ext.Panel',
     xtype: 'gebarendetail',
-    fullscreen: true,
+//    fullscreen: true,
 
     config: {
         cls: 'gebarendetail',
+    
         layout: {
             type: 'vbox',
             pack: 'end',
@@ -18,8 +19,6 @@ Ext.define('Test.view.GebarenDetail', {
             flex: 1
         }, {
             xtype: 'button',
-            iconCls: 'sound',
-            ui: 'action',
             id: 'listDetailButton',
             text: '',
             handler: function () {
@@ -30,12 +29,7 @@ Ext.define('Test.view.GebarenDetail', {
         }, {
             xtype: 'audio',
             id: 'listDetailAudio',
-            hidden: true,
-//            handler: function () {
-//                var container = this.getParent().getParent(),
-//                audio = container.down('audio');
-//                audio.toggle();
-//            }
+            hidden: true
         }, {
             xtype: 'video',
             id: 'listDetailVideo',
@@ -59,4 +53,3 @@ Ext.define('Test.view.GebarenDetail', {
         }]
     }
 });
-

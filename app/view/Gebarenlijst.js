@@ -5,6 +5,10 @@ Ext.define('Test.view.Gebarenlijst', {
     config: {
         cls: 'gebarenlijst',
         title: 'Dieren',
+        scrollable: false,  
+        height: 1024,      
+
+        
         store: Ext.create('Test.store.Gebaar'),
         itemTpl: '<img src="resources/images/{plaatje}-klein.png" class="thumbpie"></img><span><br /><br />{plaatje}</span>',
         onItemDisclosure: true
