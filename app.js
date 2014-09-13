@@ -30,7 +30,11 @@ Ext.application({
     launch: function () {
 
         //Ext.data.JsonP.request({
-        Ext.create('Test.view.Viewport');
+//        Ext.create('Test.view.Viewport');
+//        Ext.Viewport.add(Ext.create('Test.view.Viewport'));
+//  I'm trying to do a lazy instantiation
+        Ext.Viewport.add([{ xtype: 'main-view' }]);
+        
         Ext.Ajax.request({
             url: 'resources/images/Gebaren.json',
             //callbackKey: 'callback',
@@ -44,7 +48,7 @@ Ext.application({
                     layout: {
                         type: 'vbox',
                         pack: 'end',
-            			align: 'stretch',
+//            			align: 'stretch',
                     },
                     items: [{
                         flex: 1,
@@ -63,7 +67,7 @@ Ext.application({
                         layout: {
                             type: 'vbox',
                          	pack: 'end',
-            				align: 'stretch',
+//            				align: 'stretch',
                         },
                         items: [{
                             xtype: 'image',
@@ -116,6 +120,7 @@ Ext.application({
                     
                 }
                 Ext.getCmp('gebarencarousel').setItems(itemObjs);
+                
                 // Adjust toolbar height when running in iOS to fit with new iOS 7 style
                 if (Ext.os.is.iOS && Ext.os.version.major >= 7) {
                     Ext.select(".x-toolbar").applyStyles("height: 53px; padding-top: 15px;");

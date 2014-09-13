@@ -1,5 +1,6 @@
 Ext.define('Test.view.Viewport', {
     extend: 'Ext.TabPanel',
+    xtype: 'main-view',
 
     config: {
         tabBarPosition: 'bottom',
@@ -10,7 +11,6 @@ Ext.define('Test.view.Viewport', {
                 duration: 300
             }
         },
-        fullscreen: true,
         items: [
         {xtype: 'homepanel'}, 
         {xtype: 'cardpanel'}, 

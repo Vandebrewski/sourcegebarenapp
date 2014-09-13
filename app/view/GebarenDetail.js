@@ -1,7 +1,6 @@
 Ext.define('Test.view.GebarenDetail', {
     extend: 'Ext.Panel',
     xtype: 'gebarendetail',
-//    fullscreen: true,
 
     config: {
         cls: 'gebarendetail',
@@ -9,7 +8,6 @@ Ext.define('Test.view.GebarenDetail', {
         layout: {
             type: 'vbox',
             pack: 'end',
-            align: 'stretch'
         },
         items: [{
             xtype: 'image',

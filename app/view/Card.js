@@ -2,7 +2,6 @@ Ext.define('Test.view.Card', {
     extend: 'Ext.Carousel',
     id: 'gebarencarousel',
     xtype: 'cardpanel',
-//    fullscreen: true, why?
 
 
     config: {
@@ -18,11 +17,14 @@ Ext.define('Test.view.Card', {
             activeitemchange: function (obj, value, oldValue) {
                 var activeIndex = this.getActiveIndex();
                 var videoObjs = document.getElementsByTagName('video');
-// this makes the previous playing video stop in carousel
+                
+
+// this makes the previous playing video stop in carousel when sliding to the next
                 for (var i = 0; i < videoObjs.length; i++) {
                     if (videoObjs[i].paused == false && activeIndex != i) {
                         videoObjs[i].pause();
                     }
+                    
                 }
             }
         }
