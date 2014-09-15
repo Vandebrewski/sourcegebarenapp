@@ -7,7 +7,7 @@ Ext.define('Test.view.GebarenDetail', {
     
         layout: {
             type: 'vbox',
-            pack: 'end',
+            pack: 'end'
         },
         items: [{
             xtype: 'image',
@@ -38,13 +38,13 @@ Ext.define('Test.view.GebarenDetail', {
             enableControls: false,
             listeners: {
            		tap: {
+               	element: 'element',
                	fn: function () {
 					if (this.isPlaying())						                    
 						this.pause();						                        
 							else
 						    	this.play();
-                             	},
-                            element: 'element'
+                             	}
                             }
                            }
 
