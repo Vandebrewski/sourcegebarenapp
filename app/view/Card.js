@@ -20,7 +20,8 @@ Ext.define('Test.view.Card', {
                 
 
 // this makes the previous playing video stop in carousel when sliding to the next
-                for (var i = 0; i < videoObjs.length; i++) {
+                var total = videoObjs.length;
+                for (var i = 0; i < total; i++) {
                     if (videoObjs[i].paused == false && activeIndex != i) {
                         videoObjs[i].pause();
                     }

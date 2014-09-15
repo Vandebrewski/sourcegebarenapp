@@ -52,15 +52,19 @@ Ext.application({
                     },
                     items: [{
                         flex: 1,
-                        html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png" width="100%"></div>'
+                        html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png"></div>'
                     }, {
                         flex: 1,                        
                         html: '<div class="sun-animation"><img src="resources/images/home-logo-kleiner.png" width="100%"></div>'
                     }]
                 });
-                for (var i = 0; i < objData.length; i++) {
+                
+                var totalcount = objData.length;
+                for (var i = 0; i < totalcount; i++) {
                 
 //             EXPERIMENT    if (i == objData.length-1){i = 0} try to start from the beginning when end of list is reached
+                
+                	var objectname = objData[i].plaatje;
                 
                     var itemTmpObj = {
  //                       xtype: 'panel',   not needed
@@ -71,7 +75,7 @@ Ext.application({
                         },
                         items: [{
                             xtype: 'image',
-                            src: 'resources/images/' + objData[i].plaatje + '.png',
+                            src: 'resources/images/' + objectname + '.png',
                             width: 768,
                             height: 436,
                         	flex: 1
@@ -79,7 +83,7 @@ Ext.application({
                         {
                 			xtype: 'button',
  	             			cls: 'audioButton',
-                			text: objData[i].plaatje,
+                			text: objectname,
 					            handler: function () {
 					                var container = this.getParent(),
 					                audio = container.down('audio');
@@ -88,12 +92,12 @@ Ext.application({
 	        				},
                         {
                         	xtype: 'audio',
-                        	url: 'resources/images/' + objData[i].plaatje + '.mp3',
+                        	url: 'resources/images/' + objectname + '.mp3',
                         	hidden: true,                     	
 						},                       
                         {
                             xtype: 'video',
-                            url: 'resources/images/' + objData[i].plaatje + '.mp4',
+                            url: 'resources/images/' + objectname + '.mp4',
                             autoresume: true,
                             docked:'bottom',
                             enableControls: false,
