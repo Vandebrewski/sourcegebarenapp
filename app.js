@@ -47,8 +47,7 @@ Ext.application({
                 itemObjs.push({
                     layout: {
                         type: 'vbox',
-                        pack: 'end',
-//            			align: 'stretch',
+                        pack: 'end'
                     },
                     items: [{
                         flex: 1,
@@ -67,11 +66,9 @@ Ext.application({
                 	var objectname = objData[i].plaatje;
                 
                     var itemTmpObj = {
- //                       xtype: 'panel',   not needed
                         layout: {
                             type: 'vbox',
-                         	pack: 'end',
-//            				align: 'stretch',
+                         	pack: 'end'
                         },
                         items: [{
                             xtype: 'image',
@@ -98,22 +95,23 @@ Ext.application({
                         {
                             xtype: 'video',
                             url: 'resources/images/' + objectname + '.mp4',
-                            autoresume: true,
-                            docked:'bottom',
-                            enableControls: false,
-                            flex: 1,
                             width: 768,
                             height: 432,
+                            muted: 'true',                            
+                            autoresume: true,
+                            docked:'bottom',
                             posterUrl: 'resources/images/bekijkgebaar.png',
+                            enableControls: false,
+                            flex: 1,
                             listeners: {
                                 tap: {
+                                	element: 'element',
                                     fn: function () {
 						                    if (this.isPlaying())						                    
 						                        this.pause();						                        
 						                    else
 						                        this.play();
-                                    },
-                                element: 'element'
+                                    }
                                 }
                             }
                         }]                                           
@@ -126,6 +124,7 @@ Ext.application({
                 Ext.getCmp('gebarencarousel').setItems(itemObjs);
                 
                 // Adjust toolbar height when running in iOS to fit with new iOS 7 style
+                // maybe blocks DOM construction
                 if (Ext.os.is.iOS && Ext.os.version.major >= 7) {
                     Ext.select(".x-toolbar").applyStyles("height: 53px; padding-top: 15px;");
                 }

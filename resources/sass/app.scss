@@ -25,6 +25,11 @@ $loading-spinner-color: #f64e8f;
 h3 {color: #8dd2d1 !important;} 
 h4 {color: #ccc !important;} 
 
+.x-img.x-img-background {
+background-position: bottom;
+background-size: auto;
+}
+
 .x-toolbar.x-docked-top {
 border-bottom: 0px solid !important;
 background-color: #f64e8f;
@@ -67,8 +72,6 @@ width: 192px;
 position: relative !important;
 }
 
-
-    
 .tekstscreen {
       background-color: #ffffff !important;
       padding: 0.5em  !important;  
@@ -78,9 +81,9 @@ position: relative !important;
 {
  background-image: url('../images/sound-button-back.png')!important;
  background-repeat: no-repeat;
- padding: 3px 0 3px 60px!important;
- margin: 10px auto 0 auto !important;
- width: 200px;
+// padding: 3px 0 3px 60px!important;
+ margin: 0 auto !important;
+ width: 230px;
  height: 59px;
 // border-color: #fff !important;
  color: #fff !important;
@@ -109,7 +112,7 @@ position: relative !important;
 
 video {
     background-color: #7bcdca !important; // important moet erbij
-    width: 768px;
+    width: 768px !important;
     height: 432px !important;
     overflow: hidden !important;
 }
@@ -131,7 +134,7 @@ background: #7bcdca url() center center no-repeat;
     to   {margin-top:0px; margin-bottom:0px}
 }
 
-.swipe-animation {-webkit-animation: swipeanimation 1s steps(30) 5 alternate; width: 678px; height: 512px;}
+.swipe-animation {-webkit-animation: swipeanimation 1s steps(30) 4 alternate; width: 678px; height: 512px;}
 @-webkit-keyframes swipeanimation {
   -webkit-animation-timing-function: linear;
    0% {padding-left:0px;}

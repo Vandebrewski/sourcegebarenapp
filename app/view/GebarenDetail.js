@@ -47,7 +47,6 @@ Ext.define('Test.view.GebarenDetail', {
                              	}
                             }
                            }
-
         }]
     }
 });

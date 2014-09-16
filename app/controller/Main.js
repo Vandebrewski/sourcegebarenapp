@@ -13,7 +13,7 @@ Ext.define('Test.controller.Main', {
         }
     },
 
-    showDetail: function (obj, index, target, record) {
+    showDetail: function (view, index, target, record) {
         this.getMain().push({
         xtype: 'gebarendetail'
  //           I read somewhere that Ext.getCMP is not best practise, is this causing trouble?

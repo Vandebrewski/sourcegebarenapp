@@ -2,7 +2,7 @@ Ext.define('Test.store.Gebaar',{
     extend: 'Ext.data.Store',
     config:{
         model: 'Test.model.Gebaar',
-        sorters: 'Name',
+        sorters: 'plaatje',
         autoLoad: true,
 
         proxy:{
