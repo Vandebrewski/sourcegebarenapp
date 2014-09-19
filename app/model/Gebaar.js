@@ -4,10 +4,9 @@ Ext.define('Test.model.Gebaar',{
         idProperty: 'Name',
         fields:[
             { name: 'Id', type: 'int'},
-            { name: 'plaatje', type: 'string'}
+            'plaatje'
         ]
-    },
-    
+    }    
 });
 
 

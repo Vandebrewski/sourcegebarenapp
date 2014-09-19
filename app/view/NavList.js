@@ -11,7 +11,7 @@ Ext.define('Test.view.NavList', {
         title: 'Gebaren',
         
         iconCls: 'search',
-        id: 'navlistCardView',
+//        id: 'navlistCardView',
         useTitleForBackButtonText: 'true', // true causes the back tekst to be something else than "back"
         items: [{
             xtype: 'gebarenlijst'

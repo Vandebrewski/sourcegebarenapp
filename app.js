@@ -8,7 +8,9 @@ Ext.application({
         'Test.view.Viewport',
         'Ext.Img',
         'Ext.Video',
-        'Ext.Audio'
+        'Ext.Audio',
+        'Ext.carousel.Carousel', // should this be in it?
+        'Ext.data.proxy.JsonP' // should this be in it?
     ],
     views: ['Home', 'Card', 'NavList', 'Extra'],
     models: ['Gebaar'],
@@ -35,37 +37,39 @@ Ext.application({
 //  I'm trying to do a lazy instantiation
         Ext.Viewport.add([{ xtype: 'main-view' }]);
         
+        
+        
         Ext.Ajax.request({
             url: 'resources/images/Gebaren.json',
             //callbackKey: 'callback',
+            method: 'GET', // is this helpful?
             withCredentials: true,
             useDefaultXhrHeader: false,
             success: function (response) {
                 var obj = Ext.JSON.decode(response.responseText);
                 var objData = obj.Gebaartje;
                 var itemObjs = [];
-                itemObjs.push({
-                    layout: {
-                        type: 'vbox',
-                        pack: 'end'
-                    },
-                    items: [{
-                        flex: 1,
-                        html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png"></div>'
-                    }, {
-                        flex: 1,                        
-                        html: '<div class="sun-animation"><img src="resources/images/home-logo-kleiner.png" width="100%"></div>'
-                    }]
-                });
+//                itemObjs.push({
+//                    layout: {
+//                        type: 'vbox',
+//                        pack: 'end'
+//                    },
+//                    items: [{
+//                        flex: 1,
+//                        html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png"></div>'
+//                    }, {
+//                        flex: 1,                        
+//                        html: '<div class="sun-animation"><img src="resources/images/home-logo-kleiner.png" width="100%"></div>'
+//                    }]
+//                });
+ 
                 
                 var totalcount = objData.length;
-                for (var i = 0; i < totalcount; i++) {
-                
-//             EXPERIMENT    if (i == objData.length-1){i = 0} try to start from the beginning when end of list is reached
-                
-                	var objectname = objData[i].plaatje;
-                
+                for (var i = 0; i < totalcount; i++) {                                
+                	var objectname = objData[i].plaatje;               
                     var itemTmpObj = {
+
+//-------------- Start carousel item content panel ------------------
                         layout: {
                             type: 'vbox',
                          	pack: 'end'
@@ -74,8 +78,7 @@ Ext.application({
                             xtype: 'image',
                             src: 'resources/images/' + objectname + '.png',
                             width: 768,
-                            height: 436,
-                        	flex: 1
+                            height: 436
                         }, 
                         {
                 			xtype: 'button',
@@ -90,7 +93,7 @@ Ext.application({
                         {
                         	xtype: 'audio',
                         	url: 'resources/images/' + objectname + '.mp3',
-                        	hidden: true,                     	
+                        	hidden: true                     	
 						},                       
                         {
                             xtype: 'video',
@@ -102,10 +105,10 @@ Ext.application({
                             docked:'bottom',
                             posterUrl: 'resources/images/bekijkgebaar.png',
                             enableControls: false,
-                            flex: 1,
+ 
                             listeners: {
                                 tap: {
-                                	element: 'element',
+                                	element: 'element', // should this be moved to underneath }, ?
                                     fn: function () {
 						                    if (this.isPlaying())						                    
 						                        this.pause();						                        
@@ -115,24 +118,32 @@ Ext.application({
                                 }
                             }
                         }]                                           
-                    }
+ //-------------- END carousel item content panel ------------------
+                    }  // End of var itemTmpObj
                 
                  
                     itemObjs.push(itemTmpObj);                
                     
-                }
+                } // End of loop
+                
                 Ext.getCmp('gebarencarousel').setItems(itemObjs);
                 
+               
+           } // succes function
+       }); // Ext ajax request        
+
+
+
+
                 // Adjust toolbar height when running in iOS to fit with new iOS 7 style
                 // maybe blocks DOM construction
-                if (Ext.os.is.iOS && Ext.os.version.major >= 7) {
-                    Ext.select(".x-toolbar").applyStyles("height: 53px; padding-top: 15px;");
-                }
-            }
-        });
+//                if (Ext.os.is.iOS && Ext.os.version.major >= 7) {
+//                    Ext.select(".x-toolbar").applyStyles("height: 53px; padding-top: 15px;");
+//                }
 
 
-    },
+   }, // End launch
+   
     onUpdated: function () {
         Ext.Msg.confirm(
             "Application Update",

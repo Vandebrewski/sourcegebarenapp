@@ -13,7 +13,7 @@ terms contained in a written agreement between you and Sencha.
 If you are unsure which license is appropriate for your use, please contact the sales department
 at http://www.sencha.com/contact.
 
-Build date: 2014-08-18 16:20:22 (508f2bbd9a1ad08c25cf2fea5b9f939a4113bfa3)
+Build date: 2014-09-02 15:12:22 (f8ed2e946811bbc43840bd9deb292bec6b6d254d)
 */
 //@tag foundation,core
 //@define Ext
@@ -676,7 +676,7 @@ Build date: 2014-08-18 16:20:22 (508f2bbd9a1ad08c25cf2fea5b9f939a4113bfa3)
 (function() {
 
 // Current core version
-var version = '2.4.0.482', Version;
+var version = '2.4.0.487', Version;
     Ext.Version = Version = Ext.extend(Object, {
 
         /**
@@ -9181,7 +9181,7 @@ Ext.EventManager.un = Ext.EventManager.removeListener;
  *
  * [getting_started]: #!/guide/getting_started
  */
-Ext.setVersion('touch', '2.4.0.482');
+Ext.setVersion('touch', '2.4.0.487');
 
 Ext.apply(Ext, {
     /**

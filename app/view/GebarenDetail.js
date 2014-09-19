@@ -13,8 +13,7 @@ Ext.define('Test.view.GebarenDetail', {
             xtype: 'image',
             id: 'listDetailImage',
             width: 768,
-            height: 436,
-            flex: 1
+            height: 436
         }, {
             xtype: 'button',
             id: 'listDetailButton',
@@ -32,7 +31,6 @@ Ext.define('Test.view.GebarenDetail', {
             xtype: 'video',
             id: 'listDetailVideo',
             posterUrl: 'resources/images/bekijkgebaar.png',
-            flex: 1,
             width: 768,
             height: 432,            
             enableControls: false,
@@ -47,6 +45,7 @@ Ext.define('Test.view.GebarenDetail', {
                              	}
                             }
                            }
+
         }]
     }
 });
