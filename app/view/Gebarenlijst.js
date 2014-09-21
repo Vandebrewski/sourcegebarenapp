@@ -6,7 +6,10 @@ Ext.define('Test.view.Gebarenlijst', {
         cls: 'gebarenlijst',
         title: 'Dieren',
         scrollable: false,  
-        height: 1024,      
+        height: 1024,
+       bufferSize: 0, //keep 1 card in memory
+       autoDestroy: true, // this is deafult so can be removed
+      
 
         
         store: Ext.create('Test.store.Gebaar'),

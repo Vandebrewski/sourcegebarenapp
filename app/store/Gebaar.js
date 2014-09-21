@@ -2,8 +2,10 @@ Ext.define('Test.store.Gebaar',{
     extend: 'Ext.data.Store',
     config:{
         model: 'Test.model.Gebaar',
-        sorters: 'plaatje',
         autoLoad: true,
+        sorters: 'plaatje',
+
+        method : 'GET', // is this helpful?
 
         proxy:{
             type:'ajax',

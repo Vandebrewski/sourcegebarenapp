@@ -12,10 +12,11 @@ Ext.application({
         'Ext.carousel.Carousel', // should this be in it?
         'Ext.data.proxy.JsonP' // should this be in it?
     ],
-    views: ['Home', 'Card', 'NavList', 'Extra'],
     models: ['Gebaar'],
     stores: ['Gebaar'],
     controllers: ['Main'],
+    views: ['Home', 'Card', 'NavList', 'Extra'],
+
     icon: {
         '60': 'resources/icons/icons-60.png',
         '120': 'resources/icons/icons-120.png',
@@ -31,37 +32,36 @@ Ext.application({
 
     launch: function () {
 
-        //Ext.data.JsonP.request({
-//        Ext.create('Test.view.Viewport');
-//        Ext.Viewport.add(Ext.create('Test.view.Viewport'));
-//  I'm trying to do a lazy instantiation
+
+//        Ext.create('Test.view.Viewport'); I think this does exactly the same as underneath
         Ext.Viewport.add([{ xtype: 'main-view' }]);
         
         
         
-        Ext.Ajax.request({
+        Ext.Ajax.request({ // I doubt if this is the best way to fetch the content. Whuy not make use of a store
             url: 'resources/images/Gebaren.json',
             //callbackKey: 'callback',
             method: 'GET', // is this helpful?
             withCredentials: true,
             useDefaultXhrHeader: false,
+            // Beacause the first slide is different than the rest, the loop starts after the first slide
             success: function (response) {
                 var obj = Ext.JSON.decode(response.responseText);
                 var objData = obj.Gebaartje;
                 var itemObjs = [];
-//                itemObjs.push({
-//                    layout: {
-//                        type: 'vbox',
-//                        pack: 'end'
-//                    },
-//                    items: [{
-//                        flex: 1,
-//                        html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png"></div>'
-//                    }, {
-//                        flex: 1,                        
-//                        html: '<div class="sun-animation"><img src="resources/images/home-logo-kleiner.png" width="100%"></div>'
-//                    }]
-//                });
+                itemObjs.push({
+                    layout: {
+                        type: 'vbox',
+                        pack: 'end'
+                    },
+                    items: [{
+                        flex: 1,
+                        html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png"></div>'
+                    }, {
+                        flex: 1,                        
+                        html: '<div class="sun-animation"><img src="resources/images/home-logo-kleiner.png" width="100%"></div>'
+                    }]
+                });
  
                 
                 var totalcount = objData.length;
