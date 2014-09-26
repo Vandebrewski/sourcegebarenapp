@@ -4,7 +4,7 @@ Ext.define('Test.store.Gebaar',{
         model: 'Test.model.Gebaar',
         autoLoad: true,
         sorters: 'plaatje',
-
+        storeId:'gebaarStore',
         method : 'GET', // is this helpful?
 
         proxy:{

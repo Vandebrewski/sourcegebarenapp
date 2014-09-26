@@ -25,9 +25,19 @@ $loading-spinner-color: #f64e8f;
 h3 {color: #8dd2d1 !important;} 
 h4 {color: #ccc !important;} 
 
+.x-tabbar.x-docked-bottom .x-tab .x-button-icon {
+margin: 8px auto 0 auto !important;
+}
+
 .x-img.x-img-background {
 background-position: bottom;
 background-size: auto;
+}
+
+.x-toolbar {
+  height: 60px !important; 
+  padding-top: 10px !important;
+  
 }
 
 .x-toolbar.x-docked-top {
@@ -77,7 +87,7 @@ position: relative !important;
       padding: 0.5em  !important;  
     }
 
-.audioButton, #listDetailButton 
+.audioButton
 {
  background-image: url('../images/sound-button-back.png')!important;
  background-repeat: no-repeat;
@@ -104,23 +114,34 @@ position: relative !important;
 .x-button-back  {
    background-image: url('../images/arrow-left-small.png')!important;
    background-repeat: no-repeat;
+   background-position: 10px 10px; 
    background-color: #f64e8f !important;
-   padding: 0 20px 0 100px !important;
+   width: 300px !important;
+   height: 50px !important; 
+   padding: 0 50px 0 100px !important;
    border: 0 !important;
-   margin-left: 70px !important;
+   margin-left: 100px !important;
 }
 
 video {
     background-color: #7bcdca !important; // important moet erbij
     width: 768px !important;
-    height: 432px !important;
+   height: 432px !important;
     overflow: hidden !important;
+}
+
+.x-video {
+background-color: #7bcdca !important;
 }
 
 .x-video-ghost {
 background: #7bcdca url() center center no-repeat;
 }
 
+
+*, *:after, *:before {
+-webkit-tap-highlight-color: rgba(123, 205, 202, 1) !important;
+}
 
 .fade-in {-webkit-animation: fadein 2s; margin-top:20px;}
 @-webkit-keyframes fadein {

@@ -1,10 +1,10 @@
 Ext.define('Test.view.Home', {
-    extend: 'Ext.Panel',
+    extend: 'Ext.Container',
     xtype: 'homepanel',
     fullscreen: true,
 
     config: {
-        title: 'Welkom',
+//        title: 'Home', // there doesn't need to be a title
         iconCls: 'home',
         cls: 'tekstscreen',
 

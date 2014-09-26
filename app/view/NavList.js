@@ -8,7 +8,9 @@ Ext.define('Test.view.NavList', {
     ],
 
     config: {
-        title: 'Gebaren',
+//        title: '',
+        
+
         
         iconCls: 'search',
 //        id: 'navlistCardView',
