@@ -17,7 +17,6 @@ Ext.define('Test.view.Video', {
 
         if (!this.isInlineVideo) {
             this.media.show();
-            this.media.setTop(0);
         }
     },
 
