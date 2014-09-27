@@ -4,13 +4,16 @@ Ext.define('Test.view.GebarenDetail', {
 
     config: {
         cls: 'gebarendetail',
-        
     
         layout: {
             type: 'vbox',
             pack: 'end'
         },
         items: [{
+            itemId: 'backButton',
+            xtype: 'button',
+            text: 'back'
+        }, {
             xtype: 'image',
             name: 'listDetailImage',
             width: 768,
