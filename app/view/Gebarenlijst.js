@@ -8,9 +8,10 @@ Ext.define('Test.view.Gebarenlijst', {
         scrollable: false,  
         height: 1024,
 
+
         store: 'gebaarStore',//Ext.create('Test.store.Gebaar'),
-        itemTpl: '<img src="resources/images/{plaatje}-klein.png"></img><span><br /><br />{plaatje}</span>'
-//        onItemDisclosure: true // not needed anumore
+        itemTpl: '<img src="resources/images/{plaatje}-klein.png">{plaatje}'
+//        onItemDisclosure: true // not needed anymore
     }
 });
 

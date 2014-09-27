@@ -18,22 +18,21 @@ Ext.define('Test.controller.Main', {
         control: {
             'gebarenlijst': {
                 itemtap: 'showDetail'
-            },
-        cardpanel:{
+            },            
+        	cardpanel:{
                 initialize: 'initializeCzrosal',
-                // makes sure that the previous video stop playing after slide
-                activeitemchange: function (obj, value, oldValue) {
-                    var activeIndex = obj.getActiveIndex();
-                    var videoObjs = document.getElementsByTagName('video');
-                    var total = videoObjs.length;
-                    var i = 0;
-                    for (i; i < total; i++) {
-                       if (videoObjs[i].paused === false && activeIndex !== i) {
-                          videoObjs[i].pause();
-                        }
-                        
-                    }
-                }
+                // makes sure that the previous video stop playing after slide. I commented this out because I currently have 0 carousel panels in buffer
+//                activeitemchange: function (obj, value, oldValue) {
+//                    var activeIndex = obj.getActiveIndex();
+//                    var videoObjs = document.getElementsByTagName('video');
+//                    var total = videoObjs.length;
+//                    var i = 0;
+//                    for (i; i < total; i++) {
+//                       if (videoObjs[i].paused === false && activeIndex !== i) {
+//                          videoObjs[i].pause();
+//                        }                        
+//                    }
+ //               }
            } // End Cardpanel
         } // End control
     }, // End config
@@ -48,14 +47,6 @@ Ext.define('Test.controller.Main', {
         me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
         me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
         
-//        view.destroy('homepanel');
-        
-//        var mainViewEl = this.mainView.renderElement.dom;
-//		this.mainViewParentNode = mainViewEl.parentNode;
-//		mainViewEl.parentNode.removeChild(mainViewEl);
-		
-
-
     } ,
 
     initializeCzrosal:function(){

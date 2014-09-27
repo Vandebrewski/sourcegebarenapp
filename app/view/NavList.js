@@ -9,9 +9,6 @@ Ext.define('Test.view.NavList', {
 
     config: {
 //        title: '',
-        
-
-        
         iconCls: 'search',
 //        id: 'navlistCardView',
         useTitleForBackButtonText: 'true', // true causes the back tekst to be something else than "back"

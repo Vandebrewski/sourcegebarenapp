@@ -59,10 +59,9 @@ color: #fff;
     }
     
 
-.x-list .x-list-disclosure {
-display: none !important;
-}
 
+
+.x-list .x-list-item img {padding: 20px 0 !important;}
 
 .x-list .x-list-item.x-item-pressed, .x-list .x-list-item.x-item-selected.x-list-item-tpl {
 background-color: #43c2c2 !important;
@@ -72,10 +71,10 @@ background-color: #43c2c2 !important;
 color: #FFF !important;
 text-transform: uppercase !important;
 float: left;
-padding: 0 !important;
-margin: 20px 0;
+display: block;
+margin: 20px 15px;
 text-align: center !important;
-width: 192px;
+width: 150px;
 }
 
 .x-tab .x-button-icon.sound:before, .x-button .x-button-icon.sound:before {

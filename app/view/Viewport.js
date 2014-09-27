@@ -1,6 +1,7 @@
 Ext.define('Test.view.Viewport', {
     extend: 'Ext.TabPanel',
     xtype: 'main-view',
+    
 
     config: {
         tabBarPosition: 'bottom',
