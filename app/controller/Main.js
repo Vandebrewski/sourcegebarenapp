@@ -25,6 +25,26 @@ Ext.define('Test.controller.Main', {
             },            
         	cardpanel:{
                 initialize: 'initializeCzrosal',
+
+                activeitemchange: function(carousel, newItem, oldItem) {
+                    if (!oldItem) {
+                        return;
+                    }
+
+                    var video = oldItem.child('video');
+                    if (!video) {
+                        return;
+                    }
+
+                    video.stop();
+                    video.hide();
+
+                    var button = oldItem.child('#playButton');
+                    if (button) {
+                        button.show();
+                    }
+                }
+
                 // makes sure that the previous video stop playing after slide. I commented this out because I currently have 0 carousel panels in buffer
 //                activeitemchange: function (obj, value, oldValue) {
 //                    var activeIndex = obj.getActiveIndex();
@@ -108,29 +128,47 @@ Ext.define('Test.controller.Main', {
                         hidden: true                        
                     },                       
                     {
-                        xtype: 'video',
+                        xtype: 'button',
+                        itemId: 'playButton',
+                        docked: 'bottom',
+                        height: 432,
+                        cls: 'play-video-button',
+                        style: 'background-image:url(resources/images/bekijkgebaar.png);',
+                        listeners: {
+                            tap: function() {
+                                this.hide();
+
+                                var video = this.getParent().child('video');
+                                video.show();
+                                video.play();
+                            }
+                        }
+                    },
+                    {
+                        xclass: 'Test.view.Video',
+                        hidden: true,
                         url: 'resources/images/' + objectname + '.mp4',
                         width: 768,
                         height: 432,
-//                        muted: 'true',    // there is no audio in movies so has no use i guess.                        
-//                        autoresume: true, // does not autoplay so don't us it i guess.
+// //                        muted: 'true',    // there is no audio in movies so has no use i guess.                        
+// //                        autoresume: true, // does not autoplay so don't us it i guess.
 						preload: false, // default is set to true and during sliding you do not always want video to load. Maybe this help 
 			
                         docked:'bottom',
-                        posterUrl: 'resources/images/bekijkgebaar.png',
-                        enableControls: false,
+//                         posterUrl: 'resources/images/bekijkgebaar.png',
+                        enableControls: false
 
-                        listeners: {
-                            tap: {                               
-                                fn: function () {
-                                    if (this.isPlaying())                                           
-                                        this.pause();                                               
-                                    else
-                                        this.play();
-                                },
-                                element: 'element'  // I moved this outside the function. Is that correct? Works good. Read somwhere it is better. Don't know why.
-                            }
-                        }
+                        // listeners: {
+                        //     tap: {                               
+                        //         fn: function () {
+                        //             if (this.isPlaying())                                           
+                        //                 this.pause();                                               
+                        //             else
+                        //                 this.play();
+                        //         },
+                        //         element: 'element'  // I moved this outside the function. Is that correct? Works good. Read somwhere it is better. Don't know why.
+                        //     }
+                        // }
                     }]                                           
 //-------------- END carousel item content panel ------------------
                 }  // End of var itemTmpObj

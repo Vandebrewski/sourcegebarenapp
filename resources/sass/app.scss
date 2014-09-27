@@ -185,3 +185,11 @@ background: #7bcdca url() center center no-repeat;
 @include icon("star"  , "\e605", "icomoon");
 @include icon("search", "\e602", "icomoon");
 @include icon("info"  , "\e606", "icomoon");
+
+.play-video-button {
+  display: block !important;
+  height: 432px;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 0;
+}
