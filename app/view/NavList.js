@@ -1,5 +1,5 @@
 Ext.define('Test.view.NavList', {
-    extend: 'Ext.navigation.View',
+    extend: 'Ext.Container',
     xtype: 'navlist',
 
     requires: [
@@ -8,12 +8,15 @@ Ext.define('Test.view.NavList', {
     ],
 
     config: {
+        layout: 'card',
 //        title: '',
         iconCls: 'search',
 //        id: 'navlistCardView',
-        useTitleForBackButtonText: 'true', // true causes the back tekst to be something else than "back"
+        // useTitleForBackButtonText: 'true', // true causes the back tekst to be something else than "back"
         items: [{
             xtype: 'gebarenlijst'
+        }, {
+            xtype: 'gebarendetail'
         }]
     }
 });

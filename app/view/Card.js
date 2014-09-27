@@ -10,8 +10,8 @@ Ext.define('Test.view.Card', {
 //        title: 'Speel', // there doesn't need to be a title
         iconCls: 'star',
         indicator: false,
-        direction: 'horizontal',
-        bufferSize: 0 //keep only 1 card in memory, the default is 1 
+        direction: 'horizontal'
+        // bufferSize: 0 //keep only 1 card in memory, the default is 1 
 //        animation: {
 //        	type: 'slide',
 //        	duration: 600

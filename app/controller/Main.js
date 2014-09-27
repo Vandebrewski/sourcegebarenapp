@@ -12,10 +12,14 @@ Ext.define('Test.controller.Main', {
             listDetailAudio  :'gebarendetail audio[name="listDetailAudio"]',
             listDetailButton : '#listDetailButton',
             listDetailVideo  : 'gebarendetail video[name="listDetailVideo"]',
-            listDetailImage  : 'gebarendetail image[name="listDetailImage"]'
+            listDetailImage  : 'gebarendetail image[name="listDetailImage"]',
+            detail: 'gebarendetail'
         }, // End refs
 
         control: {
+            'gebarendetail #backButton': {
+                tap: 'onBackTap'
+            },
             'gebarenlijst': {
                 itemtap: 'showDetail'
             },            
@@ -37,16 +41,20 @@ Ext.define('Test.controller.Main', {
         } // End control
     }, // End config
 
+    onBackTap: function() {
+        this.getMain().setActiveItem(0);
+    },
+
     showDetail: function (view, index, target, record) {
-        var me = this;
-        this.getMain().push({
-            xtype: 'gebarendetail'
-        });
+        var me = this,
+            detail = this.getDetail();
+
         me.getListDetailButton().setText(record.data.plaatje);
         me.getListDetailImage().setSrc("resources/images/" + record.data.plaatje + ".png");
         me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
         me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
         
+        this.getMain().setActiveItem(detail);
     } ,
 
     initializeCzrosal:function(){
