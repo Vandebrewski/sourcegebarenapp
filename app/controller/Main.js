@@ -136,7 +136,7 @@ Ext.define('Test.controller.Main', {
                         listeners: {
                             tap: function() {
                                 this.hide();
-                                
+
                                 var video = this.getParent().add({
                                     xclass: 'Test.view.Video',
                                     url: this.videoURL,
@@ -144,7 +144,20 @@ Ext.define('Test.controller.Main', {
                                     height: 432,
                                     preload: false,
                                     docked:'bottom',
-                                    enableControls: false
+                                    enableControls: false,
+                                    listeners: {
+                                        tap: {                               
+                                            fn: function () {
+                                                if (this.isPlaying()) {
+                                                    this.pause();                                               
+                                                }
+                                                else {
+                                                    this.play();
+                                                }
+                                            },
+                                            element: 'element'
+                                        }
+                                    }
                                 });
 
                                 video.play();
