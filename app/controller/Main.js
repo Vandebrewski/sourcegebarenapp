@@ -142,8 +142,8 @@ Ext.define('Test.controller.Main', {
                                     url: this.videoURL,
                                     width: 768,
                                     height: 432,
-                                    preload: false,
-                                    docked:'bottom',
+                                    // preload: false,
+                                    docked: 'bottom',
                                     enableControls: false,
                                     listeners: {
                                         tap: {                               
