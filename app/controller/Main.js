@@ -132,13 +132,14 @@ Ext.define('Test.controller.Main', {
                         height: 432,
                         cls: 'play-video-button',
                         style: 'background-image:url(resources/images/bekijkgebaar.png);',
+                        videoURL: 'resources/images/' + objectname + '.mp4',
                         listeners: {
                             tap: function() {
                                 this.hide();
-
+                                
                                 var video = this.getParent().add({
                                     xclass: 'Test.view.Video',
-                                    url: 'resources/images/' + objectname + '.mp4',
+                                    url: this.videoURL,
                                     width: 768,
                                     height: 432,
                                     preload: false,
