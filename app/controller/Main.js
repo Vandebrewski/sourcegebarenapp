@@ -32,12 +32,10 @@ Ext.define('Test.controller.Main', {
                     }
 
                     var video = oldItem.child('video');
-                    if (!video) {
-                        return;
+                    if (video) {
+                        video.stop();
+                        video.destroy();
                     }
-
-                    video.stop();
-                    video.hide();
 
                     var button = oldItem.child('#playButton');
                     if (button) {
@@ -138,37 +136,19 @@ Ext.define('Test.controller.Main', {
                             tap: function() {
                                 this.hide();
 
-                                var video = this.getParent().child('video');
-                                video.show();
+                                var video = this.getParent().add({
+                                    xclass: 'Test.view.Video',
+                                    url: 'resources/images/' + objectname + '.mp4',
+                                    width: 768,
+                                    height: 432,
+                                    preload: false,
+                                    docked:'bottom',
+                                    enableControls: false
+                                });
+
                                 video.play();
                             }
                         }
-                    },
-                    {
-                        xclass: 'Test.view.Video',
-                        hidden: true,
-                        url: 'resources/images/' + objectname + '.mp4',
-                        width: 768,
-                        height: 432,
-// //                        muted: 'true',    // there is no audio in movies so has no use i guess.                        
-// //                        autoresume: true, // does not autoplay so don't us it i guess.
-						preload: false, // default is set to true and during sliding you do not always want video to load. Maybe this help 
-			
-                        docked:'bottom',
-//                         posterUrl: 'resources/images/bekijkgebaar.png',
-                        enableControls: false
-
-                        // listeners: {
-                        //     tap: {                               
-                        //         fn: function () {
-                        //             if (this.isPlaying())                                           
-                        //                 this.pause();                                               
-                        //             else
-                        //                 this.play();
-                        //         },
-                        //         element: 'element'  // I moved this outside the function. Is that correct? Works good. Read somwhere it is better. Don't know why.
-                        //     }
-                        // }
                     }]                                           
 //-------------- END carousel item content panel ------------------
                 }  // End of var itemTmpObj
