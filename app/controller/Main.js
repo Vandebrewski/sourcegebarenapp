@@ -70,7 +70,33 @@ Ext.define('Test.controller.Main', {
         me.getListDetailButton().setText(record.data.plaatje);
         me.getListDetailImage().setSrc("resources/images/" + record.data.plaatje + ".png");
         me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
-        me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
+        
+        if (me.getListDetailVideo()) {
+            me.getListDetailVideo().destroy();
+        }
+
+        me.getListDetailAudio().getParent().add({
+            xclass: 'Test.view.Video',
+            name: 'listDetailVideo',
+            posterUrl: 'resources/images/bekijkgebaar.png',
+            width: 768,
+            height: 432,            
+            enableControls: false,
+            url: "resources/images/" + record.data.plaatje + ".mp4",
+            
+            listeners: {
+                tap: {
+                    fn: function () {
+                        if (this.isPlaying())                                           
+                           this.pause();
+                                                                                                        
+                        else
+                           this.play();
+                    },
+                    element: 'element'  // I moved this outside the function. Is that correct? Works good. Read somwhere it is better. Don't know why.                  
+                }
+            }
+        });
         
         this.getMain().setActiveItem(detail);
     } ,
