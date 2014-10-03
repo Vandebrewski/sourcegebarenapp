@@ -56,53 +56,8 @@ Ext.define('Test.controller.Main', {
             detail = this.getDetail();
 
         me.getListDetailButton().setText(record.data.plaatje);
-        me.getListDetailImage().setSrc("resources/images/" + record.data.plaatje + ".png");
         me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
-
-//        setTimeout(function() { basvideo.addCls('after'); }, 1200);
-
-		
-
-       if (me.getListDetailVideo()) {  
-            me.getListDetailVideo().destroy();
-        }
-
-        me.getListDetailAudio().getParent().add({
-            xclass: 'Test.view.Video',
-            name: 'listDetailVideo',
-            posterUrl: 'resources/images/play-video.png',
-//            autoResume: true, //doesn't help
-            width: 768,
-            height: 432,           
-            enableControls: false,
-            url: "resources/images/" + record.data.plaatje + ".mp4",
-//            showlogo:false, // doesn't work,
-//            cls:'basvideo',
-            
-
-            listeners: {
-                
-                painted: {
-				      fn: function () {
-//					console.log("I've painted");
-				      this.pause();
-    					},
-    					element: 'element'
-    					},
-                
-                tap: {
-                    fn: function () {
-                        if (this.isPlaying())                                           
-                           this.pause();
-                                                                                                        
-                        else
-                          
-                           this.play();
-                    },
-                    element: 'element'  // I moved this outside the function. Is that correct? Works good. Read somwhere it is better. Don't know why.                  
-                }
-            }
-        });
+        me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
         
         this.getMain().setActiveItem(detail);
     },
@@ -149,62 +104,63 @@ Ext.define('Test.controller.Main', {
                         xtype: 'button',
                         cls: 'audioButton',
                         text: objectname,
-                            handler: function () {
-                                var container = this.getParent(),
-                                audio = container.down('audio');
-                                audio.play();
-                                }      
+                        handler: function () {
+                            var container = this.getParent(),
+                            audio = container.down('audio');
+                            audio.play();
+                        }      
                     },
                     {
                         xtype: 'audio',
                         url: 'resources/images/' + objectname + '.mp3',
                         hidden: true                        
-                    },                       
+                    },  
                     {
-                        xtype: 'button',
-                        itemId: 'playButton',
-//                        docked: 'bottom',
-                        height: 432,
-                       cls: 'play-video-button',
+                        layout: 'card',
+                        width: 768,
+                        height: 436,
+                        items: [
+                            {
+                                xtype: 'button',
+                                itemId: 'playButton',
+                                width: 768,
+                                height: 432,   
+                                cls: 'play-video-button',
+                                listeners: {
+                                    tap: function() {
+                                        var me = this,
+                                            video = me.getParent().child('video');
 
-                        videoURL: 'resources/images/paard.mp4',
+                                        video.media.dom.addEventListener('playing', function() {
+                                            me.getParent().setActiveItem(1);
+                                        }, true);
 
-                        listeners: {
-                            tap: function() {
-                                
-                                this.hide();
-								
-                                var video = this.getParent().add({
-                                    xclass: 'Test.view.Video',
- 
-//                                    url: this.videoURL,
-                                    url: 'resources/images/paard.mp4',
-
-                                    
-                                    width: 768,
-                                    height: 432,
-                                    preload: false,
-                                    docked: 'bottom',
-                                    enableControls: false,
-	                                   listeners: {
-                                        tap: {                               
-                                            fn: function () {
-                                                if (this.isPlaying()) {
-                                                    this.pause();                                           
-                                                }
-                                                else {
-                                                    this.play();
-                                                }
-                                            },
-                                            element: 'element'
-                                        }
+                                        video.play();
                                     }
-                                
-                                });
-
-                                video.play();
+                                }
+                            },
+                            {   
+                                xclass: 'Test.view.Video',
+                                url: "resources/images/" + objectname + ".mp4",
+                                width: 768,
+                                height: 432,
+                                preload: true,
+                                enableControls: false,
+                                listeners: {
+                                    tap: {                               
+                                        fn: function () {
+                                            if (this.isPlaying()) {
+                                                this.pause();                                           
+                                            }
+                                            else {
+                                                this.play();
+                                            }
+                                        },
+                                        element: 'element'
+                                    }
+                                }
                             }
-                        }
+                        ]
                     }]                                           
 //-------------- END carousel item content panel ------------------
                 }  // End of var itemTmpObj

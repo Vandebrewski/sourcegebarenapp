@@ -9,33 +9,73 @@ Ext.define('Test.view.GebarenDetail', {
             type: 'vbox',
             pack: 'end'
         },
-        items: [{
-            xtype: 'button',
-            itemId: 'backButton',
-			cls: 'backButton',
-			text: 'TERUG'
-        }, 
-        {
-            xtype: 'image',
-            cls: 'fade-in',
-            name: 'listDetailImage',
-            width: 768,
-            height: 436
-        }, 
-        {
-            xtype: 'button',
-            itemId: 'listDetailButton', 
-            cls: 'audioButton',  
-            handler: function () {
-                var container = this.getParent(),
-                audio = container.down('audio');
-                audio.play();
+        items: [
+            {
+                xtype: 'button',
+                itemId: 'backButton',
+    			cls: 'backButton',
+    			text: 'TERUG'
+            }, 
+            {
+                xtype: 'button',
+                itemId: 'listDetailButton', 
+                cls: 'audioButton',  
+                handler: function () {
+                    var container = this.getParent(),
+                    audio = container.down('audio');
+                    audio.play();
         		}
-        }, 
-        {
-            xtype: 'audio',
-            name: 'listDetailAudio',
-            hidden: true
-        }]
+            },
+            {
+                layout: 'card',
+                width: 768,
+                height: 436,
+                items: [
+                    {
+                        xtype: 'image',
+                        src: 'resources/images/play-video.png',
+                        width: 768,
+                        height: 432,         
+                        listeners: {
+                            tap: function() {
+                                var me = this,
+                                    video = me.getParent().child('video');
+
+                                video.media.dom.addEventListener('playing', function() {
+                                    me.getParent().setActiveItem(1);
+                                }, true);
+
+                                video.play();
+                            }
+                        }
+                    },
+                    {
+                        xclass: 'Test.view.Video',
+                        name: 'listDetailVideo',
+                        posterUrl: 'resources/images/play-video.png',
+                        width: 768,
+                        height: 432,           
+                        enableControls: false,
+                        listeners: {
+                            tap: {
+                                fn: function () {
+                                    if (this.isPlaying()) {                                       
+                                       this.pause();
+                                    } else {                                  
+                                       this.play();
+                                    }
+                                },
+                                element: 'element'
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                xtype: 'audio',
+                name: 'listDetailAudio',
+                hidden: true
+            }
+        ]
     }
 });
