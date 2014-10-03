@@ -665,6 +665,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "Test.view.Gebarenlijst": [],
   "Test.view.Home": [],
   "Test.view.NavList": [],
+  "Test.view.Video": [],
   "Test.view.Viewport": []
 });
 
@@ -1406,6 +1407,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "Test.view.NavList": [
     "widget.navlist"
+  ],
+  "Test.view.Video": [
+    "widget.video"
   ],
   "Test.view.Viewport": [
     "widget.main-view"

@@ -6,6 +6,7 @@ Ext.application({
         'Ext.MessageBox',
         'Test.store.Gebaar',
         'Test.view.Viewport',
+        'Test.view.Video',
         'Ext.Img',
         'Ext.Video',
         'Ext.Audio',

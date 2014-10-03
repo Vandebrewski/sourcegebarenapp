@@ -14,77 +14,52 @@ $loading-spinner-color: #f64e8f;
 @import 'sencha-touch/default/src/tab/Panel';
 
 
-// Custom code goes here..
-
 //@font-face {
 //  font-family: 'Kranky', cursive;
 //  src: url('../css/Kranky.ttf') format('truetype');}
  
 //$font-family: 'Kranky', sans-serif !default;
 
-h3 {color: #8dd2d1 !important;} 
-h4 {color: #ccc !important;} 
 
-.x-tabbar.x-docked-bottom .x-tab .x-button-icon {
-margin: 8px auto 0 auto !important;
-}
-
-.x-img.x-img-background {
-background-position: bottom;
-background-size: auto;
-}
-
-.x-toolbar {
-  height: 60px !important; 
-  padding-top: 10px !important;
-  
-}
-
-.x-toolbar.x-docked-top {
-border-bottom: 0px solid !important;
-background-color: #f64e8f;
-color: #fff;
-}
-
-#gebarencarousel, .gebarendetail {
-      background: url('../images/achtergrond.png')!important;
-//      background-size: 100% !important;
-      background-repeat:no-repeat !important;
-      background-color: #7bcdca !important; // important moet erbij
-    }
+//-------------------------------------------- LIST -------------------------------------------
 
 .gebarenlijst {
   background-color: #8fd3d1 !important;
   color: #fff !important;
-    }
-    
-
-
+}
 
 .x-list .x-list-item img {padding: 20px 0 !important;}
 
 .x-list .x-list-item.x-item-pressed, .x-list .x-list-item.x-item-selected.x-list-item-tpl {
-background-color: #43c2c2 !important;
+  background-color: #43c2c2 !important;
+  border-radius: 10px;
 }
 
 .x-list .x-list-item {
-color: #FFF !important;
-text-transform: uppercase !important;
-float: left;
-display: block;
-margin: 20px 15px;
-text-align: center !important;
-width: 150px;
+  color: #FFF !important;
+  font-weight: 300 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  float: left;
+  display: block;
+  margin: 20px 15px;
+  text-align: center !important;
+  width: 150px;
 }
 
-.x-tab .x-button-icon.sound:before, .x-button .x-button-icon.sound:before {
-position: relative !important;
-}
+//-------------------------------------------- SIMPLE TEKST PAGEES -------------------------------
 
 .tekstscreen {
-      background-color: #ffffff !important;
-      padding: 0.5em  !important;  
-    }
+  background-color: #ffffff !important;
+  padding: 0.5em  !important;  
+}
+
+h3 {color: #8dd2d1 !important;} 
+h4 {color: #ccc !important;} 
+
+#hometekst {position: fixed; bottom: 200px; left: 120px;} 
+
+//-------------------------------------------- BUTTONS -------------------------------------------
 
 .audioButton
 {
@@ -102,50 +77,95 @@ position: relative !important;
  webkit-box-align: center;
 }
 
-.x-button {
-  display: none !important;
-  }
 
-//.x-button-label {
-//  font-family: 'Kranky' !important;
-//  font-weight: 400;}  
+.x-button-label {
+  color: #fff !important;
+  font-weight: 300 !important;
+  letter-spacing: 2px !important;
+}
 
-.x-button-back  {
+.backButton  {
    background-image: url('../images/arrow-left-small.png')!important;
    background-repeat: no-repeat;
-   background-position: 10px 10px; 
-   background-color: #f64e8f !important;
-   width: 300px !important;
-   height: 50px !important; 
-   padding: 0 50px 0 100px !important;
+   background-position: 10px 40px; 
+   background-color: #54c3c1 !important;
+   width: 150px !important;
+   height: 70px !important; 
+   padding: 35px 5px 0 55px !important;
    border: 0 !important;
-   margin-left: 100px !important;
+   margin: -15px auto -10px auto !important;
+   border-radius: 10px;  
 }
+
+.play-video-button {
+  display: block !important;
+  height: 432px;
+  background-image: url('../images/play-video.png');
+  background-repeat: no-repeat;
+  background-position: center 50px; 
+
+//  background-color: #666 !important
+
+}
+.test {margin: 0;}
+
+//-------------------------------------------- VIDEO -------------------------------------------
 
 video {
-    background-color: #7bcdca !important; // important moet erbij
-    width: 768px !important;
-   height: 432px !important;
-    overflow: hidden !important;
+//  background-color: #7bcdca !important; // important moet erbij
+  width: 768px !important;
+  height: 432px !important;
+  overflow: hidden !important;
+-webkit-animation: fadein 2s !important;
+
+
 }
 
-.x-video {
-background-color: #7bcdca !important;
+.basvideo:after {
+
+}
+
+.x-video>* {
+  
+//-webkit-animation: fadein 1s !important;
+}
+
+.x-button {
+// display: none !important
 }
 
 .x-video-ghost {
-background: #7bcdca url() center center no-repeat;
+//background: none !important;
+//background: url('../images/play-video.png') center center no-repeat !important;
+//-webkit-animation: fadein 2s 1s !important;
+}
+
+
+
+
+.x-video {
+  background: none !important;
+//  -webkit-animation: fadein 4s !important;
 }
 
 
 *, *:after, *:before {
--webkit-tap-highlight-color: rgba(123, 205, 202, 1) !important;
+ -webkit-tap-highlight-color: rgba(123, 205, 202, 1) !important;
 }
 
-.fade-in {-webkit-animation: fadein 2s; margin-top:20px;}
+
+//-------------------------------------------- ANIMATION -------------------------------------------
+
+
+.fade-in {-webkit-animation: fadein .3s;}
 @-webkit-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadeout {
+    from { opacity: 1; }
+    to   { opacity: 0; }
 }
 
 .sun-animation {-webkit-animation: sunanimation 2s;}
@@ -160,19 +180,42 @@ background: #7bcdca url() center center no-repeat;
    0% {padding-left:0px;}
    100% {padding-left:70px;}
 }
-   
-#hometekst {position: fixed; bottom: 200px; left: 120px;}   
-    
 
-.x-tabbar-dark {
-    border-top-color: #f64e8f !important;
-    border-bottom-color: #f64e8f !important;
-    background-image: none !important;
-    background-color: #f64e8f !important;
+//-------------------------------------------- Tool bar bottom -------------------------------------------   
+
+.x-tabbar.x-docked-bottom .x-tab .x-button-icon {
+  margin: 8px auto 0 auto !important;
 }
 
-// Examples of using the icon mixin:
-// @include icon('user');
+.x-img.x-img-background {
+  background-position: bottom;
+  background-size: auto;
+}
+
+.x-tabbar-dark {
+  border-top-color: #f64e8f !important; 
+  border-bottom-color: #f64e8f !important; 
+  background-image: #f64e8f !important; 
+  background-color: #f64e8f !important;
+}
+
+
+
+
+#gebarencarousel, .gebarendetail {
+  background: url('../images/background.png')!important;
+  background-size: 100% !important;
+  background-repeat:no-repeat !important;
+//  background-color: #7bcdca !important; // important moet erbij
+
+
+}
+
+
+
+  
+
+//-------------------------------------------- NAVIGATION ICONS -------------------------------------------
 
 @include icon-font('icomoon', inline-font-files(
   'icomoon/icomoon.eot', eot,
@@ -185,3 +228,6 @@ background: #7bcdca url() center center no-repeat;
 @include icon("star"  , "\e605", "icomoon");
 @include icon("search", "\e602", "icomoon");
 @include icon("info"  , "\e606", "icomoon");
+
+
+
