@@ -31,15 +31,14 @@ Ext.define('Test.controller.Main', {
                         return;
                     }
 
-                    var video = oldItem.child('video');
+                    var video = oldItem.down('video');
                     if (video) {
+                        video.getParent().setActiveItem(0);
+
+                        video.getParent().child('button').removeCls('loading');
+
                         video.stop();
                         video.destroy();
-                    }
-
-                    var button = oldItem.child('#playButton');
-                    if (button) {
-                        button.show();
                     }
                 }
 
@@ -126,37 +125,41 @@ Ext.define('Test.controller.Main', {
                                 width: 768,
                                 height: 432,   
                                 cls: 'play-video-button',
+                                videoURL: "resources/images/" + objectname + ".mp4",
                                 listeners: {
                                     tap: function() {
                                         var me = this,
-                                            video = me.getParent().child('video');
+                                            video;
+
+                                        me.addCls('loading');
+
+                                        video = me.getParent().add({   
+                                            xclass: 'Test.view.Video',
+                                            url: me.videoURL,
+                                            width: 768,
+                                            height: 432,
+                                            preload: true,
+                                            enableControls: false,
+                                            listeners: {
+                                                tap: {                               
+                                                    fn: function () {
+                                                        if (this.isPlaying()) {
+                                                            this.pause();                                           
+                                                        }
+                                                        else {
+                                                            this.play();
+                                                        }
+                                                    },
+                                                    element: 'element'
+                                                }
+                                            }
+                                        });
 
                                         video.media.dom.addEventListener('playing', function() {
                                             me.getParent().setActiveItem(1);
                                         }, true);
 
                                         video.play();
-                                    }
-                                }
-                            },
-                            {   
-                                xclass: 'Test.view.Video',
-                                url: "resources/images/" + objectname + ".mp4",
-                                width: 768,
-                                height: 432,
-                                preload: true,
-                                enableControls: false,
-                                listeners: {
-                                    tap: {                               
-                                        fn: function () {
-                                            if (this.isPlaying()) {
-                                                this.pause();                                           
-                                            }
-                                            else {
-                                                this.play();
-                                            }
-                                        },
-                                        element: 'element'
                                     }
                                 }
                             }
