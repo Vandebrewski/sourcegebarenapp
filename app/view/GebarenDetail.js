@@ -15,7 +15,14 @@ Ext.define('Test.view.GebarenDetail', {
                 itemId: 'backButton',
     			cls: 'backButton',
     			text: 'TERUG'
-            }, 
+            },
+             {
+            	xtype: 'image',
+            	name: 'listDetailImage',
+	           	cls: 'fade-in',
+            	width: 768,
+            	height: 436
+        	},             
             {
                 xtype: 'button',
                 itemId: 'listDetailButton', 
@@ -29,7 +36,7 @@ Ext.define('Test.view.GebarenDetail', {
             {
                 layout: 'card',
                 width: 768,
-                height: 436,
+                height: 432,
                 items: [
                     {
                         xtype: 'image',

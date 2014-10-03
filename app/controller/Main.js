@@ -55,6 +55,7 @@ Ext.define('Test.controller.Main', {
             detail = this.getDetail();
 
         me.getListDetailButton().setText(record.data.plaatje);
+        me.getListDetailImage().setSrc("resources/images/" + record.data.plaatje + ".png");
         me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
         me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
         
