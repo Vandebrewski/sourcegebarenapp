@@ -33,29 +33,29 @@ Ext.define('Test.view.GebarenDetail', {
                     audio.play();
         		}
             },
-            {
-                layout: 'card',
-                width: 768,
-                height: 432,
-                items: [
-                    {
-                        xtype: 'image',
-                        src: 'resources/images/play-video.png',
-                        width: 768,
-                        height: 432,         
-                        listeners: {
-                            tap: function() {
-                                var me = this,
-                                    video = me.getParent().child('video');
-
-                                video.media.dom.addEventListener('playing', function() {
-                                    me.getParent().setActiveItem(1);
-                                }, true);
-
-                                video.play();
-                            }
-                        }
-                    },
+//            {
+//                layout: 'card',
+//                width: 768,
+//                height: 432,
+//                items: [
+//                    {
+//                        xtype: 'image',
+//                        src: 'resources/images/play-video.png',
+//                        width: 768,
+//                        height: 432,         
+//                        listeners: {
+//                            tap: function() {
+//                                var me = this,
+//                                    video = me.getParent().child('video');
+//
+//                                video.media.dom.addEventListener('playing', function() {
+//                                    me.getParent().setActiveItem(1);
+//                                }, true);
+//
+//                                video.play();
+//                            }
+//                        }
+//                    },
                     {
                         xclass: 'Test.view.Video',
                         name: 'listDetailVideo',
@@ -66,18 +66,22 @@ Ext.define('Test.view.GebarenDetail', {
                         listeners: {
                             tap: {
                                 fn: function () {
-                                    if (this.isPlaying()) {                                       
-                                       this.pause();
-                                    } else {                                  
-                                       this.play();
-                                    }
+                                	var v = document.getElementsByTagName("video")[0];
+									v.addEventListener("playing", function() { document.getElementsByTagName("video")[0].play(); }, true);
+									v.currentTime = 0.2;
+									
+//                                   if (this.isPlaying()) {                                       
+//                                       this.pause();
+//                                    } else {                                  
+//                                       this.play();
+//                                    }
                                 },
                                 element: 'element'
                             }
                         }
-                    }
-                ]
-            },
+                    },
+//                ]
+//            },
             {
                 xtype: 'audio',
                 name: 'listDetailAudio',
