@@ -9,7 +9,7 @@ Ext.define('Test.controller.Main', {
         refs: {
             main: 'navlist',
             cardpanel:'cardpanel',
-            listDetailAudio  :'gebarendetail audio[name="listDetailAudio"]',
+            listDetailAudio  : 'gebarendetail audio[name="listDetailAudio"]',
             listDetailButton : '#listDetailButton',
             listDetailVideo  : 'gebarendetail video[name="listDetailVideo"]',
             listDetailImage  : 'gebarendetail image[name="listDetailImage"]',
@@ -54,11 +54,13 @@ Ext.define('Test.controller.Main', {
         var me = this,
             detail = this.getDetail();
 
+        me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
+
+        me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
         me.getListDetailButton().setText(record.data.plaatje);
         me.getListDetailImage().setSrc("resources/images/" + record.data.plaatje + ".png");
-        me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
-        me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
-        
+
+	    
         this.getMain().setActiveItem(detail);
     },
 

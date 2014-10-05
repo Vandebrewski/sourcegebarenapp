@@ -16,7 +16,7 @@ Ext.define('Test.view.GebarenDetail', {
     			cls: 'backButton',
     			text: 'TERUG'
             },
-             {
+            {
             	xtype: 'image',
             	name: 'listDetailImage',
 	           	cls: 'fade-in',
@@ -33,55 +33,33 @@ Ext.define('Test.view.GebarenDetail', {
                     audio.play();
         		}
             },
-//            {
-//                layout: 'card',
-//                width: 768,
-//                height: 432,
-//                items: [
-//                    {
-//                        xtype: 'image',
-//                        src: 'resources/images/play-video.png',
-//                        width: 768,
-//                        height: 432,         
-//                        listeners: {
-//                            tap: function() {
-//                                var me = this,
-//                                    video = me.getParent().child('video');
-//
-//                                video.media.dom.addEventListener('playing', function() {
-//                                    me.getParent().setActiveItem(1);
-//                                }, true);
-//
-//                                video.play();
-//                            }
-//                        }
-//                    },
-                    {
-                        xclass: 'Test.view.Video',
-                        name: 'listDetailVideo',
-                        posterUrl: 'resources/images/play-video.png',
-                        width: 768,
-                        height: 432,           
-                        enableControls: false,
-                        listeners: {
-                            tap: {
-                                fn: function () {
-                                	var v = document.getElementsByTagName("video")[0];
-									v.addEventListener("playing", function() { document.getElementsByTagName("video")[0].play(); }, true);
-									v.currentTime = 0.2;
-									
-//                                   if (this.isPlaying()) {                                       
-//                                       this.pause();
-//                                    } else {                                  
-//                                       this.play();
-//                                    }
-                                },
-                                element: 'element'
-                            }
-                        }
-                    },
-//                ]
-//            },
+            {
+				xclass: 'Test.view.Video',
+				name: 'listDetailVideo',
+                posterUrl: 'resources/images/play-video.png',
+                width: 768,
+                height: 432,           
+                enableControls: false,
+                listeners: {
+                	tap: {
+                        fn: function () {
+                        		var vid = document.getElementsByTagName("video")[0];
+								vid.load(); // this is needed fot ios8, maybe put in an if statement?
+								vid.addEventListener("playing", function() { 									
+									vid.play(); 
+									}, true);
+//								v.currentTime = 0.2;
+							
+                           	if (this.isPlaying()) {                                       
+                               this.pause();
+                            	} else {                                  
+                               		this.play();
+                            		}                            
+                       		}, // END addEventListener
+                       	element: 'element'
+                   	} // END tap
+               	} // END listeners
+			}, // END video
             {
                 xtype: 'audio',
                 name: 'listDetailAudio',
