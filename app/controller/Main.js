@@ -44,61 +44,19 @@ Ext.define('Test.controller.Main', {
 
     onBackTap: function() {
         this.getMain().setActiveItem(0);
-        this.getListDetailVideo().destroy();
     },
 
     showDetail: function (view, index, target, record) {
         var me = this,
-            detail = this.getDetail(),
-            video;
+            detail = this.getDetail();
 
+        me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
         me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
         me.getListDetailButton().setText(record.data.plaatje);
         me.getListDetailImage().setSrc("resources/images/" + record.data.plaatje + ".png");
-
-        video = me.getListDetailImage().getParent().add({
-            xclass: 'Test.view.Video',
-            name: 'listDetailVideo',
-            posterUrl: 'resources/images/play-video.png',
-            id: 'listvideo',
-            width: 768,
-            height: 432,           
-            enableControls: false,
-            url: "resources/images/" + record.data.plaatje + ".mp4",
-                            
-            listeners: {                    
-                // painted: function () {
-                //     this.media.dom.load();
-                // },
-                tap: function () {                                                          
-                    var me = this;
-                    
-                    if (me.isPlaying()) {                                       
-                       me.pause();
-                    } else {                                  
-                        me.play();
-                    }   
-                }
-            }
-        });
-
-        // if (!video._addedPlayEvent) {
-        //     console.log('adding');
-
-        //     // video.media.dom.addEventListener("progress", function() { // wait for quicktime to be ready so it doesnt show quicktime logo                         
-        //     //     console.log('progress', video.media.dom.readyState);
-        //     //     if (video.media.dom.readyState > 1) {
-        //     //         console.log('yup');
-        //     //         video.removeCls('loading');
-        //     //     }
-        //     // }, true);
-
-        //     video._addedPlayEvent = true;
-        // }
-	    
+     
         this.getMain().setActiveItem(detail);
     },
-
 
 //-------------- CAROUSEL-------------------------------------------
     initializeCzrosal:function(){
