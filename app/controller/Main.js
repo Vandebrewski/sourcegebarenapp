@@ -146,7 +146,7 @@ Ext.define('Test.controller.Main', {
                                                 tap: {                               
                                                     fn: function () {
                                                         if (this.isPlaying()) {
-                                                            this.pause();                                           
+                                                            this.pause();
                                                         }
                                                         else {
                                                             this.play();
@@ -159,6 +159,12 @@ Ext.define('Test.controller.Main', {
 
                                         video.media.dom.addEventListener('playing', function() {
                                             me.getParent().setActiveItem(1);
+
+                                            if (!video._isPlaying) {
+                                                video._isPlaying = true;
+                                                video.media.dom.load();
+                                                video.media.dom.play();
+                                            }
                                         }, true);
 
                                         video.media.dom.addEventListener('pause', function() {
@@ -168,6 +174,7 @@ Ext.define('Test.controller.Main', {
 
                                         video.media.dom.addEventListener('ended', function() {
                                             me.getParent().setActiveItem(0);
+                                            video._isPlaying = false;
                                             video.destroy();
                                         }, true);
 
