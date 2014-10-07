@@ -43,13 +43,8 @@ Ext.define('Test.view.GebarenDetail', {
                 enableControls: false,
                                 
                 listeners: {                	
-                	painted: { // this load thing is needed fot ios8, maybe put it in an ios8 if-statement?
-                		fn: function () {
-      						var x = document.getElementById("listvideo");
-      						var vid = x.getElementsByTagName("video")[0]; // there are more videos in document (carousel) so dig up the right one.
-							vid.load(); 
-    					},
-    				element: 'element'
+                	painted: function () {
+                        this.media.dom.load();
     				},
                 	tap: {
                         fn: function () {                        									
