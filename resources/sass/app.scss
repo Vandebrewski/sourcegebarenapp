@@ -116,7 +116,7 @@ video {
   width: 768px !important;
   height: 432px !important;
   overflow: hidden !important;
--webkit-animation: fadein 2s !important;
+// -webkit-animation: fadein 2s !important;
 
 
 }
@@ -124,6 +124,10 @@ video {
 .basvideo:after {
 
 }
+
+// .x-video.loading {
+//   -webkit-transform:translateX(-2048px);
+// }
 
 .x-video>* {
   
