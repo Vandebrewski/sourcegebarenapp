@@ -42,6 +42,7 @@ Ext.define('Test.controller.Main', {
                     }
                 }
 
+
            } // End Cardpanel
         } // End control
     }, // End config
@@ -55,11 +56,9 @@ Ext.define('Test.controller.Main', {
             detail = this.getDetail();
 
         me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
-
         me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
         me.getListDetailButton().setText(record.data.plaatje);
         me.getListDetailImage().setSrc("resources/images/" + record.data.plaatje + ".png");
-
 	    
         this.getMain().setActiveItem(detail);
     },
@@ -81,9 +80,9 @@ Ext.define('Test.controller.Main', {
                     html: '<div class="swipe-animation"><img src="resources/images/swipe-left.png"></div>'
                 }, {
                     flex: 1,                        
-                    html: '<div><img src="resources/images/home-logo-kleiner.png" width="100%"></div>'
+                    html: '<div><img src="resources/images/home-logo-kleiner.png" width="80%"></div>'
                 }]
-            });
+            }); // END first intro item 
 
             
             var totalcount = data.length;
@@ -120,7 +119,7 @@ Ext.define('Test.controller.Main', {
                     {
                         layout: 'card',
                         width: 768,
-                        height: 436,
+                        height: 432,
                         items: [
                             {
                                 xtype: 'button',
@@ -141,7 +140,7 @@ Ext.define('Test.controller.Main', {
                                             url: me.videoURL,
                                             width: 768,
                                             height: 432,
-                                            preload: true,
+                                            preload: true, // why?
                                             enableControls: false,
                                             listeners: {
                                                 tap: {                               
@@ -167,7 +166,7 @@ Ext.define('Test.controller.Main', {
                                 }
                             }
                         ]
-                    }]                                           
+                    }]                                             
 //-------------- END carousel item content panel ------------------
                 }  // End of var itemTmpObj
             

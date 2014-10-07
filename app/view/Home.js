@@ -34,7 +34,7 @@ Ext.define('Test.view.Home', {
 //            }
         }, {
             flex: 1,
-            html: '<center><br /><h3>LITE versie 1.0 Beta</h3><h4><br />Leer op eenvoudige wijze gebaren. Er wordt op dit moment hard gewerkt <br />aan een uitgebreide versie van deze pilot app.</h4><br /><br /><img src="resources/images/nsdsk-klein.png"></center>'
+            html: '<center><br /><h3>LITE versie 1.0 Beta</h3><h4><br />Leer op eenvoudige wijze gebaren. Dit is een pilot app, <br />er wordt op dit moment hard gewerkt aan een uitgebreide versie van de app</h4><br /><br /><img src="resources/images/nsdsk-klein.png"></center>'
         }]
     }
 })

@@ -8,7 +8,7 @@ Ext.define('Test.view.GebarenDetail', {
         layout: {
             type: 'vbox',
             pack: 'end'
-        },
+        	},
         items: [
             {
                 xtype: 'button',
@@ -37,18 +37,28 @@ Ext.define('Test.view.GebarenDetail', {
 				xclass: 'Test.view.Video',
 				name: 'listDetailVideo',
                 posterUrl: 'resources/images/play-video.png',
+                id: 'listvideo',
                 width: 768,
                 height: 432,           
                 enableControls: false,
-                listeners: {
+                                
+                listeners: {                	
+                	painted: { // this load thing is needed fot ios8, maybe put it in an ios8 if-statement?
+                		fn: function () {
+      						var x = document.getElementById("listvideo");
+      						var vid = x.getElementsByTagName("video")[0]; // there are more videos in document (carousel) so dig up the right one.
+							vid.load(); 
+    					},
+    				element: 'element'
+    				},
                 	tap: {
-                        fn: function () {
-                        		var vid = document.getElementsByTagName("video")[0];
-								vid.load(); // this is needed fot ios8, maybe put in an if statement?
-								vid.addEventListener("playing", function() { 									
+                        fn: function () {                        									
+      						var x = document.getElementById("listvideo");
+      						var vid = x.getElementsByTagName("video")[0]; 
+								vid.addEventListener("playing", function() { // wait for quicktime to be ready so it doesnt show quicktime logo							
 									vid.play(); 
 									}, true);
-//								v.currentTime = 0.2;
+//								v.currentTime = 0.2; // don't think I need this
 							
                            	if (this.isPlaying()) {                                       
                                this.pause();
