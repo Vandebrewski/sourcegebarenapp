@@ -161,6 +161,16 @@ Ext.define('Test.controller.Main', {
                                             me.getParent().setActiveItem(1);
                                         }, true);
 
+                                        video.media.dom.addEventListener('pause', function() {
+                                            me.getParent().setActiveItem(0);
+                                            video.destroy();
+                                        }, true);
+
+                                        video.media.dom.addEventListener('ended', function() {
+                                            me.getParent().setActiveItem(0);
+                                            video.destroy();
+                                        }, true);
+
                                         video.play();
                                     }
                                 }
