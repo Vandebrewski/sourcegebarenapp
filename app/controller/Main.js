@@ -33,12 +33,7 @@ Ext.define('Test.controller.Main', {
 
                     var video = oldItem.down('video');
                     if (video) {
-                        video.getParent().setActiveItem(0);
-
-                        video.getParent().child('button').removeCls('loading');
-
                         video.stop();
-                        video.destroy();
                     }
                 }
 
@@ -49,16 +44,57 @@ Ext.define('Test.controller.Main', {
 
     onBackTap: function() {
         this.getMain().setActiveItem(0);
+        this.getListDetailVideo().destroy();
     },
 
     showDetail: function (view, index, target, record) {
         var me = this,
-            detail = this.getDetail();
+            detail = this.getDetail(),
+            video;
 
-        me.getListDetailVideo().setUrl("resources/images/" + record.data.plaatje + ".mp4");
         me.getListDetailAudio().setUrl("resources/images/" + record.data.plaatje + ".mp3");
         me.getListDetailButton().setText(record.data.plaatje);
         me.getListDetailImage().setSrc("resources/images/" + record.data.plaatje + ".png");
+
+        video = me.getListDetailImage().getParent().add({
+            xclass: 'Test.view.Video',
+            name: 'listDetailVideo',
+            posterUrl: 'resources/images/play-video.png',
+            id: 'listvideo',
+            width: 768,
+            height: 432,           
+            enableControls: false,
+            url: "resources/images/" + record.data.plaatje + ".mp4",
+                            
+            listeners: {                    
+                // painted: function () {
+                //     this.media.dom.load();
+                // },
+                tap: function () {                                                          
+                    var me = this;
+                    
+                    if (me.isPlaying()) {                                       
+                       me.pause();
+                    } else {                                  
+                        me.play();
+                    }   
+                }
+            }
+        });
+
+        // if (!video._addedPlayEvent) {
+        //     console.log('adding');
+
+        //     // video.media.dom.addEventListener("progress", function() { // wait for quicktime to be ready so it doesnt show quicktime logo                         
+        //     //     console.log('progress', video.media.dom.readyState);
+        //     //     if (video.media.dom.readyState > 1) {
+        //     //         console.log('yup');
+        //     //         video.removeCls('loading');
+        //     //     }
+        //     // }, true);
+
+        //     video._addedPlayEvent = true;
+        // }
 	    
         this.getMain().setActiveItem(detail);
     },
@@ -117,73 +153,54 @@ Ext.define('Test.controller.Main', {
                         hidden: true                        
                     },  
                     {
-                        layout: 'card',
+                        xtype: 'button',
+                        cls: 'play-video-button',
                         width: 768,
                         height: 432,
-                        items: [
-                            {
-                                xtype: 'button',
-                                itemId: 'playButton',
-                                width: 768,
-                                height: 432,   
-                                cls: 'play-video-button',
-                                videoURL: "resources/images/" + objectname + ".mp4",
-                                listeners: {
-                                    tap: function() {
-                                        var me = this,
-                                            video;
-
-                                        me.addCls('loading');
-
-                                        video = me.getParent().add({   
+                        url: "resources/images/" + objectname + ".mp4",
+                        listeners: {
+                            tap: function() {
+                                var modal = Ext.create('Ext.Panel', {
+                                    centered: true,
+                                    modal: true,
+                                    width: 768,
+                                    height: 432,
+                                    layout: 'fit',
+                                    hideOnMaskTap: true,
+                                    listeners: {
+                                        hide: function() {
+                                            this.destroy();
+                                        }
+                                    },
+                                    items: [
+                                        {
                                             xclass: 'Test.view.Video',
-                                            url: me.videoURL,
-                                            width: 768,
-                                            height: 432,
-                                            preload: true, // why?
+                                            name: 'listDetailVideo',
+                                            id: 'listvideo',
+                                            autoResume: true, 
                                             enableControls: false,
-                                            listeners: {
-                                                tap: {                               
-                                                    fn: function () {
-                                                        if (this.isPlaying()) {
-                                                            this.pause();
-                                                        }
-                                                        else {
-                                                            this.play();
-                                                        }
-                                                    },
-                                                    element: 'element'
+                                            url: this.url,
+                                            posterUrl: 'resources/images/play-video.png',              
+                                            listeners: {                    
+                                                tap: function () {                                                           
+                                                    var me = this;
+                                                    
+                                                    if (me.isPlaying()) {                                       
+                                                       me.pause();
+                                                    } else {                                  
+                                                        me.play();
+                                                    }                       
                                                 }
                                             }
-                                        });
+                                        }
+                                    ]
+                                });
 
-                                        video.media.dom.addEventListener('playing', function() {
-                                            me.getParent().setActiveItem(1);
-
-                                            if (!video._isPlaying) {
-                                                video._isPlaying = true;
-                                                video.media.dom.load();
-                                                video.media.dom.play();
-                                            }
-                                        }, true);
-
-                                        video.media.dom.addEventListener('pause', function() {
-                                            me.getParent().setActiveItem(0);
-                                            video.destroy();
-                                        }, true);
-
-                                        video.media.dom.addEventListener('ended', function() {
-                                            me.getParent().setActiveItem(0);
-                                            video._isPlaying = false;
-                                            video.destroy();
-                                        }, true);
-
-                                        video.play();
-                                    }
-                                }
+                                Ext.Viewport.add(modal);
+                                modal.show();
                             }
-                        ]
-                    }]                                             
+                        }
+                    }] // END video
 //-------------- END carousel item content panel ------------------
                 }  // End of var itemTmpObj
             
