@@ -50,27 +50,31 @@ Ext.define('Test.view.GebarenDetail', {
                         fn: function () {                                                           
                             var me = this;
                             
-                            if (Ext.os.is.iOS && !me._loadedVideo) {
-                                if (!me._loadingVideo) {
-                                    me._loadingVideo = true;
+                            me.media.dom.addEventListener("playing", function() { // wait for quicktime to be ready so it doesnt show quicktime logo
+								me.play();
+								}, true);  
+                            
+//                            if (Ext.os.is.iOS && !me._loadedVideo) {
+//                                if (!me._loadingVideo) {
+//                                    me._loadingVideo = true;
 
-                                    me.addCls('loading');
+//                                    me.addCls('loading');
 
-                                    var fn = function() {
-                                        if (me.media.dom.readyState > 1 && me._loadingVideo) {
-                                            console.log('loaded');
+//                                    var fn = function() {
+//                                        if (me.media.dom.readyState > 1 && me._loadingVideo) {
+//                                            console.log('loaded');
 
-                                            me.removeCls('loading');
-                                            me._loadingVideo = false;
-                                            me._loadedVideo = true;
+//                                            me.removeCls('loading');
+//                                            me._loadingVideo = false;
+//                                            me._loadedVideo = true;
 
-                                            me.media.dom.removeEventListener('progress', fn, true);
-                                        }
-                                    };
+//                                            me.media.dom.removeEventListener('progress', fn, true);
+//                                        }
+//                                    };
 
-                                    me.media.dom.addEventListener('progress', fn, true);
-                                }
-                            }
+//                                    me.media.dom.addEventListener('progress', fn, true);
+//                              }
+//                            }
                             
                             if (me.isPlaying()) {                                       
                                 me.pause();
