@@ -56,13 +56,19 @@ Ext.define('Test.view.GebarenDetail', {
 
                                     me.addCls('loading');
 
-                                    me.media.dom.addEventListener('progress', function() {
-                                        if (me.media.dom.readyState > 1) {
+                                    var fn = function() {
+                                        if (me.media.dom.readyState > 1 && me._loadingVideo) {
+                                            console.log('loaded');
+
                                             me.removeCls('loading');
                                             me._loadingVideo = false;
                                             me._loadedVideo = true;
+
+                                            me.media.dom.removeEventListener('progress', fn, true);
                                         }
-                                    }, true);
+                                    };
+
+                                    me.media.dom.addEventListener('progress', fn, true);
                                 }
                             }
                             
