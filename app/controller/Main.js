@@ -137,7 +137,12 @@ Ext.define('Test.controller.Main', {
                                             enableControls: false,
                                             url: this.initialConfig.url,
                                             posterUrl: 'resources/images/play-video.png',              
-                                            listeners: {                    
+
+							                listeners: {                    
+							                    painted: function () {
+							                        this.media.dom.load(); // for iOS8. Maybe in a conditional statement?
+							                    },
+                 
                                                 tap: function () {                                                	                                                    
                                                     var me = this;
                                                     
