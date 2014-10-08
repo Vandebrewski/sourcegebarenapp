@@ -50,10 +50,21 @@ Ext.define('Test.view.GebarenDetail', {
                         fn: function () {                                                           
                             var me = this;
                             
-                            me.media.dom.addEventListener("playing", function() { // wait for quicktime to be ready so it doesnt show quicktime logo                         
-                                me.play(); 
-                            }, true);
-//                              v.currentTime = 0.2; // don't think I need this
+                            if (Ext.os.is.iOS && !me._loadedVideo) {
+                                if (!me._loadingVideo) {
+                                    me._loadingVideo = true;
+
+                                    me.addCls('loading');
+
+                                    me.media.dom.addEventListener('progress', function() {
+                                        if (me.media.dom.readyState > 1) {
+                                            me.removeCls('loading');
+                                            me._loadingVideo = false;
+                                            me._loadedVideo = true;
+                                        }
+                                    }, true);
+                                }
+                            }
                             
                             if (me.isPlaying()) {                                       
                                 me.pause();

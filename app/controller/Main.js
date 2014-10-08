@@ -139,7 +139,24 @@ Ext.define('Test.controller.Main', {
                                             posterUrl: 'resources/images/play-video.png',              
                                             listeners: {                    
                                                 tap: function () {                                                	                                                    
-                                                    var me = this;                                                  
+                                                    var me = this;     
+
+                                                    if (Ext.os.is.iOS && !me._loadedVideo) {
+                                                        if (!me._loadingVideo) {
+                                                            me._loadingVideo = true;
+
+                                                            me.addCls('loading');
+
+                                                            me.media.dom.addEventListener('progress', function() {
+                                                                if (me.media.dom.readyState > 1) {
+                                                                    me.removeCls('loading');
+                                                                    me._loadingVideo = false;
+                                                                    me._loadedVideo = true;
+                                                                }
+                                                            }, true);
+                                                        }
+                                                    }
+
                                                     if (me.isPlaying()) {                                       
                                                        me.pause();
                                                     } else {                                  
