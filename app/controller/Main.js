@@ -117,41 +117,39 @@ Ext.define('Test.controller.Main', {
                         height: 432,
                         url: "resources/images/" + objectname + ".mp4",
                         listeners: {
-                            tap: function() {
+                            tap: function() {                           	
                                 var modal = Ext.create('Ext.Panel', {
-                                    centered: true,
+//                                    centered: true,
+									bottom : 0, 
                                     modal: true,
                                     width: 768,
                                     height: 432,
                                     layout: 'fit',
                                     hideOnMaskTap: true,
                                     listeners: {
-                                        hide: function() {
+                                        hide: function() {    
                                             this.destroy();
                                         }
                                     },
                                     items: [
                                         {
-                                            xclass: 'Test.view.Video',
-                                            name: 'listDetailVideo',
-//                                            id: 'listvideo',
-//                                            autoResume: true, 
-                                            enableControls: true,
-//                                            url: this.url,
-                                            url:"resources/images/" + objectname + ".mp4",
+											xtype: 'video',
+                                            enableControls: false,
+                                            url: this.initialConfig.url,
                                             posterUrl: 'resources/images/play-video.png',              
                                             listeners: {                    
-                                                tap: function () {                                                           
-                                                    var me = this;
-                                                    
+                                                tap: function () {                                                	                                                    
+                                                    var me = this;                                                  
                                                     if (me.isPlaying()) {                                       
                                                        me.pause();
                                                     } else {                                  
                                                         me.play();
-                                                    }                       
-                                                }
-                                            }
-                                        }
+                                                    }
+                                                                          
+                                                }, // END function
+                                                element: 'element'
+                                            } // END listeners
+                                        } // END xtype video
                                     ]
                                 });
 
