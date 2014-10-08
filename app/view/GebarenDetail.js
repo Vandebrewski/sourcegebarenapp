@@ -7,7 +7,7 @@ Ext.define('Test.view.GebarenDetail', {
     
         layout: {
             type: 'vbox',
-            pack: 'end'
+            pack: 'end' // or maybe not?
             },
         items: [
             {
@@ -44,7 +44,7 @@ Ext.define('Test.view.GebarenDetail', {
                                 
                 listeners: {                    
                     painted: function () {
-                        this.media.dom.load();
+                        this.media.dom.load(); // for iOS8. Maybe in a conditional statement?
                     },
                     tap: {
                         fn: function () {                                                           

@@ -134,10 +134,11 @@ Ext.define('Test.controller.Main', {
                                         {
                                             xclass: 'Test.view.Video',
                                             name: 'listDetailVideo',
-                                            id: 'listvideo',
-                                            autoResume: true, 
-                                            enableControls: false,
-                                            url: this.url,
+//                                            id: 'listvideo',
+//                                            autoResume: true, 
+                                            enableControls: true,
+//                                            url: this.url,
+                                            url:"resources/images/" + objectname + ".mp4",
                                             posterUrl: 'resources/images/play-video.png',              
                                             listeners: {                    
                                                 tap: function () {                                                           

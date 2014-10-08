@@ -28,11 +28,14 @@ $loading-spinner-color: #f64e8f;
   color: #fff !important;
 }
 
-.x-list .x-list-item img {padding: 20px 0 !important;}
+.x-list .x-list-item img {padding: 23px 0 !important;}
 
 .x-list .x-list-item.x-item-pressed, .x-list .x-list-item.x-item-selected.x-list-item-tpl {
   background-color: #43c2c2 !important;
-  border-radius: 10px;
+}
+
+.x-list .x-list-item .x-list-item-body, .x-list .x-list-item.x-list-item-tpl .x-innerhtml {
+padding: 10px !important;
 }
 
 .x-list .x-list-item {
@@ -42,9 +45,11 @@ $loading-spinner-color: #f64e8f;
   text-transform: uppercase !important;
   float: left;
   display: block;
-  margin: 20px 15px;
+  margin: 20px 19px;
   text-align: center !important;
   width: 150px;
+  border: 1px solid #fff;
+  border-radius: 10px;
 }
 
 //-------------------------------------------- SIMPLE TEKST PAGEES -------------------------------
@@ -58,6 +63,12 @@ h3 {color: #8dd2d1 !important;}
 h4 {color: #ccc !important;} 
 
 #hometekst {position: fixed; bottom: 200px; left: 120px;} 
+
+.x-html {
+line-height: 1.6 !important;
+color: #777 !important;
+font-size: 1em !important;
+}
 
 //-------------------------------------------- BUTTONS -------------------------------------------
 
@@ -105,10 +116,8 @@ h4 {color: #ccc !important;}
   background-position: center 50px; 
 
 //  background-color: #666 !important
-
 }
 
-.tes {margin: 0;}
 //-------------------------------------------- VIDEO -------------------------------------------
 
 video {
@@ -116,14 +125,9 @@ video {
   width: 768px !important;
   height: 432px !important;
   overflow: hidden !important;
-// -webkit-animation: fadein 2s !important;
-
-
+ -webkit-animation: fadein 1s !important;
 }
 
-.basvideo:after {
-
-}
 
 // .x-video.loading {
 //   -webkit-transform:translateX(-2048px);
@@ -151,7 +155,6 @@ video {
 
 .x-video {
   background: none !important;
-//  -webkit-animation: fadein 4s !important;
 }
 
 
@@ -189,8 +192,16 @@ video {
 
 //-------------------------------------------- Tool bar bottom -------------------------------------------   
 
+.x-tabbar-dark.x-docked-bottom .x-tab-active {
+background-image: none !important;
+}
+
 .x-tabbar.x-docked-bottom .x-tab .x-button-icon {
   margin: 8px auto 0 auto !important;
+}
+
+.x-tabbar.x-docked-bottom .x-tab {
+border-radius: 3em !important;
 }
 
 .x-img.x-img-background {
@@ -206,20 +217,14 @@ video {
 }
 
 
-
-
 #gebarencarousel, .gebarendetail {
   background: url('../images/background.png')!important;
   background-size: 100% !important;
   background-repeat:no-repeat !important;
 //  background-color: #7bcdca !important; // important moet erbij
-
-
 }
 
 
-
-  
 
 //-------------------------------------------- NAVIGATION ICONS -------------------------------------------
 
