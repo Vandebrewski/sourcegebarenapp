@@ -30,7 +30,7 @@ permission on your app, which PhoneGap requires.
 <!-- Customize your app and platform with the preference element. -->
 <preference name="phonegap-version" value="3.5.0" /> <!-- all: current version of PhoneGap -->
 <preference name="orientation" value="portrait" /> <!-- all: default means both landscape and portrait are enabled -->
-<preference name="target-device" value="universal" /> <!-- all: possible values handset, tablet, or universal -->
+<preference name="target-device" value="tablet" /> <!-- all: possible values handset, tablet, or universal -->
 <preference name="fullscreen" value="true" /> <!-- all: hides the status bar at the top of the screen -->
 <preference name="webviewbounce" value="true" /> <!-- ios: control whether the screen 'bounces' when scrolled beyond the top -->
 <preference name="prerendered-icon" value="true" /> <!-- ios: if icon is prerendered, iOS will not apply it's gloss to the app's icon on the user's home screen -->
@@ -64,8 +64,8 @@ permission on your app, which PhoneGap requires.
     <gap:splash src="resources/images/screen-iphone-portrait-2x.png" gap:platform="ios"     width="640" height="960" />
     <gap:splash src="resources/icons/iphone5.png" gap:platform="ios"     width="640" height="1136" />
     <gap:splash src="resources/icons/768x1024.png"      gap:platform="ios"     width="768" height="1024" />
+    <gap:splash src="splash.png" />
 
-	<gap:splash src="splash.png" />
 
 
 

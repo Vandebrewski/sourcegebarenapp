@@ -1,6 +1,6 @@
 Ext.define('Test.view.Video', {
     extend: 'Ext.Video',
-    xtype: 'video',
+    xtype: 'video'
 
     // onErased: function() {
     //     this.callParent(arguments);

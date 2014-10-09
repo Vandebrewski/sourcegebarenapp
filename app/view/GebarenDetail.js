@@ -34,10 +34,10 @@ Ext.define('Test.view.GebarenDetail', {
                 }
             },
             {
-                xclass: 'Test.view.Video',
+                xtype: 'video',
                 name: 'listDetailVideo',
                 posterUrl: 'resources/images/play-video.png',
-                id: 'listvideo',
+//                id: 'listvideo',
                 width: 768,
                 height: 432,           
                 enableControls: false,
@@ -54,27 +54,6 @@ Ext.define('Test.view.GebarenDetail', {
 								me.play();
 								}, true);  
                             
-//                            if (Ext.os.is.iOS && !me._loadedVideo) {
-//                                if (!me._loadingVideo) {
-//                                    me._loadingVideo = true;
-
-//                                    me.addCls('loading');
-
-//                                    var fn = function() {
-//                                        if (me.media.dom.readyState > 1 && me._loadingVideo) {
-//                                            console.log('loaded');
-
-//                                            me.removeCls('loading');
-//                                            me._loadingVideo = false;
-//                                            me._loadedVideo = true;
-
-//                                            me.media.dom.removeEventListener('progress', fn, true);
-//                                        }
-//                                    };
-
-//                                    me.media.dom.addEventListener('progress', fn, true);
-//                              }
-//                            }
                             
                             if (me.isPlaying()) {                                       
                                 me.pause();

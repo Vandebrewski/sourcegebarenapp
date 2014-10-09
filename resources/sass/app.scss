@@ -71,27 +71,37 @@ font-size: 1em !important;
 }
 
 //-------------------------------------------- BUTTONS -------------------------------------------
+.closepanel {
+  background-image: url('../images/close.png')  !important;
+  background-repeat: no-repeat;
+  width: 120px;
+  height: 60px;
+  margin: -60px 0 0 0 !important;
+}
+
 
 .audioButton
 {
  background-image: url('../images/sound-button-back.png')!important;
  background-repeat: no-repeat;
 // padding: 3px 0 3px 60px!important;
- margin: 0 auto !important;
+ margin: 9px auto 0 auto !important;
  width: 230px;
- height: 59px;
+ height: 50px;
 // border-color: #fff !important;
  color: #fff !important;
  background-color: transparent !important;
  text-transform:uppercase !important; 
  border: 0 !important;
  webkit-box-align: center;
+// text-align: left !important;
+ padding-bottom: 8px !important;
 }
 
 
 .x-button-label {
   color: #fff !important;
-  font-weight: 300 !important;
+//  font-weight: 400 !important;
   letter-spacing: 2px !important;
 }
 
@@ -111,9 +121,10 @@ font-size: 1em !important;
 .play-video-button {
   display: block !important;
   height: 432px;
-  background-image: url('../images/play-video.png');
+  background-image: url('../images/before-play-video.png');
   background-repeat: no-repeat;
-  background-position: center 50px; 
+  background-position: center 67px;
+  -webkit-animation: pulse2 2s linear infinite;
 
 //  background-color: #666 !important
 }
@@ -125,7 +136,7 @@ video {
   width: 768px !important;
   height: 432px !important;
   overflow: hidden !important;
- -webkit-animation: fadein 1s !important;
+ -webkit-animation: fadein .5s !important;
 }
 
 
@@ -175,6 +186,9 @@ z-index: 1;
 background-color: transparent !important;
 }
 
+.x-mask {
+  background: rgba(0,0,0,0) center center no-repeat !important;
+}
 
 //-------------------------------------------- ANIMATION -------------------------------------------
 
@@ -190,10 +204,25 @@ background-color: transparent !important;
     to   { opacity: 0; }
 }
 
-.sun-animation {-webkit-animation: sunanimation 2s;}
-@-webkit-keyframes sunanimation {
-    from {margin-top:600px; margin-bottom:600px }
-    to   {margin-top:0px; margin-bottom:0px}
+@keyframes pulse2 {
+ 0% {-webkit-transform: scale(1);}
+ 100% {-webkit-transform: scale(0.9);}
+}
+
+@-webkit-keyframes "pulse2" {
+ 0% {
+   -webkit-transform: scale(1.0);
+   transform: scale(1.0);
+ }
+ 50% {
+   -webkit-transform: scale(0.9);
+   transform: scale(0.9);
+ }
+ 100% {
+   -webkit-transform: scale(1);
+   transform: scale(1);
+ }
+
 }
 
 .swipe-animation {-webkit-animation: swipeanimation 1s steps(30) 4 alternate; width: 678px; height: 512px;}

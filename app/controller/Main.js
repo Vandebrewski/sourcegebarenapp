@@ -117,21 +117,37 @@ Ext.define('Test.controller.Main', {
                         height: 432,
                         url: "resources/images/" + objectname + ".mp4",
                         listeners: {
-                            tap: function() {                           	
+                            tap: function() {           
+          	
                                 var modal = Ext.create('Ext.Panel', {
-//                                    centered: true,
-									bottom : 0, 
+                                	id: 'videopanel',
+									bottom : 49, 
                                     modal: true,
                                     width: 768,
                                     height: 432,
-                                    layout: 'fit',
+//                                    layout: 'fit',
                                     hideOnMaskTap: true,
                                     listeners: {
                                         hide: function() {    
                                             this.destroy();
+                                            
                                         }
                                     },
                                     items: [
+                                    	{
+                                    	xtype: 'button',
+//										 text:'sluit video',
+										 cls: 'closepanel',
+										 width: 100,
+										 height: 60,
+//										 action:'Cancel',
+										 listeners : {
+										     tap : function() {
+										           var pnl = Ext.getCmp('videopanel');
+										           pnl.hide();
+										     }
+										 }
+										},
                                         {
 											xtype: 'video',
                                             enableControls: false,
@@ -150,35 +166,14 @@ Ext.define('Test.controller.Main', {
 													me.play();
 													}, true);     
 
-//                                                    if (Ext.os.is.iOS && !me._loadedVideo) {
-//                                                        if (!me._loadingVideo) {
-//                                                            me._loadingVideo = true;
-
-//                                                            me.addCls('loading');
-
-//                                                            var fn = function() {
-//                                                                if (me.media.dom.readyState > 1 && me._loadingVideo) {
-//                                                                    console.log('loaded');
-//
-//                                                                    me.removeCls('loading');
-//                                                                    me._loadingVideo = false;
-//                                                                    me._loadedVideo = true;
-//
-//                                                                   me.media.dom.removeEventListener('progress', fn, true);
-//                                                                }
-//                                                            };
-//
-//                                                            me.media.dom.addEventListener('progress', fn, true);
-//                                                        }
-//                                                    }
-
                                                     if (me.isPlaying()) {                                       
                                                        me.pause();
                                                     } else {                                  
                                                         me.play();
                                                     }
                                                                           
-                                                }
+                                                },
+                                            element: 'element'    
                                             }
                                         } // END xtype video
                                     ]
