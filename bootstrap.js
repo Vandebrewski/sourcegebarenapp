@@ -9,30 +9,30 @@
  * metadata-driven class system features
  */
 Ext.Loader.addClassPathMappings({
-  "Ext": "touch/src",
-  "Ext-more": "touch/src/core/Ext-more.js",
+  "Ext": "../touch/src",
+  "Ext-more": "../touch/src/core/Ext-more.js",
   "Ext.Boot": ".sencha/app/Boot.js",
-  "Ext.DomHelper": "touch/src/dom/Helper.js",
-  "Ext.DomQuery": "touch/src/dom/Query.js",
-  "Ext.Element-alignment": "touch/src/dom/Element.alignment.js",
-  "Ext.Element-all": "touch/src/dom/Element.traversal.js",
-  "Ext.Element-insertion": "touch/src/dom/Element.insertion.js",
-  "Ext.Element-position": "touch/src/dom/Element.position.js",
-  "Ext.Element-static": "touch/src/dom/Element.static.js",
-  "Ext.Element-style": "touch/src/dom/Element.style.js",
-  "Ext.Element-traversal": "touch/src/dom/Element.traversal.js",
-  "Ext.core.DomQuery": "touch/src/dom/Query.js",
-  "Ext.device.Purchases.Product": "touch/src/device/purchases/Sencha.js",
-  "Ext.device.filesystem.DirectoryEntry": "touch/src/device/filesystem/Sencha.js",
-  "Ext.device.filesystem.Entry": "touch/src/device/filesystem/Sencha.js",
-  "Ext.device.filesystem.FileEntry": "touch/src/device/filesystem/Sencha.js",
-  "Ext.device.filesystem.FileSystem": "touch/src/device/filesystem/Sencha.js",
-  "Ext.device.purchases.Purchase": "touch/src/device/purchases/Sencha.js",
-  "Ext.device.sqlite.Database": "touch/src/device/sqlite/Sencha.js",
-  "Ext.device.sqlite.SQLResultSet": "touch/src/device/sqlite/Sencha.js",
-  "Ext.device.sqlite.SQLResultSetRowList": "touch/src/device/sqlite/Sencha.js",
-  "Ext.device.sqlite.SQLTransaction": "touch/src/device/sqlite/Sencha.js",
-  "Test": "app"
+  "Ext.DomHelper": "../touch/src/dom/Helper.js",
+  "Ext.DomQuery": "../touch/src/dom/Query.js",
+  "Ext.Element-alignment": "../touch/src/dom/Element.alignment.js",
+  "Ext.Element-all": "../touch/src/dom/Element.traversal.js",
+  "Ext.Element-insertion": "../touch/src/dom/Element.insertion.js",
+  "Ext.Element-position": "../touch/src/dom/Element.position.js",
+  "Ext.Element-static": "../touch/src/dom/Element.static.js",
+  "Ext.Element-style": "../touch/src/dom/Element.style.js",
+  "Ext.Element-traversal": "../touch/src/dom/Element.traversal.js",
+  "Ext.core.DomQuery": "../touch/src/dom/Query.js",
+  "Ext.device.Purchases.Product": "../touch/src/device/purchases/Sencha.js",
+  "Ext.device.filesystem.DirectoryEntry": "../touch/src/device/filesystem/Sencha.js",
+  "Ext.device.filesystem.Entry": "../touch/src/device/filesystem/Sencha.js",
+  "Ext.device.filesystem.FileEntry": "../touch/src/device/filesystem/Sencha.js",
+  "Ext.device.filesystem.FileSystem": "../touch/src/device/filesystem/Sencha.js",
+  "Ext.device.purchases.Purchase": "../touch/src/device/purchases/Sencha.js",
+  "Ext.device.sqlite.Database": "../touch/src/device/sqlite/Sencha.js",
+  "Ext.device.sqlite.SQLResultSet": "../touch/src/device/sqlite/Sencha.js",
+  "Ext.device.sqlite.SQLResultSetRowList": "../touch/src/device/sqlite/Sencha.js",
+  "Ext.device.sqlite.SQLTransaction": "../touch/src/device/sqlite/Sencha.js",
+  "KinderGebaren": "app"
 });
 
 Ext.ClassManager.addNameAlternateMappings({
@@ -656,17 +656,21 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "Test.controller.Main": [],
-  "Test.model.Gebaar": [],
-  "Test.store.Gebaar": [],
-  "Test.view.Card": [],
-  "Test.view.Extra": [],
-  "Test.view.GebarenDetail": [],
-  "Test.view.Gebarenlijst": [],
-  "Test.view.Home": [],
-  "Test.view.NavList": [],
-  "Test.view.Video": [],
-  "Test.view.Viewport": []
+  "KinderGebaren.controller.Main": [],
+  "KinderGebaren.controller.Quiz": [],
+  "KinderGebaren.model.Gebaar": [],
+  "KinderGebaren.overrides.PaintMonitor": [],
+  "KinderGebaren.overrides.SizeMonitor": [],
+  "KinderGebaren.overrides.Video": [],
+  "KinderGebaren.store.Gebaar": [],
+  "KinderGebaren.view.Extra": [],
+  "KinderGebaren.view.Fingerspelling": [],
+  "KinderGebaren.view.GebarenDetail": [],
+  "KinderGebaren.view.Gebarenlijst": [],
+  "KinderGebaren.view.Home": [],
+  "KinderGebaren.view.NavList": [],
+  "KinderGebaren.view.Quiz": [],
+  "KinderGebaren.view.Viewport": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -1387,31 +1391,35 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
-  "Test.controller.Main": [],
-  "Test.model.Gebaar": [],
-  "Test.store.Gebaar": [],
-  "Test.view.Card": [
-    "widget.cardpanel"
-  ],
-  "Test.view.Extra": [
+  "KinderGebaren.controller.Main": [],
+  "KinderGebaren.controller.Quiz": [],
+  "KinderGebaren.model.Gebaar": [],
+  "KinderGebaren.overrides.PaintMonitor": [],
+  "KinderGebaren.overrides.SizeMonitor": [],
+  "KinderGebaren.overrides.Video": [],
+  "KinderGebaren.store.Gebaar": [],
+  "KinderGebaren.view.Extra": [
     "widget.extrapanel"
   ],
-  "Test.view.GebarenDetail": [
+  "KinderGebaren.view.Fingerspelling": [
+    "widget.fingerspelling"
+  ],
+  "KinderGebaren.view.GebarenDetail": [
     "widget.gebarendetail"
   ],
-  "Test.view.Gebarenlijst": [
+  "KinderGebaren.view.Gebarenlijst": [
     "widget.gebarenlijst"
   ],
-  "Test.view.Home": [
+  "KinderGebaren.view.Home": [
     "widget.homepanel"
   ],
-  "Test.view.NavList": [
+  "KinderGebaren.view.NavList": [
     "widget.navlist"
   ],
-  "Test.view.Video": [
-    "widget.video"
+  "KinderGebaren.view.Quiz": [
+    "widget.quizpanel"
   ],
-  "Test.view.Viewport": [
+  "KinderGebaren.view.Viewport": [
     "widget.main-view"
   ]
 });

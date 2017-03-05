@@ -1,17 +1,25 @@
-Ext.define('Test.view.Gebarenlijst', {
+Ext.define('KinderGebaren.view.Gebarenlijst', {
     extend: 'Ext.List',
     xtype: 'gebarenlijst',
-
     config: {
         cls: 'gebarenlijst',
-        title: 'Dieren',
-        scrollable: false,  
-        height: 1024,
+       grouped: true,
+        scrollable: true,
+        scroll: 'vertical',        
+		layout: 'fit',
+        store: 'gebaarStore',
 
-
-        store: 'gebaarStore',//Ext.create('Test.store.Gebaar'),
-        itemTpl: '<img src="resources/images/{plaatje}-klein.png">{plaatje}'
-//        onItemDisclosure: true // not needed anymore
+// --------EXPERIMENT --------        
+        masked: {
+        xtype: 'loadmask',
+        message: 'loading data'
+    	}, 
+    	
+    	
+// --------END EXPERIMENT --------    	
+        
+        
+        itemTpl: '<img src="resources/images/objects/{plaatje}.svg">{plaatje}'
     }
 });
 

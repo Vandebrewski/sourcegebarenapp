@@ -1,10 +1,10 @@
-Ext.define('Test.view.NavList', {
+Ext.define('KinderGebaren.view.NavList', {
     extend: 'Ext.Container',
     xtype: 'navlist',
 
     requires: [
-        'Test.view.Gebarenlijst',
-        'Test.view.GebarenDetail'
+        'KinderGebaren.view.Gebarenlijst',
+        'KinderGebaren.view.GebarenDetail'
     ],
 
     config: {
@@ -15,7 +15,8 @@ Ext.define('Test.view.NavList', {
         // useTitleForBackButtonText: 'true', // true causes the back tekst to be something else than "back"
         items: [{
             xtype: 'gebarenlijst'
-        }, {
+        }, 
+        {
             xtype: 'gebarendetail'
         }]
     }

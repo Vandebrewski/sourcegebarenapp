@@ -1,8 +1,24 @@
 {
+    "builds": {
+        "web": {"default": true},
+        "native": {
+            "packager": "cordova",
+            "cordova" : {
+                "config": {
+                    "platforms": "ios android",
+
+                    "id": "com.basvanderwilk.kindergebarenlite",
+                    "name": "KinderGebaren"
+                }
+            }
+        }
+    },
+
+                
     /**
      * The application's namespace, used by Sencha Command to generate classes
      */
-    "name": "Test",
+    "name": "KinderGebaren",
 
     /**
      * The file path to this application's front HTML document, relative to this app.json file
@@ -39,10 +55,6 @@
      *      }
      */
     "js": [
-		{
-			"path": "phonegap.js",
-			"remote": true
-		},
         {
             "path": "touch/sencha-touch.js",
             "x-bootstrap": true
@@ -107,8 +119,12 @@
      * Extra resources to be copied along when build
      */
     "resources": [
+    	"resources/splash",
         "resources/images",
-        "resources/icons"
+        "resources/icons",
+        "resources/fonts",
+        "resources/audio",
+        "resources/video"
     ],
 
     /**
@@ -134,5 +150,5 @@
      * Uniquely generated id for this application, used as prefix for localStorage keys.
      * Normally you should never change this value.
      */
-    "id": "64c83dc2-6932-4bbb-9792-f78cf4040110"
+    "id": "e91bcf12-cf92-4d6b-9353-1dbe4ce5ba64"
 }

@@ -1,21 +1,31 @@
-Ext.define('Test.store.Gebaar',{
+Ext.define('KinderGebaren.store.Gebaar',{
     extend: 'Ext.data.Store',
-    config:{
-        model: 'Test.model.Gebaar',
-        autoLoad: true,
-        sorters: 'plaatje',
+    config: {
+        model: 'KinderGebaren.model.Gebaar',
+        
+//        sorters: 'cat',
+        
+       grouper: {
+            property: 'cat',
+            direction:'ASC'
+        },
+        
+//       sorters: [{
+//            property: 'Id',
+//            direction: 'ASC'
+//        }],
+        
+        autoLoad: false,
         storeId:'gebaarStore',
-        method : 'GET', // is this helpful?
+        method : 'GET',
 
-        proxy:{
-            type:'ajax',
-            url:'resources/images/Gebaren.json',
+        proxy: {
+            type: 'ajax',
+            url: 'resources/images/Gebaren.json',
             reader:{
                 type: 'json',
                 rootProperty: 'Gebaartje'
             }
         }
-
-
     }
 });

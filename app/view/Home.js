@@ -1,41 +1,35 @@
-Ext.define('Test.view.Home', {
+Ext.define('KinderGebaren.view.Home', {
     extend: 'Ext.Container',
     xtype: 'homepanel',
     fullscreen: true,
 
     config: {
-//        title: 'Home', // there doesn't need to be a title
         iconCls: 'home',
-        cls: 'tekstscreen',
+        cls: 'homescreen',
+        scrollable: null,
 
-        scrollable: false,
-        height: 1024,
-        
-        layout: {
-            type: 'vbox',
-            pack: 'end',
-            align: 'stretch'
-        },
+		listeners:[
+                 {
+                    element: 'element',
+                    event: 'tap',
+                    fn: function() {
+                        Ext.Viewport.toggleMenu('left');
+                    }
+                }
+            ],
 
-        items: [{
-            xtype: 'image',
-            cls: 'fade-in',
-            flex: 2,
-            src: 'resources/images/home-logo.png',
-            height: '564',
-            width: '768'
-// This link to the cardpanel does not work and generates a warning
-//			listeners: {
-//                tap: function(){
-//                    Ext.Viewport.setActiveItem({
-//                        xtype: 'cardpanel'
-//                    })
-//                }
-//            }
-        }, {
-            flex: 1,
-            html: '<center><br /><h3>LITE versie 1.0 Beta</h3><h4><br />Leer op eenvoudige wijze gebaren. Dit is een pilot app, <br />er wordt op dit moment hard gewerkt aan een uitgebreide versie van de app</h4><br /><br /><img src="resources/images/nsdsk-klein.png"></center>'
-        }]
+        items: [
+        {
+			html: 'Menu<br />&#x25BC;',
+			cls: 'menu-hint'
+		},
+		{
+// FOR ANDROID:			
+//			html: '<audio autoplay><source src="/android_asset/www/resources/audio/soundsapp/start.mp3"></source></audio>'
+// for iOS			
+			html: '<audio autoplay><source src="resources/audio/soundsapp/start.mp3"></source></audio>'
+		}
+
+	]
     }
 })
-

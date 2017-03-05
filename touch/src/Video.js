@@ -58,7 +58,13 @@ Ext.define('Ext.Video', {
          * @cfg
          * @inheritdoc
          */
-        baseCls: Ext.baseCSSPrefix + 'video'
+        baseCls: Ext.baseCSSPrefix + 'video',
+
+        /**
+         * @cfg {Boolean} controls
+         * Determines if native controls should be shown for this video player.
+         */
+        controls: true
     },
 
     template: [{
@@ -96,7 +102,7 @@ Ext.define('Ext.Video', {
             scope: me
         });
 
-        if (Ext.os.is.Android4 || Ext.os.is.iPad) {
+        if (Ext.os.is.iPhone || Ext.os.is.iPad) {
             this.isInlineVideo = true;
         }
     },
@@ -130,9 +136,13 @@ Ext.define('Ext.Video', {
         }
     },
 
+    updateControls: function(value) {
+        this.media.set({controls:value ? true : undefined});
+    },
+
     onErased: function() {
         this.pause();
-        this.media.setTop(-2000);
+        this.media.setBottom(-2000);
         this.ghost.show();
     },
 
@@ -168,7 +178,7 @@ Ext.define('Ext.Video', {
     onPause: function() {
         this.callParent(arguments);
         if (!this.isInlineVideo) {
-            this.media.setTop(-2000);
+            this.media.setBottom(-2000);
             this.ghost.show();
         }
     },
@@ -179,7 +189,7 @@ Ext.define('Ext.Video', {
      */
     onPlay: function() {
         this.callParent(arguments);
-        this.media.setTop(0);
+        this.media.setBottom(0);
     },
 
     /**

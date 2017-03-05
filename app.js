@@ -1,53 +1,82 @@
 // DO NOT DELETE - this directive is required for Sencha Cmd packages to work.
 //@require @packageOverrides
 Ext.application({
-    name: 'Test',
+    name: 'KinderGebaren',
     requires: [
         'Ext.MessageBox',
-        'Test.store.Gebaar',
-        'Test.view.Viewport',
-        'Test.view.Video',
+        'KinderGebaren.store.Gebaar',
+        'KinderGebaren.view.Viewport',
+        'KinderGebaren.overrides.Video',
+        'KinderGebaren.overrides.SizeMonitor',
+        'KinderGebaren.overrides.PaintMonitor',
         'Ext.Img',
         'Ext.Video',
         'Ext.Audio',
-        'Ext.Button', // should this be placed in the view page??
-        'Ext.carousel.Carousel', // should this be in it?
-        'Ext.data.proxy.JsonP' // should this be in it?
+        'Ext.Button',
+		'Ext.Menu',
+		'Ext.Carousel',
+        'Ext.data.proxy.JsonP'
     ],
-    // models: ['Gebaar'],
-    // stores: ['Gebaar'],
-    controllers: ['Main'],
-    // views: ['Home', 'Card', 'NavList', 'Extra'],
 
-    icon: {
-        '60': 'resources/icons/icons-60.png',
-        '120': 'resources/icons/icons-120.png',
-        '76': 'resources/icons/icons-76.png',
-        '152': 'resources/icons/icons-152@2x.png'
-    },
-    isIconPrecomposed: true,
-    startupImage: {
-        '640x1136': 'resources/icons/iphone5.png',
-        '768x1024': 'resources/icons/768x1024.png',
-        '1536x2048': 'resources/icons/768x1024.png'
+    controllers: ['Main', 'Quiz'],
+
+    eventPublishers: {
+        touchGesture: {
+            recognizers: {
+                doubleTap : null,
+                longPress : null,
+                pinch : null,
+                rotate : null
+            }
+        }
     },
 
     launch: function () {
-//        Ext.create('Test.view.Viewport'); I think this does exactly the same as underneath
-        Ext.Viewport.add([{ xtype: 'main-view' }]);
+        Ext.Viewport.add({
+            xtype: 'main-view'
+        });
 
 
-    }, // End launch
-   
-    onUpdated: function () {
-        Ext.Msg.confirm(
-            "Application Update",
-            "This application has just successfully been updated to the latest version. Reload now?",
-            function (buttonId) {
-                if (buttonId === 'yes') {
-                    window.location.reload();
+        // Create native side menu
+        var sideMenu = Ext.create('Ext.Menu', {
+            layout: 'fit',
+            width: 150,
+            id: 'nav-menu',
+            items: [
+
+            {
+                xtype: 'list',
+                itemTpl: '{title}',
+                scrollable: false, //warning: This container is set to scrollable: false but has no specified height. You may need to set the container to scrollable: null or provide a height.
+                data: [
+                {
+                    title: '<div class="menu-icon-big1">&#xe901;</div>gebaren',
+                    itemIndex: 1
+                },
+                {
+                    title: '<div class="menu-icon-big">&#xe023;</div>quiz',
+                    itemIndex: 2
+                },
+                {
+                    title: '<div class="menu-abc">abc</div>',
+                    itemIndex: 4
+                },
+                {
+                    title: '<div class="menu-icon-small">&#xe904;</div>',
+                    itemIndex: 3
+                },
+                {
+                    title: '<div class="menu-icon-small">&#xe905;</div>',
+                    itemIndex: 0
                 }
-            }
-        );
-    }
+                ]
+            }]
+        });
+
+        // Add side menu to viewport
+        Ext.Viewport.setMenu(sideMenu, {
+            side: 'left',
+            reveal: true
+        });
+    } //, // End launch
 });
