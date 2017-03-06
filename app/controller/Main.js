@@ -72,6 +72,10 @@
             if( !navlist.down('gebarenlijst') ){
                 navlist.add({xtype: 'gebarenlijst'});
                 navlist.setActiveItem(navlist.down('gebarenlijst'));
+                Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
+                setTimeout(function(){
+                    Ext.Viewport.setMasked(false);    
+                },1000);
             }
             if( !navlist.down('gebarendetail') ){
                 navlist.add({xtype: 'gebarendetail'});
@@ -93,6 +97,10 @@
         if( !navlist.down('gebarenlijst') ){
             navlist.add({xtype: 'gebarenlijst'});
             navlist.setActiveItem(navlist.down('gebarenlijst'));
+            Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
+            setTimeout(function(){
+                Ext.Viewport.setMasked(false);    
+            },1000);
         }
         
         //this.getMain().setActiveItem(0);
