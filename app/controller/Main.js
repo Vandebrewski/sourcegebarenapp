@@ -60,12 +60,11 @@
         if(record.data.itemIndex == 1){
             Ext.Viewport.toggleMenu('left');
             Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
-
-            setTimeout(function(){
+            var store = Ext.getStore("gebaarStore");
+            store.load(function(records, operation, success) {
                 Ext.Viewport.setMasked(false);
                 Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
-                
-            },1500);
+            }, this);
             return;
         }
         Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
