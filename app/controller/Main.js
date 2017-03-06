@@ -37,7 +37,6 @@
             'gebarenlijst': {
                 itemtap: 'showDetail'
             },
-
             'videoView': {
                 ended: 'onVideoEnded'
             }
@@ -58,6 +57,17 @@
 
     onNavMenuSelect: function(view, record) {
         var itemIndex = record.get('itemIndex');
+        if(record.data.itemIndex == 1){
+            Ext.Viewport.toggleMenu('left');
+            Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
+
+            setTimeout(function(){
+                Ext.Viewport.setMasked(false);
+                Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
+                
+            },1500);
+            return;
+        }
         Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
 
         // Hide the menu?
