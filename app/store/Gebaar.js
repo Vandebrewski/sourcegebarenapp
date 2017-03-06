@@ -15,7 +15,7 @@ Ext.define('KinderGebaren.store.Gebaar',{
 //            direction: 'ASC'
 //        }],
         
-        autoLoad: false,
+        autoLoad: true,
         storeId:'gebaarStore',
         method : 'GET',
         

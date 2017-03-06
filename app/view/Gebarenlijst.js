@@ -10,10 +10,10 @@ Ext.define('KinderGebaren.view.Gebarenlijst', {
         store: 'gebaarStore',
 
 // --------EXPERIMENT --------        
-        masked: {
-        xtype: 'loadmask',
-        message: 'loading data'
-    	}, 
+     //    masked: {
+     //        xtype: 'loadmask',
+     //        message: 'loading data'
+    	// }, 
     	
     	
 // --------END EXPERIMENT --------    	

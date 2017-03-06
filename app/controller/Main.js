@@ -57,15 +57,20 @@
 
     onNavMenuSelect: function(view, record) {
         var itemIndex = record.get('itemIndex');
+        // if(record.data.itemIndex == 1){
+        //     Ext.Viewport.toggleMenu('left');
+        //     Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
+        //     var store = Ext.getStore("gebaarStore");
+        //     store.load(function(records, operation, success) {
+        //         Ext.Viewport.setMasked(false);
+        //         Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
+        //     }, this);
+        //     return;
+        // }
         if(record.data.itemIndex == 1){
-            Ext.Viewport.toggleMenu('left');
-            Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
-            var store = Ext.getStore("gebaarStore");
-            store.load(function(records, operation, success) {
-                Ext.Viewport.setMasked(false);
-                Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
-            }, this);
-            return;
+            var navlist = Ext.Viewport.down('navlist');
+            navlist.add({xtype: 'gebarenlijst'});
+            navlist.add({xtype: 'gebarendetail'});
         }
         Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
 
