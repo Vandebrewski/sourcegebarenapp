@@ -67,10 +67,20 @@
         //     }, this);
         //     return;
         // }
+        var navlist = Ext.Viewport.down('navlist');
         if(record.data.itemIndex == 1){
-            var navlist = Ext.Viewport.down('navlist');
-            navlist.add({xtype: 'gebarenlijst'});
-            navlist.add({xtype: 'gebarendetail'});
+            if( !navlist.down('gebarenlijst') ){
+                navlist.add({xtype: 'gebarenlijst'});
+                navlist.setActiveItem(navlist.down('gebarenlijst'));
+            }
+            if( !navlist.down('gebarendetail') ){
+                navlist.add({xtype: 'gebarendetail'});
+            }
+        }
+        else{
+            if( navlist.down('gebarenlijst') ){
+                navlist.down('gebarenlijst').destroy();
+            }
         }
         Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
 
@@ -79,7 +89,13 @@
     },
 
     onBackTap: function() {
-        this.getMain().setActiveItem(0);
+        var navlist = Ext.Viewport.down('navlist');
+        if( !navlist.down('gebarenlijst') ){
+            navlist.add({xtype: 'gebarenlijst'});
+            navlist.setActiveItem(navlist.down('gebarenlijst'));
+        }
+        
+        //this.getMain().setActiveItem(0);
         
         // onderstaande regel is een experiment (lijkt te werken)
         this.getVideoView().media.hide();
@@ -177,9 +193,16 @@
 
         me.currentDetailRecord = record;
         me.getMain().animateActiveItem(detail, {type: 'fade', duration: 250});
+        
 
         setTimeout(function() {
-            me.getListView().deselectAll();
-        }, 150);
+            if(me.getListView()){
+                me.getListView().deselectAll();
+            }
+            var navlist = Ext.Viewport.down('navlist');
+            if( navlist.down('gebarenlijst') ){
+                navlist.down('gebarenlijst').destroy();
+            }
+        }, 300);
     }
 });

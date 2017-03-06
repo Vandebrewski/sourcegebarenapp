@@ -29,7 +29,7 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
             {
                 xtype: 'image',
                 name: 'listDetailImage',
-               flex: 1,
+                flex: 1,
                 cls: 'listdetailimage'
             },
             {
