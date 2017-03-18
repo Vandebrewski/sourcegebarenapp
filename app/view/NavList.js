@@ -15,12 +15,15 @@ Ext.define('KinderGebaren.view.NavList', {
 //        id: 'navlistCardView',
         // useTitleForBackButtonText: 'true', // true causes the back tekst to be something else than "back"
         items: [
+<<<<<<< HEAD
         {
 //                xtype: 'gebarenlijst',
 //                flex: 1 // seems needed to diplay properly?
             }
             // Old code before dynamic list
             
+=======
+>>>>>>> origin/master
             // {
             //     xtype: 'gebarenlijst'
             // }, 

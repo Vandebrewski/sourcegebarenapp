@@ -54,7 +54,10 @@
     onNavMenuSelect: function(view, record) {
 
         var itemIndex = record.get('itemIndex');
+<<<<<<< HEAD
 // ------ Old code before dynamic list ---------        
+=======
+>>>>>>> origin/master
         // if(record.data.itemIndex == 1){
         //     Ext.Viewport.toggleMenu('left');
         //     Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
@@ -65,6 +68,7 @@
         //     }, this);
         //     return;
         // }
+<<<<<<< HEAD
 // ----- END Old code -------------------------
 
         var navlist = Ext.Viewport.down('navlist');
@@ -80,6 +84,28 @@
                     Ext.Viewport.setMasked(false);    
                 },2000);
             }
+=======
+        var navlist = Ext.Viewport.down('navlist');
+        if(record.data.itemIndex == 1){
+            if( !navlist.down('gebarenlijst') ){
+                navlist.add({xtype: 'gebarenlijst'});
+                navlist.setActiveItem(navlist.down('gebarenlijst'));
+                Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
+                setTimeout(function(){
+                    Ext.Viewport.setMasked(false);    
+                },1000);
+            }
+            if( !navlist.down('gebarendetail') ){
+                navlist.add({xtype: 'gebarendetail'});
+            }
+        }
+        else{
+            if( navlist.down('gebarenlijst') ){
+                navlist.down('gebarenlijst').destroy();
+            }
+        }
+        Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
+>>>>>>> origin/master
 
             if( !navlist.down('gebarendetail') ){
                 navlist.add({xtype: 'gebarendetail'});
@@ -99,6 +125,7 @@
         var navlist = Ext.Viewport.down('navlist');
         if( !navlist.down('gebarenlijst') ){
             navlist.add({xtype: 'gebarenlijst'});
+<<<<<<< HEAD
             navlist.setActiveItem(navlist.down('gebarenlijst')); // , {type: 'fade', duration: 1000} not sure if this fade is working
 
 // ---- Mask on back tab is not needed for now --------
@@ -107,6 +134,19 @@
 //                Ext.Viewport.setMasked(false);            
 //            },1000);
         }
+=======
+            navlist.setActiveItem(navlist.down('gebarenlijst'));
+            Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
+            setTimeout(function(){
+                Ext.Viewport.setMasked(false);    
+            },1000);
+        }
+        
+        //this.getMain().setActiveItem(0);
+        
+        // onderstaande regel is een experiment (lijkt te werken)
+        this.getVideoView().media.hide();
+>>>>>>> origin/master
         
         
         //this.getMain().setActiveItem(0); // old code before dynamic loading       
@@ -197,7 +237,11 @@
         me.getListDetailButton().setText(record.data.plaatje);
 
         me.currentDetailRecord = record;
+<<<<<<< HEAD
         me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
+=======
+        me.getMain().animateActiveItem(detail, {type: 'fade', duration: 250});
+>>>>>>> origin/master
         
 
         setTimeout(function() {
