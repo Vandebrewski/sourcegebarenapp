@@ -1,9 +1,6 @@
 Ext.define('KinderGebaren.view.Fingerspelling', {
     extend: 'Ext.Carousel',
     xtype: 'fingerspelling',
-    
-    
-
 
     config: {
         iconCls: 'info', // must leave in. Otherwise it will break. Don't know why

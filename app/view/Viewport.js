@@ -10,7 +10,7 @@ Ext.define('KinderGebaren.view.Viewport', {
         layout: {
             animation: {
                 type: 'slide',
-                duration: 100
+                duration: 5
             }
         },
         

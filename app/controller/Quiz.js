@@ -130,6 +130,7 @@ Ext.define('KinderGebaren.controller.Quiz', {
 
         this.setCurrentQuestionIndex(index);
         this.updateQuizTitle();
+//        this.getAnswersView().show();
     },
 
     finish: function() {
@@ -223,30 +224,34 @@ Ext.define('KinderGebaren.controller.Quiz', {
         this.setResults(results);
 
         view.deselectAll();
+        
+//        this.getAnswersView().hide();
+
+//		this.getVideoView().pause(); //IOS only? Is niet echt nodig en zorgt voor extra activiteit
+
 
         if (this.getShowAnswerResultAlert()) {
 // IOS verwijder stukje audio hieronder voor Android        	
-            var message = correct ? "<div><img src='resources/images/correct.svg'><br /><br /><img src='resources/images/cake.svg'></div><audio autoplay><source src='resources/audio/soundsapp/correct.mp3'></source></audio>" : "";
+            var message = correct ? "<img src='resources/images/correct.svg'><br /><br /><img src='resources/images/cake.svg'>" : "";
 
             if (!correct) {
                 var correctAnswer = store.getAt(store._correctIndex);
 
-                message += "<br />";
-// IOS audio regel hieronder vervangen voor android                
-                message += "<div><img src='resources/images/wrong.svg'><br />Het goede antwoord is: <br /><br /><img src='resources/images/objects/" + correctAnswer.get('plaatje') + ".svg'></div><audio autoplay><source src='resources/audio/soundsapp/wrong.mp3'></source></audio>";
+                message += "<br />";             
+                message += "<img src='resources/images/wrong.svg'><br />Het goede antwoord is: <br /><br /><img src='resources/images/objects/" + correctAnswer.get('plaatje') + ".svg'>";
             }
 
-// iOS sound for later versions. Nevermind older versions
- //         if (Ext.os.version.getMajor() > 7) {
-//            var audio = new Audio('resources/audio/soundsapp/' + (correct ? 'correct.mp3' : 'wrong.mp3'));
-//			}
+// iOS sound 
+          if (Ext.os.is.iOS) {
+            var audio = new Audio('resources/audio/soundsapp/' + (correct ? 'correct.mp3' : 'wrong.mp3'));
+			audio.play(); 
+			}
 // END iOS sound
 
 // Android sound
-//          if (Ext.os.is.Android) {
-//		var audio = new Audio('/android_asset/www/resources/audio/soundsapp/' + (correct ? 'correct.mp3' : 'wrong.mp3'));
-//            audio.play();
-//            }
+          if (Ext.os.is.Android) {
+		var audio = new Audio('/android_asset/www/resources/audio/soundsapp/' + (correct ? 'correct.mp3' : 'wrong.mp3'));
+            audio.play();            }
 // END Android            
 
             Ext.Msg.alert('', message, function() {
@@ -295,37 +300,16 @@ Ext.define('KinderGebaren.controller.Quiz', {
             enableControls: false,
             
 
-
-// ------------- experiment ------------------
-
-//            preload: true, //werkt niet. Misschien een andere sencha code?
-            muted: true, // helpt misschien??
-//            autoResume: true, // werkt niet
-            
-
-//			listeners: {
-//				painted: function (Component, eOpts) {
-//					var me = this;
-//					me.play();
-//			} // painted
-//			}, // listeners
-
-// ------------- EINDE experiment ------------------
-
-
-
-
-
             listeners: {
                 tap: { 
                     fn: function () {
                         var me = this;
+                        // removed the Pause option for now
 //                        if (me.isPlaying()) {
 //                            me.pause();
 //                        } else {
 //                            me.play();
 //                        }
-// bovenstaande weggehaald zodat kinderen niet kunnen pauzeren
 						me.play();
                     }, // END addEventListener
                     element: 'element'
@@ -335,10 +319,10 @@ Ext.define('KinderGebaren.controller.Quiz', {
     },
 
     onVideoEnded: function(video) {
-//        video.media.setBottom(-2000); // wwarom was dit eigenlijk nodig???
+        video.media.setBottom(-2000); // wwarom was dit eigenlijk nodig???
         video.ghost.show();
 //        if (video.media.pause) {
-//            video.media.pause(); // fix for: the .paused flag remains false when the media has ended
+//            video.media.pause(); // fix for: the .paused flag remains false when the media has ended. I don't think this is needed anymore for IOS9 and 10
 //        }
     }
 });

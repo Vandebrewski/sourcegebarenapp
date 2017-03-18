@@ -30,6 +30,7 @@ Ext.define('KinderGebaren.view.Quiz', {
                    {
                 		cls: 'quizvideoborderoverlay1'
                 	},
+// END IOS                	
                     {
                         xtype: 'dataview',
                         scrollable: null,
@@ -41,6 +42,7 @@ Ext.define('KinderGebaren.view.Quiz', {
                 	{
                 		cls: 'quizvideoborderoverlay2'
                 	},
+// END IOS                	
                     {
                         xtype: 'spacer'
                     }

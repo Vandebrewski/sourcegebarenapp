@@ -3,19 +3,19 @@
 Ext.application({
     name: 'KinderGebaren',
     requires: [
-        'Ext.MessageBox',
-        'KinderGebaren.store.Gebaar',
-        'KinderGebaren.view.Viewport',
-        'KinderGebaren.overrides.Video',
-        'KinderGebaren.overrides.SizeMonitor',
-        'KinderGebaren.overrides.PaintMonitor',
+        'Ext.MessageBox', //needed for quiz -answer pop up
+        'KinderGebaren.store.Gebaar', //not needed for functioning
+       'KinderGebaren.view.Viewport', //needed!
+        'KinderGebaren.overrides.Video', // do we need this?
+        'KinderGebaren.overrides.SizeMonitor', // do we need this? Prevents blank pages?
+        'KinderGebaren.overrides.PaintMonitor', // do we need this? Prevents blank pages?
         'Ext.Img',
-        'Ext.Video',
-        'Ext.Audio',
+//        'Ext.Video',
+//        'Ext.Audio',
         'Ext.Button',
-		'Ext.Menu',
-		'Ext.Carousel',
-        'Ext.data.proxy.JsonP'
+//		'Ext.Menu',
+//		'Ext.Carousel',
+        'Ext.data.proxy.JsonP' // prevents emty list view?
     ],
 
     controllers: ['Main', 'Quiz'],
@@ -35,12 +35,18 @@ Ext.application({
         Ext.Viewport.add({
             xtype: 'main-view'
         });
+        
+        Ext.Viewport.innerElement.addCls('viewport-inner'); // Hardware Acceleration Trick 
 
 
         // Create native side menu
         var sideMenu = Ext.create('Ext.Menu', {
             layout: 'fit',
             width: 150,
+			top: 0,
+        	left: 0,
+			bottom: 0,
+			docked: 'left',
             id: 'nav-menu',
             items: [
 
@@ -76,7 +82,7 @@ Ext.application({
         // Add side menu to viewport
         Ext.Viewport.setMenu(sideMenu, {
             side: 'left',
-            reveal: true
+            reveal: true,    
         });
     } //, // End launch
 });

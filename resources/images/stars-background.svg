@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1984.25 1984.25" enable-background="new 0 0 1984.25 1984.25">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1984.25 1984.25">
 <devs><style type="text/css">		
 		#lucht {-webkit-animation: zoomIn 1s linear forwards;}		
 		#wolk {-webkit-animation: Float 10s linear forwards;}
-		@keyframes zoomIn {
+		@-webkit-keyframes zoomIn {
 		  from {opacity: 0;}		
 		  50% {opacity: 1;}}
-		@keyframes Float {
+		@-webkit-keyframes Float {
 		  from { transform: translateX(350%) translateZ(0);}
 		  to { transform: translateX(-150%) translateZ(0);}}
 </style></devs>

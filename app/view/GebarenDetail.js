@@ -29,7 +29,7 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
             {
                 xtype: 'image',
                 name: 'listDetailImage',
-               flex: 1,
+                flex: 1,
                 cls: 'listdetailimage'
             },
             {
@@ -42,16 +42,16 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
                         xtype: 'button',
                         itemId: 'listDetailButton',
                         cls: 'audioButton',
-                        handler: function () {
-                            var container = this.getParent(),
-                            audio = container.down('audio');
-                            audio.play();
-							}
+//                        handler: function () {
+//                            var container = this.getParent(),
+//                            audio = container.down('audio');
+//                            audio.play();
+//							}
 // Android, beacause html5 audio is not supported, above function is for iOS. Remove above function (5 lines) and activate underneath function for android
-//						handler: function playAudio(url) {
-//    						var my_media = new Media(this.__url);
-//    						my_media.play();
-//						}
+						handler: function playAudio(url) {
+    						var my_media = new Media(this.__url);
+    						my_media.play();
+						}
 // end android
                        
                     },
@@ -117,13 +117,13 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
                             }
 
                             var me = this;
+                            // Removed Pause function for now
 //                            if (me.isPlaying()) {
 //                                me.pause();
 
 //                            } else {
 //                                me.play();
 //                            }
-				// Bovenstaande 3 regels heb ik vervangen zodat het filmpje niet kan pauzeren (kinderen blijven drukken)
 							me.play();
                         }, // END addEventListener
                         element: 'element'

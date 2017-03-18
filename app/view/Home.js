@@ -19,15 +19,11 @@ Ext.define('KinderGebaren.view.Home', {
             ],
 
         items: [
-        {
-			html: 'Menu<br />&#x25BC;',
-			cls: 'menu-hint'
-		},
 		{
 // FOR ANDROID:			
 //			html: '<audio autoplay><source src="/android_asset/www/resources/audio/soundsapp/start.mp3"></source></audio>'
 // for iOS			
-			html: '<audio autoplay><source src="resources/audio/soundsapp/start.mp3"></source></audio>'
+//			html: '<audio autoplay><source src="resources/audio/soundsapp/start.mp3"></source></audio>'
 		}
 
 	]

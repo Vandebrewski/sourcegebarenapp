@@ -1,6 +1,8 @@
 Ext.define('KinderGebaren.view.Gebarenlijst', {
-    extend: 'Ext.List',
+    extend: 'Ext.List', // or should I use Ext.List instead of Ext.dataview.List
     xtype: 'gebarenlijst',
+    
+//    fullscreen: true,
     config: {
         cls: 'gebarenlijst',
        	grouped: true,
@@ -8,18 +10,8 @@ Ext.define('KinderGebaren.view.Gebarenlijst', {
         scroll: 'vertical',        
 		layout: 'fit',
         store: 'gebaarStore',
-
-// --------EXPERIMENT --------        
-        masked: {
-        xtype: 'loadmask',
-        message: 'loading data'
-    	}, 
-    	
-    	
-// --------END EXPERIMENT --------    	
-        
+//       cover: true,
         
         itemTpl: '<img src="resources/images/objects/{plaatje}.svg">{plaatje}'
     }
 });
-

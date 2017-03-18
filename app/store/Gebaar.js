@@ -3,8 +3,6 @@ Ext.define('KinderGebaren.store.Gebaar',{
     config: {
         model: 'KinderGebaren.model.Gebaar',
         
-//        sorters: 'cat',
-        
        grouper: {
             property: 'cat',
             direction:'ASC'

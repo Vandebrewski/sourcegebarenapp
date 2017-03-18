@@ -9,7 +9,7 @@
 		}
 		
 		
-		@keyframes zoomIn {
+		@-webkit-keyframes zoomIn {
 		  from {
 		    opacity: 0;
 		  }		
@@ -18,7 +18,7 @@
 		  }
 		}
 		
-		@keyframes Float {
+		@-webkit-keyframes Float {
 		  from { transform: translateX(350%) translateZ(0); }
 		  to { transform: translateX(-150%) translateZ(0); }
 		}

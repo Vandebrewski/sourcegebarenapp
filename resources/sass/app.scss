@@ -3,10 +3,10 @@ $include-pictos-font: false;
 $include-default-icons: false;
 $include-highlights: false;
 $base-gradient: none;
-$basic-slider: true;
+$basic-slider: false; //stond op true
 $body-bg-color: #fff;
 $list-pressed-color: none;
-$loading-spinner-color: #409d8b;
+$loading-spinner-color: #62a4a2;
 
 $experimental-support-for-mozilla : false;
 $experimental-support-for-webkit : false;
@@ -40,16 +40,32 @@ body {
   background-color: #fff
 }
 
+//--------------------------------------------- Hardware Acceleration Trick -----------------------------------------
+.viewport-inner {
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s;
+}
 
+//--------------------------------------------- MASK -----------------------------------------
 
+.x-mask {
+background: #7BCDC7;
+//-webkit-animation: fadein 0.3s ease-in !important;
+}
+.x-mask .x-mask-inner, .x-mask .x-mask-outer {
+  background: none;
+}
 
+.x-mask .x-mask-message {
+  color:#fff;
+}
 
-
-
-
-
-
-
+.masklist {
+background-image: url('../images/fingerspellingbg.svg') !important;
+background-size: auto 100% !important;
+z-index:600 !important;
+}
 //-------------------------------------------- MENU -------------------------------------------
 
 #nav-menu {
@@ -57,7 +73,8 @@ body {
   background-image: url('../images/navback.svg') !important;
   background-repeat: no-repeat !important;
   color: #fff;
-  padding: 0 0 0 20px
+  padding: 0 0 0 20px;
+  z-index: 0;
 }
 
 
@@ -125,30 +142,6 @@ background-position: center center, center top !important;
 background-repeat: no-repeat !important
 }
   
-.menu-hint {
-  -webkit-animation: menudown 3s;
-  -webkit-animation-delay: 4s;
- position: absolute;
-  bottom: 150px;
-  left: 50%;
-  margin-left: -50px;
-  width: 100px;
-  height: 100px;
-  background-color: #fdef04;
-  opacity:0;
-  color: #f64b8d !important;
-  padding-top: 20px;
-  text-align: center;
-  line-height: 35px;
-  border-radius: 50%;
-  font-size: 28px
-}
-
-@-webkit-keyframes menudown {
-    0% { bottom: 0; opacity: 0; }
-    75%   { bottom: 20px; opacity: 1;}
-    100%   { bottom: 0; opacity: 0;}
-}
 //-------------------------------------------- list ------------------------------------------- 
 
 .x-list .x-list-header {
@@ -179,11 +172,10 @@ background-repeat: no-repeat !important
 
 
 .gebarenlijst {
- background-color: #7bcdcb!important;
-// background-image: url('../images/listback.svg') !important;
-// background-position: center, center bottom !important;
-// background-repeat: no-repeat !important;
-  text-align: center
+background-color: #7bcdcb!important;
+text-align: center;
+background-image: url('../images/fingerspellingbg.svg') !important;
+background-size: auto 100% !important;
 }
 
 .gebarenlijst img {
@@ -206,7 +198,7 @@ display:inline-block;
   width: 100px;
   height: 100px;
   border: 1px solid #fff !important;
-  border-radius: 5px;
+//  border-radius: 5px;
   text-align: center;
 // Android list font 0.1 groter gemaakt
   font-size: 1.1em;
@@ -225,7 +217,9 @@ display:inline-block;
 //-------------------------------------------- INFO-------------------------------
 
 .infoscreen {
- background: #ffffff
+ background: #ffffff;
+ background-image: url('../images/infobackgr.svg') !important;
+background-size: auto 100% !important;
 }
 
 h3 {margin:0; padding: 10px 0 10px 0; font-size: 1.4em !important} 
@@ -245,6 +239,16 @@ h4 {color: #A9D1BC !important; font-size: 1em !important; text-align: center}
 }
 
 //-------------------------------------------- BUTTONS -------------------------------------------
+.x-msgbox-buttons .x-button-label {
+  visibility: hidden;
+}
+
+.x-msgbox-buttons .x-button-label:after {
+  content: 'verder >'; 
+  visibility: visible;
+  text-indent: 0;
+  margin-left:-40px !important;
+}
 
 .closebutton {
   width: 40px;
@@ -327,16 +331,16 @@ color: #fff;
 }
 
 
-.quizresultbuybutton {
-  width: 768px;
-  height: 285px;
-  background-image: url('../images/logos.png') !important;
-  background-repeat: no-repeat !important;
-  margin:0 auto;
-  border: none;
-  font-size: 15px;
-  padding:0 0 11px 0px;
-}
+//.quizresultbuybutton {
+//  width: 768px;
+//  height: 285px;
+//  background-image: url('../images/logos.png') !important;
+//  background-repeat: no-repeat !important;
+//  margin:0 auto;
+//  border: none;
+//  font-size: 15px;
+//  padding:0 0 11px 0px;
+//}
 
 //.restoreButton {
 //    background-image: url('../images/restorebutton.svg') !important;
@@ -350,11 +354,8 @@ color: #fff;
 //}
 
 .fingerspellingscreen {
-  background-image: url('../images/fingerspellingbg.svg') !important;
-  background-color: #65bcab !important;
-  background-size: auto 100% !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important;
+background-image: url('../images/fingerspellingbg.svg') !important;
+background-size: auto 100% !important;
   padding-top: 50px 
 }
 
@@ -362,9 +363,7 @@ color: #fff;
 .quizbackground {
   background-image: url('../images/quizbackground.svg') !important;
   background-color: #7bcdcb !important;
-  background-size: auto 100% !important;
-  background-position: center !important;
-  background-repeat: no-repeat !important
+background-size: auto 100% !important;
 }
 
 .quizTitle {
@@ -388,6 +387,7 @@ text-align: center !important;
   border-radius: 5px;
   font-size: 1.1em;
   overflow: hidden;
+//  -webkit-animation: fadein 1s ease-in !important;
 }
 
 .x-dataview-item img {
@@ -421,21 +421,21 @@ color: #DDE4CE
 //margin: 5px
 //}
 
-span.number {
-  background-color: #d29f1c;
-  margin: 0 10px;
-  padding: 0 10px;
-  font-size: 22px;
+//span.number {
+//  background-color: #d29f1c;
+//  margin: 0 10px;
+//  padding: 0 10px;
+//  font-size: 22px;
 
-  &.active {
-    opacity: 0.5;
-  }
-}
+//  &.active {
+//    opacity: 0.5;
+//  }
+//}
 
 
-.enterthenumbers {
-margin: 75px 0 20px 0;
-}
+//.enterthenumbers {
+//margin: 75px 0 20px 0;
+//}
 
 .x-button {
     background-color: transparent !important;
@@ -699,11 +699,11 @@ font-size: 40px;
 .resulttext img {
   margin: 30px 0
 }
-.audioButton {
-  margin-top: -50px;
+//.audioButton {
+//  margin-top: -50px;
 //  font-size: 1.5em;
-  padding: 0px 0px 55px !important;
-}
+//  padding: 0px 0px 55px !important;
+//}
 
 .quizTitle {
   font-size: 2em
