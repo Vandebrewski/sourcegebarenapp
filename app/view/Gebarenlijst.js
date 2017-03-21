@@ -10,20 +10,7 @@ Ext.define('KinderGebaren.view.Gebarenlijst', {
         scroll: 'vertical',        
 		layout: 'fit',
         store: 'gebaarStore',
-<<<<<<< HEAD
 //       cover: true,
-=======
-
-// --------EXPERIMENT --------        
-     //    masked: {
-     //        xtype: 'loadmask',
-     //        message: 'loading data'
-    	// }, 
-    	
-    	
-// --------END EXPERIMENT --------    	
-        
->>>>>>> origin/master
         
         itemTpl: '<img src="resources/images/objects/{plaatje}.svg">{plaatje}'
     }

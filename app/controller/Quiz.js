@@ -282,7 +282,7 @@ Ext.define('KinderGebaren.controller.Quiz', {
            //  text: 'play video',
             handler: function() {
                  VideoPlayer.play(this.__url, {
-                     volume: 0
+                     volume: 0.5
                  }//,
                  //function () {
                  //    console.log("video completed");

@@ -13,6 +13,7 @@ Ext.define('KinderGebaren.view.Viewport', {
                 duration: 5
             }
         },
+        fullscreen: true, // test
         
         items: [
             {xtype: 'homepanel'}, 

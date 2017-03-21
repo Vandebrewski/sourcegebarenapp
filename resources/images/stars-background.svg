@@ -1,29 +1,18 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1984.25 1984.25">
 <devs><style type="text/css">		
-		#lucht {-webkit-animation: zoomIn 1s linear forwards;}		
-		#wolk {-webkit-animation: Float 10s linear forwards;}
-		@-webkit-keyframes zoomIn {
-		  from {opacity: 0;}		
-		  50% {opacity: 1;}}
-		@-webkit-keyframes Float {
-		  from { transform: translateX(350%) translateZ(0);}
-		  to { transform: translateX(-150%) translateZ(0);}}
-</style></devs>
-<g id="lucht">
+#lucht {-webkit-animation: zoomIn 1s linear forwards;}		
+#wolk {-webkit-animation: Float 10s linear forwards;}@-webkit-keyframes zoomIn {from {opacity: 0;}		50% {opacity: 1;}}@-webkit-keyframes Float {from { transform: translateX(350%) translateZ(0);}to { transform: translateX(-150%) translateZ(0);}}
+</style></devs><g id="lucht">
 	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="992.1255" y1="493.395" x2="992.1255" y2="0">
 		<stop  offset="0" style="stop-color:#FFFFFF"/>
 		<stop  offset="1" style="stop-color:#33CBEF"/>
 	</linearGradient>
 	<rect fill-rule="evenodd" clip-rule="evenodd" fill="url(#SVGID_1_)" width="1984.25" height="493.395"/>
-</g>
-<g id="wolk">
-	<g>
+</g><g id="wolk"><g>
 		<path fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M496.211,332.604c22.844-17.624,47.619-21.17,73.507-8.577
 			c34.039,16.559,46.934,57.999,29.292,91.141c-2.754,5.173-2.754,5.173,2.77,6.774c42.82,12.415,72.15,51.584,72.174,96.382
 			c0.022,45.017-29.365,84.606-72.076,97.08c-9.008,2.631-18.213,3.851-27.598,3.85c-96.162-0.011-192.322,0.17-288.482-0.073
 			c-57.08-0.145-106.24-43.078-114.701-99.408c-7.566-50.377,17.538-99.275,62.999-122.587c2.192-1.124,3.625-1.962,3.464-5.059
 			c-2.743-52.572,18.886-93.318,62.277-121.787c62.538-41.029,156.179-21.811,193.906,57.62
 			C494.512,329.58,494.85,331.444,496.211,332.604z"/>
-	</g>
-</g>
-</svg>
+</g></g></svg>

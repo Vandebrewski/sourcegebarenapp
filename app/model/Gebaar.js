@@ -3,10 +3,11 @@ Ext.define('KinderGebaren.model.Gebaar',{
     config:{
         idProperty: 'Id',
         useCache: true, // is this causing the empty list page after some time???
+        // I followed these performance tips https://mitchellsimoens.com/tiny-performance-boost-in-data-drive-ext-jssencha-touch-apps/
         fields:[
             { name: 'Id', type: 'int'},
-            { name: 'plaatje', type: 'string'},
-            { name: 'cat', type: 'string'}            
+            'plaatje',
+            'cat'           
         ]
     }    
 });

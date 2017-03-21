@@ -14,22 +14,19 @@ Ext.define('KinderGebaren.view.NavList', {
         iconCls: 'search',
 //        id: 'navlistCardView',
         // useTitleForBackButtonText: 'true', // true causes the back tekst to be something else than "back"
-        items: [
-<<<<<<< HEAD
-        {
+//        items: [
+//        {
 //                xtype: 'gebarenlijst',
 //                flex: 1 // seems needed to diplay properly?
-            }
+//            }
             // Old code before dynamic list
             
-=======
->>>>>>> origin/master
             // {
             //     xtype: 'gebarenlijst'
             // }, 
             // {
             //     xtype: 'gebarendetail'
             // }
-        ]
+//        ]
     }
 });

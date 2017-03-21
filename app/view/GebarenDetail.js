@@ -42,16 +42,18 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
                         xtype: 'button',
                         itemId: 'listDetailButton',
                         cls: 'audioButton',
-//                        handler: function () {
-//                            var container = this.getParent(),
-//                            audio = container.down('audio');
-//                            audio.play();
-//							}
+                        handler: function () {
+                            var container = this.getParent(),
+                            audio = container.down('audio');
+                            audio.play();
+							}
 // Android, beacause html5 audio is not supported, above function is for iOS. Remove above function (5 lines) and activate underneath function for android
+/*
 						handler: function playAudio(url) {
     						var my_media = new Media(this.__url);
     						my_media.play();
 						}
+*/
 // end android
                        
                     },
