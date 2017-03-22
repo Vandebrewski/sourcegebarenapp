@@ -1,6 +1,7 @@
 Ext.define('KinderGebaren.view.GebarenDetail', {
     extend: 'Ext.Container',
     xtype: 'gebarendetail',
+    
 
     config: {
         cls: 'gebarendetail',
@@ -71,6 +72,11 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
             {
                 layout: 'hbox',
                 items: [
+                    {
+                        xtype: 'button',
+                        itemId: 'backListButton',
+                        cls: 'backListButton'
+                    },
                     {
                         xtype: 'button',
                         itemId: 'backButton',

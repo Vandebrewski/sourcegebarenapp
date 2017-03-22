@@ -295,6 +295,17 @@ color: #fff;
 }
 
 .backButton  {
+  background-image: url('../images/previous.svg') !important;
+  background-size: 58px;
+  background-position: 0 0 !important;
+  background-repeat: no-repeat !important;
+ height: 60px;
+   width: 60px;
+   margin: -40px 0 0 10px;
+    border: none;
+    z-index: 4
+}
+.backListButton  {
   background-image: url('../images/back.svg') !important;
   background-size: 58px;
   background-position: 0 0 !important;
@@ -888,7 +899,7 @@ video {
   top: 201px;
   z-index: 2
 }
-.backButton  {
+.backButton, .backListButton  {
    margin: -60px 0 0 10px;
 }
 

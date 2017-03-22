@@ -24,18 +24,20 @@
             '#nav-menu list': {
                 select: 'onNavMenuSelect'
             },
-
+            'gebarenlijst': {
+                itemtap: 'showDetail'
+            },
             'gebarendetail': {
                 swipeleft: 'onNextTap'
+            },
+            'gebarendetail #backListButton': {
+                tap: 'onBackListTap'
             },
             'gebarendetail #backButton': {
                 tap: 'onBackTap'
             },
             'gebarendetail #nextButton': {
                 tap: 'onNextTap'
-            },
-            'gebarenlijst': {
-                itemtap: 'showDetail'
             },
             'videoView': {
                 ended: 'onVideoEnded'
@@ -54,48 +56,47 @@
     onNavMenuSelect: function(view, record) {
 
         var itemIndex = record.get('itemIndex');
-// ------ Old code before dynamic list ---------        
-        // if(record.data.itemIndex == 1){
-        //     Ext.Viewport.toggleMenu('left');
-        //     Ext.Viewport.setMasked({xtype:'loadmask', message:'loading data'});
-        //     var store = Ext.getStore("gebaarStore");
-        //     store.load(function(records, operation, success) {
-        //         Ext.Viewport.setMasked(false);
-        //         Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
-        //     }, this);
-        //     return;
-        // }
-// ----- END Old code -------------------------
-
         var navlist = Ext.Viewport.down('navlist');
-        if(record.data.itemIndex == 1){
+
+
+
+        if(record.data.itemIndex == 1){ // if the list is selected
+
             if( !navlist.down('gebarenlijst') ){
                 
                 navlist.add({xtype: 'gebarenlijst'});
                 navlist.setActiveItem(navlist.down('gebarenlijst'));
 
                 Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true});
-
                 setTimeout(function(){
                     Ext.Viewport.setMasked(false);    
                 },2000);
-            }
+
+            } // END if list is active
 
             if( !navlist.down('gebarendetail') ){
                 navlist.add({xtype: 'gebarendetail'});
-            }
-        }
+            } // END if detail page doesn't exist
+        } // END if navlist is selected
         else{
             if( navlist.down('gebarenlijst') ){
                 navlist.down('gebarenlijst').destroy();
-            }
-        }
-                
-        Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex));
-        Ext.Viewport.toggleMenu('left'); // Hide the menu. I would like to have this an immidiate effect (before the new page is completely loaded)       
-    },
+            } // END if list is not selected, remove it
 
-    onBackTap: function() {
+        } // END else if the list is not selected
+        
+        
+                
+        Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex)); // open the selected page from the menu
+        Ext.Viewport.toggleMenu('left'); // Hide the menu. (I would like to have this an immidiate effect (before the new page is completely loaded)       
+    }, // END onNavMenuSelect
+
+
+
+
+
+
+    onBackListTap: function() {
         var navlist = Ext.Viewport.down('navlist');
         if( !navlist.down('gebarenlijst') ){
             navlist.add({xtype: 'gebarenlijst'});
@@ -115,6 +116,36 @@
 //        this.getVideoView().setUrl(null)
 
     },
+    
+   
+
+    onBackTap: function() {
+        var me = this,
+            store = Ext.getStore('gebaarStore'),
+            index = store.indexOf(me.currentDetailRecord);
+
+        index--;
+
+        if (index === store.getCount()) {
+            index = 0;
+        }
+
+        var record = store.getAt(index),
+            detail = me.getDetail(),
+            video = detail.down('video');
+
+        video.media.hide();
+        video.pause();
+        video.setUrl(null);
+
+        setTimeout(function() {
+            me.showDetail(null, null, null, record);
+            video.media.dom.load(); // this is needed!! for ios8,9 and 10
+			video.ghost.show();
+        }, 100);
+    },
+    
+
 
     onNextTap: function() {
         var me = this,
