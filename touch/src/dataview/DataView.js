@@ -839,7 +839,7 @@ Ext.define('Ext.dataview.DataView', {
                 xtype: 'loadmask',
 //                message: loadingText
         message:'<img src="resources/images/loader.gif"/>',
-        messageCls:'width:48px;
+        messageCls:'width:48px;'
             });
         }
 

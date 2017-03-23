@@ -5,11 +5,13 @@ Ext.define('KinderGebaren.view.Gebarenlijst', {
 //    fullscreen: true,
     config: {
         cls: 'gebarenlijst',
-       	grouped: true,
-        scrollable: true,
-        scroll: 'vertical',        
-		layout: 'fit',
-        store: 'gebaarStore',
+       	//grouped: true,
+        //scrollable: true,
+        //scroll: 'vertical',
+		//layout: 'fit',
+        store: Ext.create('Ext.data.Store',{
+            fields:['Id','cat','plaatje']
+        }),
 //       cover: true,
         
         itemTpl: '<img src="resources/images/objects/{plaatje}.svg">{plaatje}'

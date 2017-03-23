@@ -15,7 +15,8 @@
             listDetailVideo  : 'gebarendetail video[name="listDetailVideo"]',
             listDetailImage  : 'gebarendetail image[name="listDetailImage"]',
             detail: 'gebarendetail',
-            videoPlayButton: '#videoPlayButton'
+            videoPlayButton: '#videoPlayButton',
+            gebarenview:"gebarenview"
         }, // End refs
 
         control: {
@@ -26,6 +27,12 @@
             },
             'gebarenlijst': {
                 itemtap: 'showDetail'
+            },
+            'gebarenview dataview[name=catsview]':{
+                itemtap:'showCatItems'
+            },
+            'gebarenview button[name=catslit]':{
+                tap:'backToCatsView'
             },
             'gebarendetail': {
                 swipeleft: 'onNextTap'
@@ -61,16 +68,18 @@
 
 
         if(record.data.itemIndex == 1){ // if the list is selected
-
-            if( !navlist.down('gebarenlijst') ){
+            var gebarenStore = Ext.getStore('gebaarStore');
+            if( !navlist.down('gebarenview') ){
                 
-                navlist.add({xtype: 'gebarenlijst'});
-                navlist.setActiveItem(navlist.down('gebarenlijst'));
-
-                Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true});
-                setTimeout(function(){
-                    Ext.Viewport.setMasked(false);    
-                },2000);
+                var gebarenview = navlist.add({xtype: 'gebarenview'});
+                navlist.setActiveItem(navlist.down('gebarenview'));
+                gebarenview.setActiveItem(0);
+                var gebarenCatsView = gebarenview.down('dataview[name=catsview]');
+                gebarenCatsView.setData(gebarenStore.getGroups());
+                //Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true});
+                //setTimeout(function(){
+                //    Ext.Viewport.setMasked(false);
+                //},2000);
 
             } // END if list is active
 
@@ -79,9 +88,9 @@
             } // END if detail page doesn't exist
         } // END if navlist is selected
         else{
-            if( navlist.down('gebarenlijst') ){
-                navlist.down('gebarenlijst').destroy();
-            } // END if list is not selected, remove it
+            //if( navlist.down('gebarenlijst') ){
+            //    navlist.down('gebarenlijst').destroy();
+            //} // END if list is not selected, remove it
 
         } // END else if the list is not selected
         
@@ -98,15 +107,22 @@
 
     onBackListTap: function() {
         var navlist = Ext.Viewport.down('navlist');
-        if( !navlist.down('gebarenlijst') ){
-            navlist.add({xtype: 'gebarenlijst'});
-            navlist.setActiveItem(navlist.down('gebarenlijst')); // , {type: 'fade', duration: 1000} not sure if this fade is working
+        if( !navlist.down('gebarenview') ){
+            var gebarenview = navlist.add({xtype: 'gebarenview'});
+            navlist.setActiveItem(navlist.down('gebarenview'));
+            gebarenview.setActiveItem(0);
+            var gebarenCatsView = gebarenview.down('dataview[name=catsview]');
+            gebarenCatsView.setData(gebarenStore.getGroups());
+            // , {type: 'fade', duration: 1000} not sure if this fade is working
 
 // ---- Mask on back tab is not needed for now --------
 //            Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true, hideAnimation:'fadeOut'});
 //            setTimeout(function(){
 //                Ext.Viewport.setMasked(false);            
 //            },1000);
+        }else{
+            navlist.setActiveItem(navlist.down('gebarenview'));
+            navlist.down('gebarenview').setActiveItem(0);
         }
         
         
@@ -231,14 +247,27 @@
         me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
         
 
-        setTimeout(function() {
-            if(me.getListView()){
-                me.getListView().deselectAll();
-            }
-            var navlist = Ext.Viewport.down('navlist');
-            if( navlist.down('gebarenlijst') ){
-                navlist.down('gebarenlijst').destroy();
-            }
-        }, 300);
+        //setTimeout(function() {
+        //    if(me.getListView()){
+        //        me.getListView().deselectAll();
+        //    }
+        //    var navlist = Ext.Viewport.down('navlist');
+        //    if( navlist.down('gebarenlijst') ){
+        //        navlist.down('gebarenlijst').destroy();
+        //    }
+        //}, 300);
+    },
+    showCatItems:function(view,index,target,record,e,eOpts){
+        var me = this,
+            gebarenview = me.getGebarenview();
+        gebarenview.setActiveItem(1);
+        var gebarenlijst  = gebarenview.down('gebarenlijst');
+        gebarenlijst.setData(record.data.children);
+        gebarenview.down('[name=catitemtitle]').setTitle(record.data.name);
+    },
+    backToCatsView:function(){
+        var me = this,
+            gebarenview = me.getGebarenview();
+        gebarenview.setActiveItem(0);
     }
 });

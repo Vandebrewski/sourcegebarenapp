@@ -5,7 +5,8 @@ Ext.define('KinderGebaren.view.NavList', {
 
     requires: [
         'KinderGebaren.view.Gebarenlijst',
-        'KinderGebaren.view.GebarenDetail'
+        'KinderGebaren.view.GebarenDetail',
+        'KinderGebaren.view.GebarenView'
     ],
 
     config: {
