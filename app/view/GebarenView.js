@@ -13,7 +13,7 @@ Ext.define('KinderGebaren.view.GebarenView', {
                 xtype:'dataview',
                 name:'catsview',
                 cls:"gebarencat gebarenlijst",
-                itemTpl:'<img src="resources/images/objects/{image}.svg">{name}'
+                itemTpl:'<img src="resources/images/objects/{plaatje}.svg">{cat}'
             },
             {
                 xtype:'container',

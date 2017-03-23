@@ -4,7 +4,7 @@
 
     config: {
         models: ['Gebaar'],
-        stores: ['Gebaar'],
+        stores: ['Gebaar','GebaarCat'],
         views: ['Home', 'NavList', 'Extra', 'Fingerspelling'],
         refs: {
             'videoView': 'gebarendetail #videoView',
@@ -68,14 +68,14 @@
 
 
         if(record.data.itemIndex == 1){ // if the list is selected
-            var gebarenStore = Ext.getStore('gebaarStore');
+            var gebarenCatStore = Ext.getStore('gebaarCatStore');
             if( !navlist.down('gebarenview') ){
                 
                 var gebarenview = navlist.add({xtype: 'gebarenview'});
                 navlist.setActiveItem(navlist.down('gebarenview'));
                 gebarenview.setActiveItem(0);
                 var gebarenCatsView = gebarenview.down('dataview[name=catsview]');
-                gebarenCatsView.setData(gebarenStore.getGroups());
+                gebarenCatsView.setStore(gebarenCatStore);
                 //Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true});
                 //setTimeout(function(){
                 //    Ext.Viewport.setMasked(false);
@@ -106,13 +106,19 @@
 
 
     onBackListTap: function() {
-        var navlist = Ext.Viewport.down('navlist');
+        var navlist = Ext.Viewport.down('navlist'),me=this;
         if( !navlist.down('gebarenview') ){
+            var gebarenCatStore = Ext.getStore('gebaarCatStore');
             var gebarenview = navlist.add({xtype: 'gebarenview'});
             navlist.setActiveItem(navlist.down('gebarenview'));
-            gebarenview.setActiveItem(0);
-            var gebarenCatsView = gebarenview.down('dataview[name=catsview]');
-            gebarenCatsView.setData(gebarenStore.getGroups());
+            gebarenview.setActiveItem(1);
+            var gebarenlijst  = gebarenview.down('gebarenlijst');
+
+            gebarenlijst.suspendEvents();
+            gebarenlijst.getStore().clearFilter(true);
+            gebarenlijst.getStore().filter('cat',me.currentDetailRecord.data.cat);
+            gebarenlijst.resumeEvents(true);
+            gebarenlijst.refresh();
             // , {type: 'fade', duration: 1000} not sure if this fade is working
 
 // ---- Mask on back tab is not needed for now --------
@@ -122,7 +128,13 @@
 //            },1000);
         }else{
             navlist.setActiveItem(navlist.down('gebarenview'));
-            navlist.down('gebarenview').setActiveItem(0);
+            navlist.down('gebarenview').setActiveItem(1);
+            var gebarenlijst  = me.getMain().down('gebarenlijst');
+            gebarenlijst.suspendEvents();
+            gebarenlijst.getStore().clearFilter(true);
+            gebarenlijst.getStore().filter('cat',me.currentDetailRecord.data.cat);
+            gebarenlijst.resumeEvents(true);
+            gebarenlijst.refresh();
         }
         
         
@@ -245,8 +257,13 @@
 
         me.currentDetailRecord = record;
         me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
-        
 
+        var gebarenlijst  = me.getMain().down('gebarenlijst');
+        gebarenlijst.suspendEvents();
+        gebarenlijst.getStore().clearFilter(true);
+        gebarenlijst.getStore().filter('cat','xxxx');
+        gebarenlijst.resumeEvents(true);
+        gebarenlijst.refresh();
         //setTimeout(function() {
         //    if(me.getListView()){
         //        me.getListView().deselectAll();
@@ -262,8 +279,13 @@
             gebarenview = me.getGebarenview();
         gebarenview.setActiveItem(1);
         var gebarenlijst  = gebarenview.down('gebarenlijst');
-        gebarenlijst.setData(record.data.children);
-        gebarenview.down('[name=catitemtitle]').setTitle(record.data.name);
+
+        gebarenlijst.suspendEvents();
+        gebarenlijst.getStore().clearFilter(true);
+        gebarenlijst.getStore().filter('cat',record.data.cat);
+        gebarenlijst.resumeEvents(true);
+        gebarenlijst.refresh();
+        gebarenview.down('[name=catitemtitle]').setTitle(record.data.cat);
     },
     backToCatsView:function(){
         var me = this,

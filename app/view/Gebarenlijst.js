@@ -1,5 +1,5 @@
 Ext.define('KinderGebaren.view.Gebarenlijst', {
-    extend: 'Ext.List', // or should I use Ext.List instead of Ext.dataview.List
+    extend: 'Ext.dataview.DataView', // or should I use Ext.List instead of Ext.dataview.List
     xtype: 'gebarenlijst',
     
 //    fullscreen: true,
@@ -9,9 +9,7 @@ Ext.define('KinderGebaren.view.Gebarenlijst', {
         //scrollable: true,
         //scroll: 'vertical',
 		//layout: 'fit',
-        store: Ext.create('Ext.data.Store',{
-            fields:['Id','cat','plaatje']
-        }),
+        store:'gebaarStore',
 //       cover: true,
         
         itemTpl: '<img src="resources/images/objects/{plaatje}.svg">{plaatje}'
