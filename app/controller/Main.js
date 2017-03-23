@@ -112,13 +112,13 @@
             var gebarenview = navlist.add({xtype: 'gebarenview'});
             navlist.setActiveItem(navlist.down('gebarenview'));
             gebarenview.setActiveItem(1);
-            var gebarenlijst  = gebarenview.down('gebarenlijst');
-
-            gebarenlijst.suspendEvents();
-            gebarenlijst.getStore().clearFilter(true);
-            gebarenlijst.getStore().filter('cat',me.currentDetailRecord.data.cat);
-            gebarenlijst.resumeEvents(true);
-            gebarenlijst.refresh();
+            //var gebarenlijst  = gebarenview.down('gebarenlijst');
+            //
+            //gebarenlijst.suspendEvents();
+            //gebarenlijst.getStore().clearFilter(true);
+            //gebarenlijst.getStore().filter('cat',me.currentDetailRecord.data.cat);
+            //gebarenlijst.resumeEvents(true);
+            //gebarenlijst.refresh();
             // , {type: 'fade', duration: 1000} not sure if this fade is working
 
 // ---- Mask on back tab is not needed for now --------
@@ -129,12 +129,12 @@
         }else{
             navlist.setActiveItem(navlist.down('gebarenview'));
             navlist.down('gebarenview').setActiveItem(1);
-            var gebarenlijst  = me.getMain().down('gebarenlijst');
-            gebarenlijst.suspendEvents();
-            gebarenlijst.getStore().clearFilter(true);
-            gebarenlijst.getStore().filter('cat',me.currentDetailRecord.data.cat);
-            gebarenlijst.resumeEvents(true);
-            gebarenlijst.refresh();
+            //var gebarenlijst  = me.getMain().down('gebarenlijst');
+            //gebarenlijst.suspendEvents();
+            //gebarenlijst.getStore().clearFilter(true);
+            //gebarenlijst.getStore().filter('cat',me.currentDetailRecord.data.cat);
+            //gebarenlijst.resumeEvents(true);
+            //gebarenlijst.refresh();
         }
         
         
@@ -259,11 +259,11 @@
         me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
 
         var gebarenlijst  = me.getMain().down('gebarenlijst');
-        gebarenlijst.suspendEvents();
-        gebarenlijst.getStore().clearFilter(true);
-        gebarenlijst.getStore().filter('cat','xxxx');
-        gebarenlijst.resumeEvents(true);
-        gebarenlijst.refresh();
+        //gebarenlijst.suspendEvents();
+        //gebarenlijst.getStore().clearFilter(true);
+        //gebarenlijst.getStore().filter('cat','xxxx');
+        //gebarenlijst.resumeEvents(true);
+        //gebarenlijst.refresh();
         //setTimeout(function() {
         //    if(me.getListView()){
         //        me.getListView().deselectAll();

@@ -83,6 +83,9 @@ Ext.define('KinderGebaren.controller.Quiz', {
             incorrect: []
         });
 
+        var store = Ext.getStore('gebaarStore');
+            store.clearFilter(true);
+
         this.setCurrentQuestionIndex(0);
         this.setExistingQuestionIndexes([]);
         this.setFinished(false);
