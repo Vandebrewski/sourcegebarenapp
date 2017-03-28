@@ -67,7 +67,10 @@ Ext.define('KinderGebaren.controller.Main', {
 
         if(record.data.itemIndex == 1){ // if the list is selected
             var gebarenCatStore = Ext.getStore('gebaarCatStore');
+<<<<<<< HEAD
              
+=======
+>>>>>>> origin/master
             if( !navlist.down('gebarenview') ){
                 
                 var gebarenview = navlist.add({xtype: 'gebarenview'});
@@ -75,7 +78,10 @@ Ext.define('KinderGebaren.controller.Main', {
                 gebarenview.setActiveItem(0);
                 var gebarenCatsView = gebarenview.down('dataview[name=catsview]');
                 gebarenCatsView.setStore(gebarenCatStore);
+<<<<<<< HEAD
                 
+=======
+>>>>>>> origin/master
                 //Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true});
                 //setTimeout(function(){
                 //    Ext.Viewport.setMasked(false);
@@ -263,8 +269,11 @@ Ext.define('KinderGebaren.controller.Main', {
 
         me.currentDetailRecord = record;
         me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
+<<<<<<< HEAD
         
          Ext.Viewport.hideMenu('left');
+=======
+>>>>>>> origin/master
 
         var gebarenlijst  = me.getMain().down('gebarenlijst');
         //gebarenlijst.suspendEvents();
@@ -286,7 +295,10 @@ Ext.define('KinderGebaren.controller.Main', {
         var me = this,
             gebarenview = me.getGebarenview();
         gebarenview.setActiveItem(1);
+<<<<<<< HEAD
         
+=======
+>>>>>>> origin/master
         var gebarenlijst  = gebarenview.down('gebarenlijst');
 
         gebarenlijst.suspendEvents();
@@ -295,12 +307,18 @@ Ext.define('KinderGebaren.controller.Main', {
         gebarenlijst.resumeEvents(true);
         gebarenlijst.refresh();
         gebarenview.down('[name=catitemtitle]').setTitle(record.data.cat);
+<<<<<<< HEAD
         Ext.Viewport.hideMenu('left');
+=======
+>>>>>>> origin/master
     },
     backToCatsView:function(){
         var me = this,
             gebarenview = me.getGebarenview();
         gebarenview.setActiveItem(0);
+<<<<<<< HEAD
         Ext.Viewport.hideMenu('left');
+=======
+>>>>>>> origin/master
     }
 });
