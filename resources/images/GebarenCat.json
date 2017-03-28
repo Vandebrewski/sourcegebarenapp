@@ -1,0 +1,7 @@
+{"Gebaartje": [
+  {"Id":1, "cat":"Dieren","plaatje":"catdieren"},
+  {"Id":2,  "cat":"Ik en Omgeving","plaatje":"catikenomgeving"},
+  {"Id":3, "cat":"Leuk","plaatje":"catleuk"},
+  {"Id":4,  "cat":"Seizoenen","plaatje":"catseizoenen"},
+  {"Id":5, "cat":"Emoties","plaatje":"catemoties"}
+]}

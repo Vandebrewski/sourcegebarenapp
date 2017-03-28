@@ -28,6 +28,11 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
 			},
         items: [
             {
+                 xtype: 'button',
+                 itemId: 'backListButton',
+                 cls: 'backListButton'
+            },
+            {
                 xtype: 'image',
                 name: 'listDetailImage',
                 flex: 1,
@@ -72,11 +77,6 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
             {
                 layout: 'hbox',
                 items: [
-                    {
-                        xtype: 'button',
-                        itemId: 'backListButton',
-                        cls: 'backListButton'
-                    },
                     {
                         xtype: 'button',
                         itemId: 'backButton',

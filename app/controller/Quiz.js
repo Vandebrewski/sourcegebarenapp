@@ -83,6 +83,9 @@ Ext.define('KinderGebaren.controller.Quiz', {
             incorrect: []
         });
 
+        var store = Ext.getStore('gebaarStore');
+            store.clearFilter(true);
+
         this.setCurrentQuestionIndex(0);
         this.setExistingQuestionIndexes([]);
         this.setFinished(false);
@@ -238,7 +241,7 @@ Ext.define('KinderGebaren.controller.Quiz', {
                 var correctAnswer = store.getAt(store._correctIndex);
 
                 message += "<br />";             
-                message += "<img src='resources/images/wrong.svg'><br />Het goede antwoord is: <br /><br /><img src='resources/images/objects/" + correctAnswer.get('plaatje') + ".svg'>";
+                message += "<img src='resources/images/wrong.svg'><br />" + correctAnswer.get('plaatje') + "<br /><img src='resources/images/objects/" + correctAnswer.get('plaatje') + ".svg'>";
             }
 
 // iOS sound 

@@ -30,7 +30,7 @@ $experimental-support-for-khtml : false;
   src: url('../fonts/icomoon.ttf')
   }  
   
-.again, h3, .quizTitle, .resulttext, .audioButton, .menu-hint, .x-msgbox-text, .menu-abc, .x-list .x-list-item, .x-dataview-item, .x-list-header, .x-button-label, .x-badge  {
+.again, h3, .quizTitle, .resulttext, .audioButton, .menu-hint, .x-msgbox-text, .menu-abc, .x-list .x-list-item, .x-dataview-item, .x-list-header, .x-button-label, .x-badge, .catitemtitle  {
   font-family: 'Handlee', Helvetica Neue;
   color: #fff !important;
 }
@@ -144,6 +144,53 @@ background-repeat: no-repeat !important
   
 //-------------------------------------------- list ------------------------------------------- 
 
+.gebarenview {
+  background-color: #99dddb;
+  background-image: url('../images/fingerspellingbg.svg') !important;
+  background-size: auto 100% !important;
+}
+
+.catitemtitle {
+  background-color: #99dddb;
+  margin: 40px 0 0 0;
+  font-size: 22px;
+}
+
+.x-toolbar {
+    border-radius: 0 !important;
+  }
+
+.gebarencat .x-dataview-item {
+    width: 80%;
+    height: 100px;
+    margin: 10px;
+    background-color: #89d8d4;
+    font-size: 28px !important;
+    line-height: 100px !important;
+}
+
+.gebarencat .x-dataview-item img {
+    width: 300px;
+    height: 100px;
+    float: left;
+    margin-left: 25px;
+    
+}
+
+.x-layout-card-item {
+   background: none; 
+}
+
+.arrow_left {
+    background-image: url('../images/previous.svg') !important;
+  background-size: 58px;
+  background-position: 0 0 !important;
+  background-repeat: no-repeat !important;
+ height: 60px;
+   width: 60px;
+   margin:5px 10px;
+}
+
 .x-list .x-list-header {
 position: absolute;
 left: 0;
@@ -172,10 +219,8 @@ background-repeat: no-repeat !important
 
 
 .gebarenlijst {
-background-color: #7bcdcb!important;
 text-align: center;
-background-image: url('../images/fingerspellingbg.svg') !important;
-background-size: auto 100% !important;
+
 }
 
 .gebarenlijst img {

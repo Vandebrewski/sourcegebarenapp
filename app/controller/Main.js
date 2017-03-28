@@ -1,10 +1,10 @@
-	Ext.define('KinderGebaren.controller.Main', {
+Ext.define('KinderGebaren.controller.Main', {
     extend: 'Ext.app.Controller',
     fullscreen: false,
 
     config: {
         models: ['Gebaar'],
-        stores: ['Gebaar'],
+        stores: ['Gebaar','GebaarCat'],
         views: ['Home', 'NavList', 'Extra', 'Fingerspelling'],
         refs: {
             'videoView': 'gebarendetail #videoView',
@@ -15,7 +15,8 @@
             listDetailVideo  : 'gebarendetail video[name="listDetailVideo"]',
             listDetailImage  : 'gebarendetail image[name="listDetailImage"]',
             detail: 'gebarendetail',
-            videoPlayButton: '#videoPlayButton'
+            videoPlayButton: '#videoPlayButton',
+            gebarenview:"gebarenview"
         }, // End refs
 
         control: {
@@ -26,6 +27,12 @@
             },
             'gebarenlijst': {
                 itemtap: 'showDetail'
+            },
+            'gebarenview dataview[name=catsview]':{
+                itemtap:'showCatItems'
+            },
+            'gebarenview button[name=catslit]':{
+                tap:'backToCatsView'
             },
             'gebarendetail': {
                 swipeleft: 'onNextTap'
@@ -58,19 +65,21 @@
         var itemIndex = record.get('itemIndex');
         var navlist = Ext.Viewport.down('navlist');
 
-
-
         if(record.data.itemIndex == 1){ // if the list is selected
-
-            if( !navlist.down('gebarenlijst') ){
+            var gebarenCatStore = Ext.getStore('gebaarCatStore');
+             
+            if( !navlist.down('gebarenview') ){
                 
-                navlist.add({xtype: 'gebarenlijst'});
-                navlist.setActiveItem(navlist.down('gebarenlijst'));
-
-                Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true});
-                setTimeout(function(){
-                    Ext.Viewport.setMasked(false);    
-                },2000);
+                var gebarenview = navlist.add({xtype: 'gebarenview'});
+                navlist.setActiveItem(navlist.down('gebarenview'));
+                gebarenview.setActiveItem(0);
+                var gebarenCatsView = gebarenview.down('dataview[name=catsview]');
+                gebarenCatsView.setStore(gebarenCatStore);
+                
+                //Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true});
+                //setTimeout(function(){
+                //    Ext.Viewport.setMasked(false);
+                //},2000);
 
             } // END if list is active
 
@@ -79,16 +88,16 @@
             } // END if detail page doesn't exist
         } // END if navlist is selected
         else{
-            if( navlist.down('gebarenlijst') ){
-                navlist.down('gebarenlijst').destroy();
-            } // END if list is not selected, remove it
+            //if( navlist.down('gebarenlijst') ){
+            //    navlist.down('gebarenlijst').destroy();
+            //} // END if list is not selected, remove it
 
         } // END else if the list is not selected
         
         
                 
         Ext.Viewport.child('tabpanel').setActiveItem(parseInt(itemIndex)); // open the selected page from the menu
-        Ext.Viewport.toggleMenu('left'); // Hide the menu. (I would like to have this an immidiate effect (before the new page is completely loaded)       
+        Ext.Viewport.toggleMenu('left'); // Hide the menu. (I would like to have this an immidiate effect (before the new page is completely loaded)     
     }, // END onNavMenuSelect
 
 
@@ -97,17 +106,37 @@
 
 
     onBackListTap: function() {
-        var navlist = Ext.Viewport.down('navlist');
-        if( !navlist.down('gebarenlijst') ){
-            navlist.add({xtype: 'gebarenlijst'});
-            navlist.setActiveItem(navlist.down('gebarenlijst')); // , {type: 'fade', duration: 1000} not sure if this fade is working
+        var navlist = Ext.Viewport.down('navlist'),me=this;
+        if( !navlist.down('gebarenview') ){
+            var gebarenCatStore = Ext.getStore('gebaarCatStore');
+            var gebarenview = navlist.add({xtype: 'gebarenview'});
+            navlist.setActiveItem(navlist.down('gebarenview'));
+            gebarenview.setActiveItem(1);
+            //var gebarenlijst  = gebarenview.down('gebarenlijst');
+            //
+            //gebarenlijst.suspendEvents();
+            //gebarenlijst.getStore().clearFilter(true);
+            //gebarenlijst.getStore().filter('cat',me.currentDetailRecord.data.cat);
+            //gebarenlijst.resumeEvents(true);
+            //gebarenlijst.refresh();
+            // , {type: 'fade', duration: 1000} not sure if this fade is working
 
 // ---- Mask on back tab is not needed for now --------
 //            Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true, hideAnimation:'fadeOut'});
 //            setTimeout(function(){
 //                Ext.Viewport.setMasked(false);            
 //            },1000);
+        }else{
+            navlist.setActiveItem(navlist.down('gebarenview'));
+            navlist.down('gebarenview').setActiveItem(1);
+            //var gebarenlijst  = me.getMain().down('gebarenlijst');
+            //gebarenlijst.suspendEvents();
+            //gebarenlijst.getStore().clearFilter(true);
+            //gebarenlijst.getStore().filter('cat',me.currentDetailRecord.data.cat);
+            //gebarenlijst.resumeEvents(true);
+            //gebarenlijst.refresh();
         }
+		Ext.Viewport.hideMenu('left');
         
         
         //this.getMain().setActiveItem(0); // old code before dynamic loading       
@@ -124,12 +153,14 @@
             store = Ext.getStore('gebaarStore'),
             index = store.indexOf(me.currentDetailRecord);
 
-        index--;
-
-        if (index === store.getCount()) {
-            index = 0;
+		
+        if (index !== 0) {
+            index--;
         }
+        else index = store.getCount()-1;
 
+        Ext.Viewport.hideMenu(this.left);
+        
         var record = store.getAt(index),
             detail = me.getDetail(),
             video = detail.down('video');
@@ -142,7 +173,9 @@
             me.showDetail(null, null, null, record);
             video.media.dom.load(); // this is needed!! for ios8,9 and 10
 			video.ghost.show();
+			Ext.Viewport.hideMenu('left');
         }, 100);
+    
     },
     
 
@@ -171,6 +204,7 @@
             video.media.dom.load(); // this is needed!! for ios8,9 and 10
 			video.ghost.show();
         }, 100);
+  	Ext.Viewport.hideMenu('left');
     },
     
 
@@ -206,7 +240,7 @@
     showDetail: function (view, index, target, record) {
         var me = this,
             detail = this.getDetail();
-
+        
         me.getListDetailImage().setSrc("resources/images/objects/" + record.data.plaatje + ".svg");
 
 // ----------- Android ---------
@@ -230,15 +264,43 @@
         me.currentDetailRecord = record;
         me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
         
+         Ext.Viewport.hideMenu('left');
 
-        setTimeout(function() {
-            if(me.getListView()){
-                me.getListView().deselectAll();
-            }
-            var navlist = Ext.Viewport.down('navlist');
-            if( navlist.down('gebarenlijst') ){
-                navlist.down('gebarenlijst').destroy();
-            }
-        }, 300);
+        var gebarenlijst  = me.getMain().down('gebarenlijst');
+        //gebarenlijst.suspendEvents();
+        //gebarenlijst.getStore().clearFilter(true);
+        //gebarenlijst.getStore().filter('cat','xxxx');
+        //gebarenlijst.resumeEvents(true);
+        //gebarenlijst.refresh();
+        //setTimeout(function() {
+        //    if(me.getListView()){
+        //        me.getListView().deselectAll();
+        //    }
+        //    var navlist = Ext.Viewport.down('navlist');
+        //    if( navlist.down('gebarenlijst') ){
+        //        navlist.down('gebarenlijst').destroy();
+        //    }
+        //}, 300);
+    },
+    showCatItems:function(view,index,target,record,e,eOpts){
+        var me = this,
+            gebarenview = me.getGebarenview();
+        gebarenview.setActiveItem(1);
+        
+        var gebarenlijst  = gebarenview.down('gebarenlijst');
+
+        gebarenlijst.suspendEvents();
+        gebarenlijst.getStore().clearFilter(true);
+        gebarenlijst.getStore().filter('cat',record.data.cat);
+        gebarenlijst.resumeEvents(true);
+        gebarenlijst.refresh();
+        gebarenview.down('[name=catitemtitle]').setTitle(record.data.cat);
+        Ext.Viewport.hideMenu('left');
+    },
+    backToCatsView:function(){
+        var me = this,
+            gebarenview = me.getGebarenview();
+        gebarenview.setActiveItem(0);
+        Ext.Viewport.hideMenu('left');
     }
 });
