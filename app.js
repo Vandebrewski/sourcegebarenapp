@@ -10,8 +10,8 @@ Ext.application({
         'KinderGebaren.overrides.SizeMonitor', // do we need this? Prevents blank pages?
         'KinderGebaren.overrides.PaintMonitor', // do we need this? Prevents blank pages?
         'Ext.Img',
-//        'Ext.Video',
-//        'Ext.Audio',
+        'Ext.Video',
+        'Ext.Audio',
         'Ext.Button',
 //		'Ext.Menu',
 //		'Ext.Carousel',

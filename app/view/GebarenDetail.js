@@ -93,13 +93,16 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
                 ]
             },
 // iOS
+/*
            {
                 cls: 'videoborderoverlay'
             },
-            {
+*/            
+
+// this button underneath is only for the Android native player
+/*            {
                xtype: 'button',
                 flex: 1,
-//                text: 'play video',
                 itemId: 'videoPlayButton',
                 cls: 'videoPlayButton',
                 handler: function() {
@@ -107,22 +110,23 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
                     });
                 }
             },
+*/            
             {
                 xtype: 'video',
                 name: 'listDetailVideo',
-//                cls: 'mask',
                 itemId: 'videoView',
                 posterUrl: 'resources/images/playbutton.svg',
-                enableControls: false,
+                enableControls: true, // test for Android
+                preload="none", // test for Android
                 flex: 1,
 
                 listeners: {
 
                     tap: {
                         fn: function (e) {
-                            if (Ext.os.is.Android) {
-                                return;
-                            }
+//                            if (Ext.os.is.Android) {
+//                                return;
+//                            }
 
                             var me = this;
                             // Removed Pause function for now
@@ -132,6 +136,7 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
 //                            } else {
 //                                me.play();
 //                            }
+							me.load(); // test for android
 							me.play();
                         }, // END addEventListener
                         element: 'element'

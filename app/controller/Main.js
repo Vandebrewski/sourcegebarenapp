@@ -67,10 +67,7 @@ Ext.define('KinderGebaren.controller.Main', {
 
         if(record.data.itemIndex == 1){ // if the list is selected
             var gebarenCatStore = Ext.getStore('gebaarCatStore');
-<<<<<<< HEAD
              
-=======
->>>>>>> origin/master
             if( !navlist.down('gebarenview') ){
                 
                 var gebarenview = navlist.add({xtype: 'gebarenview'});
@@ -78,10 +75,7 @@ Ext.define('KinderGebaren.controller.Main', {
                 gebarenview.setActiveItem(0);
                 var gebarenCatsView = gebarenview.down('dataview[name=catsview]');
                 gebarenCatsView.setStore(gebarenCatStore);
-<<<<<<< HEAD
                 
-=======
->>>>>>> origin/master
                 //Ext.Viewport.setMasked({xtype:'loadmask', message:'<img src="resources/images/spinner.svg">', cls:'masklist', indicator:false, fullscreen:true});
                 //setTimeout(function(){
                 //    Ext.Viewport.setMasked(false);
@@ -213,35 +207,7 @@ Ext.define('KinderGebaren.controller.Main', {
   	Ext.Viewport.hideMenu('left');
     },
     
-
-
-// ------------------ experimnent --------------------------------    
-
-//		container.on ('deactivate', function(oldCard), {
-//			oldCard.destroy();
-//		});    
-		
-//		container.setActiveItem(newCard, 'slide');
-
-/*
-		list.on({
-			beforeactivate : function() {
-				list.setBlockRefresh(true);
-				list.update('');
-				list.setLoading(true);
-			},
-			activate: function() {
-				list.setBlockRefresh(false);
-				list.refresh();
-				list.setLoading(false);
-			}
-			
-		});
-		
-		container.setActiveItem(list, 'slide');	
-*/ 
-// ------------------ END experimnent --------------------------------     
-
+  
 
     showDetail: function (view, index, target, record) {
         var me = this,
@@ -249,56 +215,51 @@ Ext.define('KinderGebaren.controller.Main', {
         
         me.getListDetailImage().setSrc("resources/images/objects/" + record.data.plaatje + ".svg");
 
+/* 
 // ----------- Android ---------
         if (Ext.os.is.Android) {
-            me.getVideoPlayButton().__url = "file:///android_asset/www/resources/video/" + record.data.plaatje + '.mp4';
+//            me.getVideoPlayButton().__url = "file:///android_asset/www/resources/video/" + record.data.plaatje + '.mp4';
+            me.getVideoPlayButton().__url = "http://www.new-impulse.com/kindergebaren/resources/video/" + record.data.plaatje + '.mp4';
             me.getVideoPlayButton().show();
             me.getListDetailVideo().hide();
-            me.getListDetailButton().__url = "/android_asset/www/resources/audio/" + record.data.plaatje + ".m4a";
-        	me.getListDetailAudio().setUrl("/android_asset/www/resources/audio/" + record.data.plaatje + ".m4a");
+//            me.getListDetailButton().__url = "/android_asset/www/resources/audio/" + record.data.plaatje + ".m4a";
+            me.getListDetailButton().__url = "http://www.new-impulse.com/kindergebaren/resources/audio/" + record.data.plaatje + ".m4a";
+//        	me.getListDetailAudio().setUrl("/android_asset/www/resources/audio/" + record.data.plaatje + ".m4a");
+        	me.getListDetailAudio().setUrl("http://www.new-impulse.com/kindergebaren/resources/audio/" + record.data.plaatje + ".m4a");
         }
 // ----------- IOS and browsers ---------        
         else {
             me.getVideoPlayButton().hide();
             me.getListDetailVideo().show();
-            me.getListDetailVideo().setUrl("resources/video/" + record.data.plaatje + ".mp4");
-            me.getListDetailAudio().setUrl("resources/audio/" + record.data.plaatje + ".m4a");
+            me.getListDetailVideo().setUrl("http://www.new-impulse.com/kindergebaren/resources/video/" + record.data.plaatje + ".mp4");
+            me.getListDetailAudio().setUrl("http://www.new-impulse.com/kindergebaren/resources/audio/" + record.data.plaatje + ".m4a");
         }
+       */
+        
+        
+// --------- Android video experiment        
+        me.getVideoPlayButton().hide();
+        me.getListDetailVideo().show();
+        me.getListDetailVideo().setUrl("http://www.new-impulse.com/kindergebaren/resources/video/" + record.data.plaatje + ".mp4");
+        me.getListDetailAudio().setUrl("http://www.new-impulse.com/kindergebaren/resources/audio/" + record.data.plaatje + ".m4a");
+// --------- END Android video experiment
+
 
         me.getListDetailButton().setText(record.data.plaatje);
 
         me.currentDetailRecord = record;
         me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
-<<<<<<< HEAD
         
          Ext.Viewport.hideMenu('left');
-=======
->>>>>>> origin/master
 
         var gebarenlijst  = me.getMain().down('gebarenlijst');
-        //gebarenlijst.suspendEvents();
-        //gebarenlijst.getStore().clearFilter(true);
-        //gebarenlijst.getStore().filter('cat','xxxx');
-        //gebarenlijst.resumeEvents(true);
-        //gebarenlijst.refresh();
-        //setTimeout(function() {
-        //    if(me.getListView()){
-        //        me.getListView().deselectAll();
-        //    }
-        //    var navlist = Ext.Viewport.down('navlist');
-        //    if( navlist.down('gebarenlijst') ){
-        //        navlist.down('gebarenlijst').destroy();
-        //    }
-        //}, 300);
     },
+    
     showCatItems:function(view,index,target,record,e,eOpts){
         var me = this,
             gebarenview = me.getGebarenview();
         gebarenview.setActiveItem(1);
-<<<<<<< HEAD
         
-=======
->>>>>>> origin/master
         var gebarenlijst  = gebarenview.down('gebarenlijst');
 
         gebarenlijst.suspendEvents();
@@ -307,18 +268,12 @@ Ext.define('KinderGebaren.controller.Main', {
         gebarenlijst.resumeEvents(true);
         gebarenlijst.refresh();
         gebarenview.down('[name=catitemtitle]').setTitle(record.data.cat);
-<<<<<<< HEAD
         Ext.Viewport.hideMenu('left');
-=======
->>>>>>> origin/master
     },
     backToCatsView:function(){
         var me = this,
             gebarenview = me.getGebarenview();
         gebarenview.setActiveItem(0);
-<<<<<<< HEAD
         Ext.Viewport.hideMenu('left');
-=======
->>>>>>> origin/master
     }
 });
