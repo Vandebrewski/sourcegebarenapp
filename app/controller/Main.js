@@ -171,14 +171,10 @@ Ext.define('KinderGebaren.controller.Main', {
 
         video.media.hide();
         video.pause();
-        video.setUrl(null);
+        //video.setUrl(null);
+        me.showDetail(null, null, null, record);
+        Ext.Viewport.hideMenu('left');
 
-        setTimeout(function() {
-            me.showDetail(null, null, null, record);
-            video.media.dom.load(); // this is needed!! for ios8,9 and 10
-			video.ghost.show();
-			Ext.Viewport.hideMenu('left');
-        }, 100);
     
     },
     
@@ -201,14 +197,10 @@ Ext.define('KinderGebaren.controller.Main', {
 
         video.media.hide();
         video.pause();
-        video.setUrl(null);
+        //video.setUrl(null);
+        me.showDetail(null, null, null, record);
 
-        setTimeout(function() {
-            me.showDetail(null, null, null, record);
-            video.media.dom.load(); // this is needed!! for ios8,9 and 10
-			video.ghost.show();
-        }, 100);
-  	Ext.Viewport.hideMenu('left');
+  	    Ext.Viewport.hideMenu('left');
     },
     
   
@@ -242,24 +234,28 @@ Ext.define('KinderGebaren.controller.Main', {
         
         
       
-//        me.getVideoPlayButton().hide();
-//        me.getListDetailVideo().show();
 
 
-
+        me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
         
-        me.getListDetailVideo().setUrl("resources/video/" + record.data.plaatje + ".mp4");
-        me.getListDetailAudio().setUrl("resources/audio/" + record.data.plaatje + ".m4a");
+
 
 
         me.getListDetailButton().setText(record.data.plaatje);
 
         me.currentDetailRecord = record;
-        me.getMain().animateActiveItem(detail, {type: 'fade', duration: 200});
+
         
          Ext.Viewport.hideMenu('left');
 
-        var gebarenlijst  = me.getMain().down('gebarenlijst');
+        var gebarenlijst  = me.getMain().down('gebarenlijst'),
+            video = me.getListDetailVideo();
+        setTimeout(function(){
+            video.setUrl("resources/video/" + record.data.plaatje + ".mp4");
+            me.getListDetailAudio().setUrl("resources/audio/" + record.data.plaatje + ".m4a");
+            video.media.dom.load(); // this is needed!! for ios8,9 and 10
+            video.ghost.show();
+        },100);
     },
     
     showCatItems:function(view,index,target,record,e,eOpts){
@@ -272,6 +268,7 @@ Ext.define('KinderGebaren.controller.Main', {
         gebarenlijst.suspendEvents();
         gebarenlijst.getStore().clearFilter(true);
         gebarenlijst.getStore().filter('cat',record.data.cat);
+        gebarenlijst.getStore().sort("Id","ASC");
         gebarenlijst.resumeEvents(true);
         gebarenlijst.refresh();
         gebarenview.down('[name=catitemtitle]').setTitle(record.data.cat);

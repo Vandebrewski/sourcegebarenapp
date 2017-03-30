@@ -5,6 +5,7 @@ Ext.define('KinderGebaren.store.GebaarCat',{
         autoLoad: true,
         storeId:'gebaarCatStore',
         method : 'GET',
+        sorters:"Id",
         proxy: {
             type: 'ajax',
             url: 'resources/images/GebarenCat.json',
