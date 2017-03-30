@@ -26,11 +26,13 @@ Ext.define('KinderGebaren.view.Quiz', {
                     {
                         xtype: 'spacer'
                     },
+/*
 // iOS
                    {
                 		cls: 'quizvideoborderoverlay1'
                 	},
-// END IOS                	
+// END IOS
+*/                	
                     {
                         xtype: 'dataview',
                         scrollable: null,
@@ -38,11 +40,13 @@ Ext.define('KinderGebaren.view.Quiz', {
                         itemTpl: '<img src="resources/images/objects/{plaatje}.svg">{plaatje}</div>',
                         cls: 'centerQuizOptions'
                 	},
+/*
 // iOS
                 	{
                 		cls: 'quizvideoborderoverlay2'
                 	},
-// END IOS                	
+// END IOS
+*/                	
                     {
                         xtype: 'spacer'
                     }

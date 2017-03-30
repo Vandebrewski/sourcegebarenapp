@@ -116,8 +116,7 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
                 name: 'listDetailVideo',
                 itemId: 'videoView',
                 posterUrl: 'resources/images/playbutton.svg',
-                enableControls: true, // test for Android
-                preload="none", // test for Android
+                enableControls: false,
                 flex: 1,
 
                 listeners: {
@@ -136,7 +135,8 @@ Ext.define('KinderGebaren.view.GebarenDetail', {
 //                            } else {
 //                                me.play();
 //                            }
-							me.load(); // test for android
+//							me.load();
+							
 							me.play();
                         }, // END addEventListener
                         element: 'element'

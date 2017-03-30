@@ -15,7 +15,7 @@ Ext.define('KinderGebaren.controller.Main', {
             listDetailVideo  : 'gebarendetail video[name="listDetailVideo"]',
             listDetailImage  : 'gebarendetail image[name="listDetailImage"]',
             detail: 'gebarendetail',
-            videoPlayButton: '#videoPlayButton',
+//            videoPlayButton: '#videoPlayButton',
             gebarenview:"gebarenview"
         }, // End refs
 
@@ -106,7 +106,10 @@ Ext.define('KinderGebaren.controller.Main', {
 
 
     onBackListTap: function() {
-        var navlist = Ext.Viewport.down('navlist'),me=this;
+        var navlist = Ext.Viewport.down('navlist'),
+        me=this;
+        
+        
         if( !navlist.down('gebarenview') ){
             var gebarenCatStore = Ext.getStore('gebaarCatStore');
             var gebarenview = navlist.add({xtype: 'gebarenview'});
@@ -136,13 +139,14 @@ Ext.define('KinderGebaren.controller.Main', {
             //gebarenlijst.resumeEvents(true);
             //gebarenlijst.refresh();
         }
+        
 		Ext.Viewport.hideMenu('left');
         
         
         //this.getMain().setActiveItem(0); // old code before dynamic loading       
 
 // ---------- Experiment 
-//        this.getVideoView().setUrl(null)
+        
 
     },
     
@@ -237,12 +241,15 @@ Ext.define('KinderGebaren.controller.Main', {
        */
         
         
-// --------- Android video experiment        
-        me.getVideoPlayButton().hide();
-        me.getListDetailVideo().show();
-        me.getListDetailVideo().setUrl("http://www.new-impulse.com/kindergebaren/resources/video/" + record.data.plaatje + ".mp4");
-        me.getListDetailAudio().setUrl("http://www.new-impulse.com/kindergebaren/resources/audio/" + record.data.plaatje + ".m4a");
-// --------- END Android video experiment
+      
+//        me.getVideoPlayButton().hide();
+//        me.getListDetailVideo().show();
+
+
+
+        
+        me.getListDetailVideo().setUrl("resources/video/" + record.data.plaatje + ".mp4");
+        me.getListDetailAudio().setUrl("resources/audio/" + record.data.plaatje + ".m4a");
 
 
         me.getListDetailButton().setText(record.data.plaatje);
@@ -270,6 +277,7 @@ Ext.define('KinderGebaren.controller.Main', {
         gebarenview.down('[name=catitemtitle]').setTitle(record.data.cat);
         Ext.Viewport.hideMenu('left');
     },
+    
     backToCatsView:function(){
         var me = this,
             gebarenview = me.getGebarenview();

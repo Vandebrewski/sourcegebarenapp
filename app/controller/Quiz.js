@@ -183,14 +183,16 @@ Ext.define('KinderGebaren.controller.Quiz', {
         var correctAnswer = answersStore.getAt(correctIndex);
 
         this.createVideoComponent();
+        
+        this.getVideoView().setUrl("resources/video/" + correctAnswer.get('plaatje') + ".mp4");
 
-        if (Ext.os.is.Android) {
+/*        if (Ext.os.is.Android) {
             this.getVideoPlayButton().__url = "file:///android_asset/www/resources/video/" + correctAnswer.get('plaatje') + '.mp4';
         }
         else {
             this.getVideoView().setUrl("resources/video/" + correctAnswer.get('plaatje') + ".mp4");
         }
-
+*/
 //        console.log("correct answer: ", correctAnswer.get('plaatje'));
 
         existingQuestionIndexes.push(answerIndexes[correctIndex]);
@@ -236,14 +238,17 @@ Ext.define('KinderGebaren.controller.Quiz', {
         if (this.getShowAnswerResultAlert()) {
 // IOS verwijder stukje audio hieronder voor Android        	
             var message = correct ? "<img src='resources/images/correct.svg'><br /><br /><img src='resources/images/cake.svg'>" : "";
+            var audio = new Audio('resources/audio/soundsapp/' + (correct ? 'correct.mp3' : 'wrong.mp3'));
+			audio.play();
 
             if (!correct) {
                 var correctAnswer = store.getAt(store._correctIndex);
 
                 message += "<br />";             
                 message += "<img src='resources/images/wrong.svg'><br />" + correctAnswer.get('plaatje') + "<br /><img src='resources/images/objects/" + correctAnswer.get('plaatje') + ".svg'>";
-            }
 
+            }
+/*
 // iOS sound 
           if (Ext.os.is.iOS) {
             var audio = new Audio('resources/audio/soundsapp/' + (correct ? 'correct.mp3' : 'wrong.mp3'));
@@ -255,7 +260,8 @@ Ext.define('KinderGebaren.controller.Quiz', {
           if (Ext.os.is.Android) {
 		var audio = new Audio('/android_asset/www/resources/audio/soundsapp/' + (correct ? 'correct.mp3' : 'wrong.mp3'));
             audio.play();            }
-// END Android            
+// END Android  
+*/          
 
             Ext.Msg.alert('', message, function() {
                 this.next();
@@ -268,16 +274,45 @@ Ext.define('KinderGebaren.controller.Quiz', {
 
     createVideoComponent: function() {
         if (this.getVideoView() || this.getVideoPlayButton()) {
-            if (Ext.os.is.Android) {
+/*            if (Ext.os.is.Android) {
                 this.getVideoPlayButton().destroy();
             } else {
     			this.getVideoView().pause();
     			this.getVideoView().setUrl(null);
     			this.getVideoView().destroy();
             }
+*/            
+            	this.getVideoView().pause();
+    			this.getVideoView().setUrl(null);
+    			this.getVideoView().destroy();    
         }
 
         this.getAnswersView().getParent().insert(1, Ext.os.is.Android ? {
+
+		xtype: 'video',
+            itemId: 'questionVideo',
+            posterUrl: 'resources/images/playbutton2.svg',
+			flex:9,
+            enableControls: false,
+            
+
+            listeners: {
+                tap: { 
+                    fn: function () {
+                        var me = this;
+                        // removed the Pause option for now
+//                        if (me.isPlaying()) {
+//                            me.pause();
+//                        } else {
+//                            me.play();
+//                        }
+						me.play();
+                    }, // END addEventListener
+                    element: 'element'
+                } // END tap
+            } // END listeners
+
+/*
             itemId: 'videoPlayButton',
             cls: 'videoPlayButtonquiz',
             xtype: 'button',
@@ -295,6 +330,8 @@ Ext.define('KinderGebaren.controller.Quiz', {
                  //}
                  );
             }
+*/            
+            
         } : {
             xtype: 'video',
             itemId: 'questionVideo',
